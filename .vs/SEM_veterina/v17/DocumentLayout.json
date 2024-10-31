@@ -1,0 +1,429 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\connectiontest\\connectiontest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\connectiontest\\connectiontest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\controllers\\connectiontestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\controllers\\connectiontestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\lek.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\lek.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\majitel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\majitel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\zdravotniakce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\zdravotniakce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\vysledkykrve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\vysledkykrve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\personal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\personal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\lecba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\lecba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\diagnoza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\diagnoza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\oracledbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\oracledbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\models\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\models\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\klinika.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\klinika.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\pristroj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\pristroj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\vysetreni.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\vysetreni.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\zvire.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\zvire.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\entity\\zakrok.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\entity\\zakrok.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|c:\\users\\satte\\documents\\github\\sem_veterina\\sem_veterina\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BEBE791B-E7CD-40DD-8EE0-965807CC1637}|Sem_Veterina\\Sem_Veterina.csproj|solutionrelative:sem_veterina\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ConnectionTestController.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Controllers\\ConnectionTestController.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Controllers\\ConnectionTestController.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Controllers\\ConnectionTestController.cs",
+              "RelativeToolTip": "Sem_Veterina\\Controllers\\ConnectionTestController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwDUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T08:54:10.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConnectionTest.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\ConnectionTest\\ConnectionTest.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\ConnectionTest\\ConnectionTest.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\ConnectionTest\\ConnectionTest.cs",
+              "RelativeToolTip": "Sem_Veterina\\ConnectionTest\\ConnectionTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T08:41:46.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Startup.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Startup.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Startup.cs",
+              "RelativeToolTip": "Sem_Veterina\\Startup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T19:34:29.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Zakrok.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Zakrok.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\Zakrok.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Zakrok.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\Zakrok.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T19:13:33.402Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "VysledkyKrve.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\VysledkyKrve.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\VysledkyKrve.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\VysledkyKrve.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\VysledkyKrve.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T19:13:14.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Vysetreni.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Vysetreni.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\Vysetreni.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Vysetreni.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\Vysetreni.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T19:12:53.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ZdravotniAkce.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\ZdravotniAkce.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\ZdravotniAkce.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\ZdravotniAkce.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\ZdravotniAkce.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T19:12:16.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Lek.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Lek.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\Lek.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Lek.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\Lek.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T19:11:36.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Lecba.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Lecba.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\Lecba.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Lecba.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\Lecba.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T19:11:10.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "OracleDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\OracleDbContext.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\OracleDbContext.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\OracleDbContext.cs",
+              "RelativeToolTip": "Sem_Veterina\\OracleDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T11:12:07.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Pristroj.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Pristroj.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\Pristroj.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Pristroj.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\Pristroj.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T11:02:38.924Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Personal.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Personal.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\Personal.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Personal.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\Personal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T11:02:26.623Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Diagnoza.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Diagnoza.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\Diagnoza.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Diagnoza.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\Diagnoza.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T11:01:31.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Zvire.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Zvire.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\Zvire.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Zvire.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\Zvire.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T11:01:16.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Majitel.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Majitel.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\Majitel.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Majitel.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\Majitel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T11:00:46.651Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Klinika.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Klinika.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Entity\\Klinika.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Entity\\Klinika.cs",
+              "RelativeToolTip": "Sem_Veterina\\Entity\\Klinika.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T11:00:18.318Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\appsettings.json",
+              "RelativeDocumentMoniker": "Sem_Veterina\\appsettings.json",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\appsettings.json",
+              "RelativeToolTip": "Sem_Veterina\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-28T10:58:28.291Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Models.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Models\\Models.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Models\\Models.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Models\\Models.cs",
+              "RelativeToolTip": "Sem_Veterina\\Models\\Models.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAiwFUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T09:48:48.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Program.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Program.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Program.cs",
+              "RelativeToolTip": "Sem_Veterina\\Program.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T09:47:26.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Sem_Veterina\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T09:34:32.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Sem_Veterina\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T09:34:16.866Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Sem_Veterina\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-28T09:34:21.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Sem_Veterina\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-28T09:34:19.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Sem_Veterina\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\appsettings.Development.json",
+              "RelativeToolTip": "Sem_Veterina\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-28T09:31:43.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Sem_Veterina\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Sem_Veterina\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-28T09:29:48.934Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
