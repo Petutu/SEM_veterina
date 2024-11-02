@@ -1,11 +1,11 @@
 ﻿namespace Sem_Veterina.Entity
 {
-    public class Vysetreni
+    public class VYSETRENI
     {
-        public int ID_Akce { get; set; }
-        public string Typ_Vysetreni { get; set; } // NVARCHAR
+        public int ID_AKCE { get; set; }
+        public string TYP_VYSETRENI { get; set; } // NVARCHAR
 
         // Relace
-        public ZdravotniAkce ZdravotniAkce { get; set; }
+        public ZDRAVOTNIAKCE ZDRAVOTNÍAKCE { get; set; }
     }
 }

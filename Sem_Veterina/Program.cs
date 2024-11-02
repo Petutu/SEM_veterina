@@ -1,15 +1,15 @@
-
-
-// Add services to the container.
-
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Sem_Veterina;
-using System;
 using Sem_Veterina.Controllers;
 using Oracle.ManagedDataAccess.Client;
+using Sem_Veterina.CRUD;
+using Sem_Veterina.Entity;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,11 +21,14 @@ Console.WriteLine(connectionString);
 builder.Services.AddDbContext<OracleDbContext>(options =>
     options.UseOracle(connectionString));
 builder.Services.AddTransient<DbTestService>();
+builder.Services.AddTransient<KlinikaService>();
 
 // Pøidání MVC a dalších služeb
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+// Testování pøipojení k databázi
 using (var connection = new OracleConnection(connectionString))
 {
     try
@@ -39,8 +42,9 @@ using (var connection = new OracleConnection(connectionString))
         Console.WriteLine($"Chyba: {ex.Message}");
     }
 }
-    // Možnost inicializace DbContextu pøi spuštìní aplikace
-    using (var scope = app.Services.CreateScope())
+
+// Možnost inicializace DbContextu pøi spuštìní aplikace
+using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
@@ -48,6 +52,18 @@ using (var connection = new OracleConnection(connectionString))
         var context = services.GetRequiredService<OracleDbContext>();
         // Pøípadná inicializace databáze nebo migrace
         // context.Database.Migrate();
+
+        // Získání instance KlinikaService z DI kontejneru
+        var klinikaService = services.GetService<KlinikaService>();
+        if (klinikaService != null)
+        {
+            // Volání metody GetAllKlinikyAsync a výpis do konzole
+            await DisplayAllKliniky(klinikaService);
+        }
+        else
+        {
+            Console.WriteLine("KlinikaService nelze naèíst z DI kontejneru.");
+        }
     }
     catch (Exception ex)
     {
@@ -74,3 +90,22 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+// Asynchronní metoda pro výpis všech klinik
+static async Task DisplayAllKliniky(KlinikaService klinikaService)
+{
+    try
+    {
+        List<KLINIKY> kliniky = await klinikaService.GetAllKlinikyAsync();
+
+        Console.WriteLine("Seznam klinik:");
+        foreach (var klinika in kliniky)
+        {
+            Console.WriteLine($"ID: {klinika.ID_KLINIKA}, Název: {klinika.NÁZEV}, Adresa: {klinika.ADRESA}, Telefon: {klinika.TELEFONNÍ_ÈÍSLO}, Email: {klinika.EMAIL}");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Chyba pøi naèítání klinik: {ex.Message}");
+    }
+}

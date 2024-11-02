@@ -352,3 +352,4 @@ C:\Users\satte\Documents\GitHub\SEM_veterina\Sem_Veterina\obj\Debug\net8.0\refin
 C:\Users\satte\Documents\GitHub\SEM_veterina\Sem_Veterina\obj\Debug\net8.0\Sem_Veterina.pdb
 C:\Users\satte\Documents\GitHub\SEM_veterina\Sem_Veterina\obj\Debug\net8.0\Sem_Veterina.genruntimeconfig.cache
 C:\Users\satte\Documents\GitHub\SEM_veterina\Sem_Veterina\obj\Debug\net8.0\ref\Sem_Veterina.dll
+C:\Users\satte\Documents\GitHub\SEM_veterina\Sem_Veterina\obj\Debug\net8.0\Sem_Veterina.sourcelink.json

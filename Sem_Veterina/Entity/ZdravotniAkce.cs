@@ -1,20 +1,20 @@
 ﻿namespace Sem_Veterina.Entity
 {
-    public class ZdravotniAkce
+    public class ZDRAVOTNIAKCE
     {
-        public int ID_Zdravotni_Akce { get; set; }
-        public DateTime Datum { get; set; }
-        public string Popis { get; set; } // NVARCHAR
-        public string Vysledek { get; set; } // NVARCHAR
+        public int ID_AKCE { get; set; }
+        public DateTime DATUM { get; set; }
+        public string POPIS { get; set; } // NVARCHAR
+        public string VÝSLEDEK { get; set; } // NVARCHAR
 
         // Cizi klice a relace
-        public int? ID_Personal { get; set; }
-        public Personal Personal { get; set; }
+        public int ID_PERSONÁL { get; set; }
+        public PERSONAL PERSONÁL { get; set; }
 
-        public int? ID_Pristroj { get; set; }
-        public Pristroj Pristroj { get; set; }
+        public int ID_PŘÍSTROJ { get; set; }
+        public PRISTROJE PŘÍSTROJ { get; set; }
 
-        public int? ID_Zvire { get; set; }
-        public Zvire Zvire { get; set; }
+        public int ID_ZVÍŘE { get; set; }
+        public ZVIRATA ZVÍŘE { get; set; }
     }
 }

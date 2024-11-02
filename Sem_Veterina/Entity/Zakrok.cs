@@ -1,11 +1,11 @@
 ﻿namespace Sem_Veterina.Entity
 {
-    public class Zakrok
+    public class ZAKROK
     {
-        public int ID_Akce { get; set; }
-        public string Typ_Zakrok { get; set; } // NVARCHAR
+        public int ID_AKCE { get; set; }
+        public string TYP_ZAKROK { get; set; } // NVARCHAR
 
         // Relace
-        public ZdravotniAkce ZdravotniAkce { get; set; }
+        public ZDRAVOTNIAKCE ZDRAVOTNÍAKCE { get; set; }
     }
 }
