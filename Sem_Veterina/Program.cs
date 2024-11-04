@@ -22,6 +22,13 @@ builder.Services.AddDbContext<OracleDbContext>(options =>
     options.UseOracle(connectionString));
 builder.Services.AddTransient<DbTestService>();
 builder.Services.AddTransient<KlinikaService>();
+builder.Services.AddTransient<ZvireService>();
+builder.Services.AddTransient<MajitelService>();
+builder.Services.AddTransient<ZdravotniAkceService>(); // Pøidejte tuto øádku pro ZdravotniAkceService
+builder.Services.AddTransient<PristrojeService>();
+builder.Services.AddTransient<LecbaService>();
+builder.Services.AddTransient<LekyService>();
+builder.Services.AddTransient<PersonalService>();
 
 // Pøidání MVC a dalších služeb
 builder.Services.AddControllersWithViews();
@@ -53,7 +60,7 @@ using (var scope = app.Services.CreateScope())
         // Pøípadná inicializace databáze nebo migrace
         // context.Database.Migrate();
 
-        // Získání instance KlinikaService z DI kontejneru
+        // Získání instance KlinikaService ZVÍØATA DI kontejneru
         var klinikaService = services.GetService<KlinikaService>();
         if (klinikaService != null)
         {
@@ -64,6 +71,9 @@ using (var scope = app.Services.CreateScope())
         {
             Console.WriteLine("KlinikaService nelze naèíst z DI kontejneru.");
         }
+        List<ZVIRATA> ZvireList = await services.GetService<ZvireService>().GetAllZvirataAsync();
+        foreach(var zvirata in ZvireList) { Console.WriteLine(zvirata.DRUH); }
+        
     }
     catch (Exception ex)
     {
@@ -108,4 +118,5 @@ static async Task DisplayAllKliniky(KlinikaService klinikaService)
     {
         Console.WriteLine($"Chyba pøi naèítání klinik: {ex.Message}");
     }
+   
 }

@@ -10,9 +10,11 @@
         public int ID_ZVÍŘE{ get; set; }
         public ZVIRATA ZVÍŘE { get; set; }
 
-        public int ID_PERSONAL { get; set; }
-        public PERSONAL PERSONAL { get; set; }
+        public int ID_PERSONÁL { get; set; }
+        //V databázi se to jmenuje Id_PRESONÁL
+        public PERSONAL PERSONÁL { get; set; }
 
-        public LECBY LÉČBA { get; set; }
+        public ICollection<LECBY> LÉČBY { get; set; }
+        //public LECBY LÉČBA { get; set; }
     }
 }

@@ -18,26 +18,26 @@
         // CREATE
         public async Task AddMajitelAsync(MAJITELE majitel)
         {
-            _context.MAJITELE.Add(majitel);
+            _context.Majitele.Add(majitel);
             await _context.SaveChangesAsync();
         }
 
         // READ - GET ALL
-        public async Task<List<MAJITELE>> GetAllMajitelAsync()
+        public async Task<List<MAJITELE>> GetAllMajiteleAsync()
         {
-            return await _context.MAJITELE.ToListAsync();
+            return await _context.Majitele.ToListAsync();
         }
 
         // READ - GET BY ID
         public async Task<MAJITELE> GetMajitelByIdAsync(int id)
         {
-            return await _context.MAJITELE.FindAsync(id);
+            return await _context.Majitele.FindAsync(id);
         }
 
         // UPDATE
         public async Task UpdateMajitelAsync(MAJITELE majitel)
         {
-            var existingMajitel = await _context.MAJITELE.FindAsync(majitel.ID_MAJITEL);
+            var existingMajitel = await _context.Majitele.FindAsync(majitel.ID_MAJITEL);
             if (existingMajitel != null)
             {
                 existingMajitel.JMÉNO = majitel.JMÉNO;
@@ -52,10 +52,10 @@
         // DELETE
         public async Task DeleteMajitelAsync(int id)
         {
-            var majitel = await _context.MAJITELE.FindAsync(id);
+            var majitel = await _context.Majitele.FindAsync(id);
             if (majitel != null)
             {
-                _context.MAJITELE.Remove(majitel);
+                _context.Majitele.Remove(majitel);
                 await _context.SaveChangesAsync();
             }
         }

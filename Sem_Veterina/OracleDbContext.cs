@@ -9,12 +9,12 @@ namespace Sem_Veterina
     {
         public OracleDbContext(DbContextOptions<OracleDbContext> options) : base(options) { }
 
-        public DbSet<KLINIKY> KLINIKY { get; set; }
-        public DbSet<MAJITELE> MAJITELE { get; set; }
-        public DbSet<ZVIRATA> ZVIRATA { get; set; }
+        public DbSet<KLINIKY> Kliniky { get; set; }
+        public DbSet<MAJITELE> Majitele { get; set; }
+        public DbSet<ZVIRATA> Zvirata { get; set; }
         public DbSet<DIAGNOZY> Diagnozy { get; set; }
         public DbSet<LECBY> Lecby { get; set; }
-        public DbSet<LEKY> Leki { get; set; }
+        public DbSet<LEKY> Leky { get; set; }
         public DbSet<PERSONAL> Personal { get; set; }
         public DbSet<PRISTROJE> Pristroje { get; set; }
         public DbSet<ZDRAVOTNIAKCE> ZdravotniAkce { get; set; }
@@ -24,24 +24,94 @@ namespace Sem_Veterina
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DIAGNOZY>()
-        .HasOne(d => d.LÉČBA)
-        .WithOne(l => l.Diagnoza)
+       /*     modelBuilder.Entity<DIAGNOZY>()
+        .HasOne(d => d.LÉČBY)
+        .WithOne(l => l.)
         .HasPrincipalKey<DIAGNOZY>(d => d.ID_DIAGNÓZA)
-        .HasForeignKey<LECBY>(l => l.ID_LÉČBA); // Odkazuje na sloupec, který již v databázi existuje
+        .HasForeignKey<LECBY>(l => l.ID_LÉČBA); // Odkazuje na sloupec, který již v databázi existuje*/
 
-            modelBuilder.Entity<DIAGNOZY>()
-        .HasKey(d => d.ID_DIAGNÓZA);
+            
 
             modelBuilder.Entity<DIAGNOZY>()
                 .HasOne(d => d.ZVÍŘE)
                 .WithMany(z => z.DIAGNÓZY)
-                .HasForeignKey(d => d.ID_ZVÍŘE);
+                .HasForeignKey(d => d.ID_ZVÍŘE).IsRequired();
 
             modelBuilder.Entity<ZVIRATA>()
        .HasOne(z => z.MAJITELE)
-       .WithMany(m => m.ZVIRATA)
-       .HasForeignKey(z => z.ID_MAJITEL); // ID_Majitel v ZVIRATA je cizí klíč
+       .WithMany(m => m.ZVÍŘATA)
+       .HasForeignKey(z => z.ID_MAJITEL).IsRequired(); // ID_Majitel v Zvirata je cizí klíč
+
+            modelBuilder.Entity<MAJITELE>()
+    .HasOne(m => m.KLINIKA)///
+    .WithMany(k => k.MAJITELE)
+    .HasForeignKey(m => m.ID_KLINIKA)
+    .IsRequired();
+
+            modelBuilder.Entity<ZVIRATA>()
+    .HasOne(z => z.MAJITELE)
+    .WithMany(m => m.ZVÍŘATA)
+    .HasForeignKey(z => z.ID_MAJITEL)
+    .IsRequired();
+
+            modelBuilder.Entity<ZDRAVOTNIAKCE>()
+    .HasOne(za => za.ZVÍŘE)
+    .WithMany(z => z.ZDRAVOTNÍAKCE)
+    .HasForeignKey(za => za.ID_ZVÍŘE)
+    .IsRequired();
+
+            modelBuilder.Entity<LECBY>()
+    .HasOne(l => l.DIAGNÓZA)
+    .WithMany(d => d.LÉČBY)
+    .HasForeignKey(l => l.ID_DIAGNÓZA)
+    .IsRequired();
+
+            modelBuilder.Entity<LEKY>()
+    .HasOne(l => l.LÉČBA)
+    .WithMany(lb => lb.LÉKY)
+    .HasForeignKey(l => l.ID_LÉČBA)
+    .IsRequired();
+
+            modelBuilder.Entity<ZDRAVOTNIAKCE>()
+    .HasOne(za => za.PŘÍSTROJ)
+    .WithMany(p => p.ZDRAVOTNÍAKCE)
+    .HasForeignKey(za => za.ID_PŘÍSTROJ)
+    .IsRequired();
+
+            modelBuilder.Entity<ZDRAVOTNIAKCE>()
+    .HasOne(za => za.PERSONÁL)
+    .WithMany(p => p.ZDRAVOTNÍAKCE)
+    .HasForeignKey(za => za.ID_PRESONÁL)
+    .IsRequired();
+
+            modelBuilder.Entity<PERSONAL>()
+    .HasOne(p => p.KLINIKA)
+    .WithMany(k => k.PERSONÁL)
+    .HasForeignKey(p => p.ID_KLINIKA)
+    .IsRequired();
+
+            modelBuilder.Entity<DIAGNOZY>()
+    .HasOne(d => d.PERSONÁL)
+    .WithMany(p => p.DIAGNÓZY)
+    .HasForeignKey(d => d.ID_PERSONÁL)
+    .IsRequired();
+
+            modelBuilder.Entity<PRISTROJE>()
+    .HasOne(p => p.KLINIKA)
+    .WithMany(k => k.PŘÍSTROJE)
+    .HasForeignKey(p => p.ID_KLINIKA)
+    .IsRequired();
+
+
+
+
+
+
+
+
+
+            modelBuilder.Entity<DIAGNOZY>()
+        .HasKey(d => d.ID_DIAGNÓZA);
 
             modelBuilder.Entity<KLINIKY>()
         .HasKey(k => k.ID_KLINIKA); // Nastavení primárního klíče
@@ -50,13 +120,13 @@ namespace Sem_Veterina
         .HasKey(l => l.ID_LÉČBA); // Nastavení primárního klíče
 
             modelBuilder.Entity<LEKY>()
-        .HasKey(lk => lk.ID_LEK); // Nastavení primárního klíče
+        .HasKey(lk => lk.ID_LÉK); // Nastavení primárního klíče
 
             modelBuilder.Entity<MAJITELE>()
         .HasKey(m => m.ID_MAJITEL); // Nastavení primárního klíče
 
             modelBuilder.Entity<PERSONAL>()
-        .HasKey(p => p.ID_PERSONAL); // Nastavení primárního klíče
+        .HasKey(p => p.ID_PRESONÁL); // Nastavení primárního klíče
 
             modelBuilder.Entity<ZVIRATA>()
         .HasKey(z => z.ID_ZVÍŘE); // Nastavení primárního klíče
@@ -80,20 +150,41 @@ namespace Sem_Veterina
 
             modelBuilder.Entity<KLINIKY>()
         .ToTable("KLINIKY");
+            modelBuilder.Entity<ZVIRATA>()
+        .ToTable("ZVIRATA");
+            modelBuilder.Entity<MAJITELE>().ToTable("MAJITELI"); //Podle databáze..
 
-            /* modelBuilder.Entity<KLINIKY>()
+            modelBuilder.Entity<LEKY>()
+        .ToTable("LEKY");
+
+            modelBuilder.Entity<LECBY>()
+                .ToTable("LECBA");
+
+            modelBuilder.Entity<PERSONAL>()
+                .ToTable("PERSONAL");
+
+            modelBuilder.Entity<PRISTROJE>()
+                .ToTable("PRISTROJE");
+
+            modelBuilder.Entity<ZDRAVOTNIAKCE>()
+                .ToTable("ZDRAVOTNI_AKCI");
+
+            modelBuilder.Entity<DIAGNOZY>()
+                .ToTable("DIAGNOZY");
+
+            /* modelBuilder.Entity<Kliniky>()
                  .HasKey(k => k.ID_Klinika);
              // Příklad propojení cizího klíče a konfigurace dalších tabulek
 
-             modelBuilder.Entity<MAJITELE>()
-                 .HasOne(m => m.ZVIRATA)
-                 .WithOne(z => z.MAJITELE)
-                 .HasForeignKey<ZVIRATA>(z => z.MAJITEL_ID_Majitel);
+             modelBuilder.Entity<Majitele>()
+                 .HasOne(m => m.Zvirata)
+                 .WithOne(ZVÍŘATA => ZVÍŘATA.Majitele)
+                 .HasForeignKey<Zvirata>(ZVÍŘATA => ZVÍŘATA.MAJITEL_ID_Majitel);
 
-             modelBuilder.Entity<ZVIRATA>()
-                 .HasOne(z => z.DIAGNOZY)
-                 .WithOne(d => d.ZVIRATA)
-                 .HasForeignKey<DIAGNOZY>(d => d.ID_Zvíře);
+             modelBuilder.Entity<Zvirata>()
+                 .HasOne(ZVÍŘATA => ZVÍŘATA.DIAGNÓZY)
+                 .WithOne(d => d.Zvirata)
+                 .HasForeignKey<DIAGNÓZY>(d => d.ID_Zvíře);
 
              // Další vazby mezi tabulkami zde...*/
         }

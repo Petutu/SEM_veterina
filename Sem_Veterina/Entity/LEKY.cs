@@ -2,14 +2,14 @@
 {
     public class LEKY
     {
-        public int ID_LEK { get; set; }
+        public int ID_LÉK { get; set; }
         public string NÁZEV { get; set; } // NVARCHAR
         public int DÁVKOVÁNÍ { get; set; }
         public string POKYNY { get; set; } // NVARCHAR
-        public string ÚČINKY { get; set; } // NVARCHAR, volitelne
+        public string? ÚČINKY { get; set; } // NVARCHAR, volitelne
 
         // Cizi klic
-        public int LECBA_ID { get; set; }
-        public LECBY Lecba { get; set; }
+        public int ID_LÉČBA { get; set; }
+        public LECBY LÉČBA { get; set; }
     }
 }

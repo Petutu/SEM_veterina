@@ -19,13 +19,13 @@
         // READ - GET ALL
         public async Task<List<KLINIKY>> GetAllKlinikyAsync()
         {
-            return await _context.KLINIKY.ToListAsync();
+            return await _context.Kliniky.ToListAsync();
         }
 
         // READ - GET BY ID
         public async Task<KLINIKY> GetKlinikaByIdAsync(int id)
         {
-            return await _context.KLINIKY.FindAsync(id);
+            return await _context.Kliniky.FindAsync(id);
         }
 
       

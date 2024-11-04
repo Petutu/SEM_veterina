@@ -6,7 +6,9 @@
         public string POPIS { get; set; } // NVARCHAR
 
         // Cizi klic
-        public int Diagnoza_ID { get; set; }
-        public DIAGNOZY Diagnoza { get; set; }
+        public int ID_DIAGNÓZA { get; set; }
+        public DIAGNOZY DIAGNÓZA { get; set; }
+
+        public ICollection<LEKY> LÉKY { get; set; }
     }
 }

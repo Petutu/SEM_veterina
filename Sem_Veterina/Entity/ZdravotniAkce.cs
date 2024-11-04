@@ -4,11 +4,11 @@
     {
         public int ID_AKCE { get; set; }
         public DateTime DATUM { get; set; }
-        public string POPIS { get; set; } // NVARCHAR
+        public string POPIS_AKCE { get; set; } // NVARCHAR
         public string VÝSLEDEK { get; set; } // NVARCHAR
 
         // Cizi klice a relace
-        public int ID_PERSONÁL { get; set; }
+        public int ID_PRESONÁL { get; set; }
         public PERSONAL PERSONÁL { get; set; }
 
         public int ID_PŘÍSTROJ { get; set; }

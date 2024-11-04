@@ -33,7 +33,7 @@ namespace Sem_Veterina.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllMajitele()
         {
-            var majitele = await _majitelService.GetAllMajitelAsync();
+            var majitele = await _majitelService.GetAllMajiteleAsync();
             return Ok(majitele);
         }
 

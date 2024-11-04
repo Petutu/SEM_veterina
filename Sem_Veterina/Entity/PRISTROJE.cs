@@ -7,7 +7,9 @@
         public string FUNKCE { get; set; } // VARCHAR(40)
 
         // Cizi klic
-        public int KLINIKA_ID { get; set; }
-        public KLINIKY Klinika { get; set; }
+        public int ID_KLINIKA { get; set; }
+        public KLINIKY KLINIKA { get; set; }
+
+        public ICollection<ZDRAVOTNIAKCE> ZDRAVOTNÍAKCE { get; set; }
     }
 }

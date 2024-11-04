@@ -7,9 +7,12 @@
         public string PŘÍJMENÍ { get; set; } // VARCHAR(12)
         public int TELEFONNÍ_ČÍSLO { get; set; }
         public string ADRESA { get; set; } // VARCHAR(30)
-        public string EMAIL { get; set; } // VARCHAR, volitelné
+        public string? EMAIL { get; set; } // VARCHAR, volitelné
 
         // Relace
-        public ICollection<ZVIRATA> ZVIRATA { get; set; }
+        public ICollection<ZVIRATA> ZVÍŘATA { get; set; }
+        public KLINIKY KLINIKA { get; set; }
+
+        public int ID_KLINIKA { get; set; }
     }
 }
