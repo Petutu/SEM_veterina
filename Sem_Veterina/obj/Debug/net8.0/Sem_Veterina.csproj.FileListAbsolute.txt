@@ -472,4 +472,3 @@ C:/Users/satte/Documents/GitHub/SEM_veterina/Sem_Veterina/obj/Debug/net8.0/Sem_V
 /Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/obj/Debug/net8.0/Sem_Veterina.pdb
 /Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/obj/Debug/net8.0/Sem_Veterina.genruntimeconfig.cache
 /Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/obj/Debug/net8.0/ref/Sem_Veterina.dll
-/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/obj/Debug/net8.0/scopedcss/Views/Shared/_AdminLayout.cshtml.rz.scp.css

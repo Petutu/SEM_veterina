@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/Sem_Veterina.bundle.scp.css"
     },
     {
+      "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/css/admin.css",
+      "PackagePath": "staticwebassets/css/admin.css"
+    },
+    {
       "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
