@@ -9,10 +9,22 @@
 
 <div class="admin-container">
     <div class="filter-section">
-        <h3>Filtr klinik</h3>
-        <form asp-action="Kliniky" method="get">
-            <input type="text" name="search" placeholder="Název nebo adresa..." />
-            <button type="submit">Vyhledat</button>
+        <form class="filter" asp-action="Kliniky" method="get">
+            <div class="filter-item">
+                <label for="address">Adresa</label>
+                <input class="filter-input filter-input-address" type="text" name="address"
+                    placeholder="Studentska 345, Pardubice 53003" />
+            </div>
+            <div class="filter-item">
+                <label for="phone">Tel. číslo</label>
+                <input class="filter-input filter-input-number" type="text" name="phone"
+                    placeholder="+420 777 777 777" />
+            </div>
+            <div class="filter-buttons">
+                <button class="btn-filter" type="submit"><img src="~/imgs/search.svg" alt="Vyhledavání"></button>
+                <button class="btn-filter" type="submit"><img src="~/imgs/reset.svg" alt="Vymazat filter"></button>
+                <a href="/Kliniky">Reset</a>
+            </div>
         </form>
     </div>
     <div class="data-section" style="display: flex;">

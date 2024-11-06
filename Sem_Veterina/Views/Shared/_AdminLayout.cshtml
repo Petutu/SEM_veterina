@@ -12,9 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Sem_Veterina.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
 </head>
 
 <body>
@@ -22,15 +22,15 @@
         <nav class="nav">
             <a class="logo-link" asp-asp-controller="Home" asp-action="Index"><img class="logo-link-svg"
                     src="~/imgs/logo.svg" alt="Logo Veterinarni Kliniky"></a>
-            <ul class="nav-list">
-                <li class="nav-list-item"><a class="nav-list-link" href="/Kliniky">Kliniky</a></li>
-                <li class="nav-list-item"><a class="nav-list-link" href="/Uzivatele">Uživatelé</a></li>
-                <li class="nav-list-item"><a class="nav-list-link" href="/Zvirata">Malí pacienti</a></li>
-                <li class="nav-list-item"><a class="nav-list-link" href="/Personal">Personál</a></li>
-                <li class="nav-list-item"><a class="nav-list-link" href="/Pristroje">Přístroje</a></li>
-                <li class="nav-list-item">
+            <ul class="nav-list-admin">
+                <li class="nav-list-admin-item"><a class="nav-list-admin-link" asp-area="" asp-controller="Admin"
+                        asp-action="Kliniky">Kliniky</a></li>
+                <li class="nav-list-admin-item"><a class="nav-list-admin-link" href="/Uzivatele">Uživatelé</a></li>
+                <li class="nav-list-admin-item"><a class="nav-list-admin-link" href="/Zvirata">Malí pacienti</a></li>
+                <li class="nav-list-admin-item"><a class="nav-list-admin-link" href="/Personal">Personál</a></li>
+                <li class="nav-list-admin-item"><a class="nav-list-admin-link" href="/Pristroje">Přístroje</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle nav-list-link" href="#" id="navbarDropdown"
+                    <a class="nav-link dropdown-toggle nav-list-admin-link" href="#" id="navbarDropdown"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Ostatní
                     </a>
