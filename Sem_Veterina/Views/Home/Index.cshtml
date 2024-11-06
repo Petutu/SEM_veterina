@@ -3,17 +3,7 @@
 @model Sem_Veterina.Entity.EntityViewModel
 @{
     ViewData["Title"] = "Home Page";
-
-
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
-
-
 
 <h2>Výpis Entit</h2>
 
@@ -39,7 +29,7 @@
 {
     <h3>Kliniky</h3>
     <ul>
-        @foreach (var klinika in Model.Kliniky)
+    @foreach (var klinika in Model.Kliniky)
         {
             <li>@klinika.NÁZEV - @klinika.ADRESA - @klinika.TELEFONNÍ_ČÍSLO</li>
         }
@@ -49,7 +39,7 @@ else if (Model.SelectedEntity == "Majitel" && Model.Majitele != null)
 {
     <h3>Majitelé</h3>
     <ul>
-        @foreach (var majitel in Model.Majitele)
+    @foreach (var majitel in Model.Majitele)
         {
             <li>@majitel.JMÉNO @majitel.PŘÍJMENÍ - @majitel.ADRESA - @majitel.TELEFONNÍ_ČÍSLO</li>
         }
@@ -59,7 +49,7 @@ else if (Model.SelectedEntity == "Zvire" && Model.Zvirata != null)
 {
     <h3>Zvířata</h3>
     <ul>
-        @foreach (var zvire in Model.Zvirata)
+    @foreach (var zvire in Model.Zvirata)
         {
             <li>@zvire.JMÉNO - @zvire.DRUH - @zvire.VĚK let</li>
         }
@@ -69,7 +59,7 @@ else if (Model.SelectedEntity == "Zdravotni Akce" && Model.ZdravotniAkce != null
 {
     <h3>Zdravotní Akce</h3>
     <ul>
-        @foreach (var akce in Model.ZdravotniAkce)
+    @foreach (var akce in Model.ZdravotniAkce)
         {
             <li>@akce.DATUM - @akce.POPIS_AKCE - Výsledek: @akce.VÝSLEDEK</li>
         }
@@ -79,7 +69,7 @@ else if (Model.SelectedEntity == "Pristroj" && Model.Pristroje != null)
 {
     <h3>Přístroje</h3>
     <ul>
-        @foreach (var pristroj in Model.Pristroje)
+    @foreach (var pristroj in Model.Pristroje)
         {
             <li>@pristroj.NÁZEV - Funkce: @pristroj.FUNKCE</li>
         }
@@ -89,7 +79,7 @@ else if (Model.SelectedEntity == "Lecby" && Model.Lecby != null)
 {
     <h3>Léčby</h3>
     <ul>
-        @foreach (var lecba in Model.Lecby)
+    @foreach (var lecba in Model.Lecby)
         {
             <li>@lecba.POPIS - ID Diagnózy: @lecba.ID_DIAGNÓZA</li>
         }
@@ -99,7 +89,7 @@ else if (Model.SelectedEntity == "Leky" && Model.Leky != null)
 {
     <h3>Léky</h3>
     <ul>
-        @foreach (var lek in Model.Leky)
+    @foreach (var lek in Model.Leky)
         {
             <li>@lek.NÁZEV - Dávkování: @lek.DÁVKOVÁNÍ - Pokyny: @lek.POKYNY</li>
         }
@@ -109,9 +99,10 @@ else if (Model.SelectedEntity == "Personal" && Model.Personal != null)
 {
     <h3>Personál</h3>
     <ul>
-        @foreach (var personal in Model.Personal)
+    @foreach (var personal in Model.Personal)
         {
-            <li>@personal.JMÉNO @personal.PŘÍJMENÍ - Specializace: @personal.SPECIALIZACE - Telefon: @personal.TELEFONNÍ_ČÍSLO</li>
+            <li>@personal.JMÉNO @personal.PŘÍJMENÍ - Specializace: @personal.SPECIALIZACE - Telefon: @personal.TELEFONNÍ_ČÍSLO
+            </li>
         }
     </ul>
 }

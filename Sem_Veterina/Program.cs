@@ -13,67 +13,67 @@ using System.Threading.Tasks;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Pøidání connection stringu
+// Pï¿½idï¿½nï¿½ connection stringu
 string connectionString = builder.Configuration.GetConnectionString("OracleDbContext");
 Console.WriteLine(connectionString);
 
-// Konfigurace DbContext pro Oracle s pouitím connection stringu
+// Konfigurace DbContext pro Oracle s pouï¿½itï¿½m connection stringu
 builder.Services.AddDbContext<OracleDbContext>(options =>
     options.UseOracle(connectionString));
 builder.Services.AddTransient<DbTestService>();
 builder.Services.AddTransient<KlinikaService>();
 builder.Services.AddTransient<ZvireService>();
 builder.Services.AddTransient<MajitelService>();
-builder.Services.AddTransient<ZdravotniAkceService>(); // Pøidejte tuto øádku pro ZdravotniAkceService
+builder.Services.AddTransient<ZdravotniAkceService>(); // Pï¿½idejte tuto ï¿½ï¿½dku pro ZdravotniAkceService
 builder.Services.AddTransient<PristrojeService>();
 builder.Services.AddTransient<LecbaService>();
 builder.Services.AddTransient<LekyService>();
 builder.Services.AddTransient<PersonalService>();
 
-// Pøidání MVC a dalších slueb
+// Pï¿½idï¿½nï¿½ MVC a dalï¿½ï¿½ch sluï¿½eb
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Testování pøipojení k databázi
+// Testovï¿½nï¿½ pï¿½ipojenï¿½ k databï¿½zi
 using (var connection = new OracleConnection(connectionString))
 {
     try
     {
         connection.Open();
-        Console.WriteLine("Pøipojení k databázi bylo úspìšné!");
+        Console.WriteLine("Pï¿½ipojenï¿½ k databï¿½zi bylo ï¿½spï¿½nï¿½!");
     }
     catch (Exception ex)
     {
-        Console.WriteLine("Pøipojení k databázi se nezdaøilo.");
+        Console.WriteLine("Pï¿½ipojenï¿½ k databï¿½zi se nezdaï¿½ilo.");
         Console.WriteLine($"Chyba: {ex.Message}");
     }
 }
 
-// Monost inicializace DbContextu pøi spuštìní aplikace
+// Moï¿½nost inicializace DbContextu pï¿½i spuï¿½tï¿½nï¿½ aplikace
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
     {
         var context = services.GetRequiredService<OracleDbContext>();
-        // Pøípadná inicializace databáze nebo migrace
+        // Pï¿½ï¿½padnï¿½ inicializace databï¿½ze nebo migrace
         // context.Database.Migrate();
 
-        // Získání instance KlinikaService ZVÍØATA DI kontejneru
+        // Zï¿½skï¿½nï¿½ instance KlinikaService ZVï¿½ï¿½ATA DI kontejneru
         var klinikaService = services.GetService<KlinikaService>();
         if (klinikaService != null)
         {
-            // Volání metody GetAllKlinikyAsync a vıpis do konzole
+            // Volï¿½nï¿½ metody GetAllKlinikyAsync a vï¿½pis do konzole
             await DisplayAllKliniky(klinikaService);
         }
         else
         {
-            Console.WriteLine("KlinikaService nelze naèíst z DI kontejneru.");
+            Console.WriteLine("KlinikaService nelze naï¿½ï¿½st z DI kontejneru.");
         }
         List<ZVIRATA> ZvireList = await services.GetService<ZvireService>().GetAllZvirataAsync();
-        foreach(var zvirata in ZvireList) { Console.WriteLine(zvirata.DRUH); }
-        
+        foreach (var zvirata in ZvireList) { Console.WriteLine(zvirata.DRUH); }
+
     }
     catch (Exception ex)
     {
@@ -101,7 +101,7 @@ app.MapControllerRoute(
 
 app.Run();
 
-// Asynchronní metoda pro vıpis všech klinik
+// Asynchronnï¿½ metoda pro vï¿½pis vï¿½ech klinik
 static async Task DisplayAllKliniky(KlinikaService klinikaService)
 {
     try
@@ -111,12 +111,12 @@ static async Task DisplayAllKliniky(KlinikaService klinikaService)
         Console.WriteLine("Seznam klinik:");
         foreach (var klinika in kliniky)
         {
-            Console.WriteLine($"ID: {klinika.ID_KLINIKA}, Název: {klinika.NÁZEV}, Adresa: {klinika.ADRESA}, Telefon: {klinika.TELEFONNÍ_ÈÍSLO}, Email: {klinika.EMAIL}");
+            Console.WriteLine($"ID: {klinika.ID_KLINIKA}, Nï¿½zev: {klinika.NÃZEV}, Adresa: {klinika.ADRESA}, Telefon: {klinika.TELEFONNÃ_ÄŒÃSLO}, Email: {klinika.EMAIL}");
         }
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"Chyba pøi naèítání klinik: {ex.Message}");
+        Console.WriteLine($"Chyba pï¿½i naï¿½ï¿½tï¿½nï¿½ klinik: {ex.Message}");
     }
-   
+
 }

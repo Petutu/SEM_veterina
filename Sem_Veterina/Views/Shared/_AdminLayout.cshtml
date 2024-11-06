@@ -1,0 +1,44 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin</title>
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Sem_Veterina.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a asp-asp-controller="Home" asp-action="Index"><img src="~/imgs/logo.svg"
+                    alt="Logo Veterinarni Kliniky"></a>
+            <ul>
+                <li><a href="/Kliniky">Kliniky</a></li>
+                <li><a href="/Uzivatele">Uživatelé</a></li>
+                <li><a href="/Malipacienti">Malí pacienti</a></li>
+                <li><a href="/Personal">Personál</a></li>
+                <li><a href="/Pristroje">Přístroje</a></li>
+                <li><a href="/Ostatni">Ostatní</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        @RenderBody() <!-- Tady se zobrazí obsah jednotlivých stránek -->
+    </main>
+    <footer>
+        <p>&copy; 2024 Sem Veterina - Admin Sekce</p>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

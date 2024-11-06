@@ -15,7 +15,7 @@
             _context = context;
         }
 
-       
+
         // READ - GET ALL
         public async Task<List<KLINIKY>> GetAllKlinikyAsync()
         {
@@ -28,6 +28,6 @@
             return await _context.Kliniky.FindAsync(id);
         }
 
-      
+
     }
 }

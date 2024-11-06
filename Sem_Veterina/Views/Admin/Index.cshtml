@@ -1,0 +1,13 @@
+@using Sem_Veterina.Controllers
+@using Sem_Veterina.Entity
+@model Sem_Veterina.Entity.EntityViewModel
+@{
+    ViewData["Title"] = "Admin Panel";
+    Layout = "_AdminLayout";
+}
+
+<h2>Režím admin</h2>
+<p>Nastavení</p>
+<p>Přejít do databáze</p>
+<p>Vyberte sekci pro správu:</p>
+<a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Kliniky">Databáze Klinika</a>

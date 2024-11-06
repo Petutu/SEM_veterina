@@ -1,0 +1,63 @@
+@using Sem_Veterina.Controllers
+@using Sem_Veterina.Entity
+@model AdminViewModel
+
+@{
+    ViewData["Title"] = "Správa klinik";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-container">
+    <div class="filter-section">
+        <h3>Filtr klinik</h3>
+        <form asp-action="Kliniky" method="get">
+            <input type="text" name="search" placeholder="Název nebo adresa..." />
+            <button type="submit">Vyhledat</button>
+        </form>
+    </div>
+    <div class="data-section" style="display: flex;">
+        <div class="left-panel" style="flex: 1; padding: 10px;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Název</th>
+                        <th>Adresa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var klinika in Model.Kliniky)
+                    {
+                        <tr>
+                            <td>@klinika.ID_KLINIKA</td>
+                            <td>@klinika.NÁZEV</td>
+                            <td>@klinika.ADRESA</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <ul>
+                @foreach (var klinika in Model.Kliniky)
+                {
+                    <li>
+                        <a asp-action="KlinikaDetail" asp-route-id="@klinika.ID_KLINIKA" data-ajax="true"
+                            data-ajax-mode="replace" data-ajax-update="#detailPanel">
+                            @klinika.NÁZEV
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="right-panel" id="detailPanel" style="flex: 1; padding: 10px;">
+
+            <h3>Úprava kliniky</h3>
+            <h4>Detaily kliniky</h4>
+            <form method="post" action="/Kliniky/Edit">
+                <input type="text" name="Nazev" placeholder="Název kliniky" />
+                <input type="text" name="Adresa" placeholder="Adresa" />
+                <input type="tel" name="Telefon" placeholder="Telefon" />
+                <button type="submit">Uložit</button>
+            </form>
+        </div>
+    </div>
+</div>
