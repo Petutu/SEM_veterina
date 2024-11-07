@@ -13,6 +13,6 @@ namespace Sem_Veterina.Entity
         public List<LEKY> Leky { get; set; }
         public List<LECBY> Lecby { get; set; }
         public List<DIAGNOZY> Diagnozy { get; set; }
-        public KLINIKY SelectedKlinika { get; set; }
+        // public KLINIKY SelectedKlinika { get; set; }
     }
 }

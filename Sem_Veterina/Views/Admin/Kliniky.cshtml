@@ -1,7 +1,6 @@
 @using Sem_Veterina.Controllers
 @using Sem_Veterina.Entity
-@model AdminViewModel
-
+@model KlinikyViewModel
 @{
     ViewData["Title"] = "Správa klinik";
     Layout = "_AdminLayout";
@@ -17,59 +16,88 @@
             </div>
             <div class="filter-item">
                 <label for="phone">Tel. číslo</label>
-                <input class="filter-input filter-input-number" type="text" name="phone"
-                    placeholder="+420 777 777 777" />
+                <input class="filter-input filter-input-number" type="text" name="phone" placeholder="777 777 777" />
             </div>
             <div class="filter-buttons">
                 <button class="btn-filter" type="submit"><img src="~/imgs/search.svg" alt="Vyhledavání"></button>
-                <button class="btn-filter" type="submit"><img src="~/imgs/reset.svg" alt="Vymazat filter"></button>
-                <a href="/Kliniky">Reset</a>
+                <button class="btn-filter" type="submit"><img src="~/imgs/reset.svg" alt="Vymazat filter"
+                        onclick="resetFormAndSubmit()"></button>
+                @* <a href="/Kliniky">Reset</a> *@
             </div>
         </form>
     </div>
-    <div class="data-section" style="display: flex;">
-        <div class="left-panel" style="flex: 1; padding: 10px;">
-            <table>
-                <thead>
+    <div class="data-section">
+        <div class="left-panel">
+            <table class="table-list">
+                <thead class="table-list-header">
                     <tr>
-                        <th>ID</th>
-                        <th>Název</th>
-                        <th>Adresa</th>
+                        <th class="table-list-column-name">ID</th>
+                        <th class="table-list-column-name">Název</th>
+                        <th class="table-list-column-name">Adresa</th>
+                        <th class="table-list-column-name">Tel.číslo</th>
+                        <th class="table-list-column-name">Email</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-list-body">
                     @foreach (var klinika in Model.Kliniky)
                     {
-                        <tr>
-                            <td>@klinika.ID_KLINIKA</td>
-                            <td>@klinika.NÁZEV</td>
-                            <td>@klinika.ADRESA</td>
+                        <tr class="table-list-body-row">
+                            <td class="table-list-body-column">@klinika.ID_KLINIKA</td>
+                            <td class="table-list-body-column">@klinika.NÁZEV</td>
+                            <td class="table-list-body-column">@klinika.ADRESA</td>
+                            <td class="table-list-body-column">@klinika.TELEFONNÍ_ČÍSLO</td>
+                            <td class="table-list-body-column">@klinika.EMAIL</td>
                         </tr>
                     }
                 </tbody>
             </table>
-            <ul>
-                @foreach (var klinika in Model.Kliniky)
-                {
-                    <li>
-                        <a asp-action="KlinikaDetail" asp-route-id="@klinika.ID_KLINIKA" data-ajax="true"
-                            data-ajax-mode="replace" data-ajax-update="#detailPanel">
-                            @klinika.NÁZEV
-                        </a>
-                    </li>
-                }
-            </ul>
+            @* <ul>
+            @foreach (var klinika in Model.Kliniky)
+            {
+            <li>
+            <a asp-action="KlinikaDetail" asp-route-id="@klinika.ID_KLINIKA" data-ajax="true"
+            data-ajax-mode="replace" data-ajax-update="#detailPanel">
+            @klinika.NÁZEV
+            </a>
+            </li>
+            }
+            </ul> *@
         </div>
-        <div class="right-panel" id="detailPanel" style="flex: 1; padding: 10px;">
-
-            <h3>Úprava kliniky</h3>
-            <h4>Detaily kliniky</h4>
-            <form method="post" action="/Kliniky/Edit">
-                <input type="text" name="Nazev" placeholder="Název kliniky" />
-                <input type="text" name="Adresa" placeholder="Adresa" />
-                <input type="tel" name="Telefon" placeholder="Telefon" />
-                <button type="submit">Uložit</button>
+        <div class="right-panel" id="detailPanel">
+            <form class="right-panel-form" method="post" action="/Kliniky/Edit">
+                <div class="right-panel-form-item filter-item">
+                    <label for="id">ID</label>
+                    <input class="right-panel-form-input-id filter-input" type="text" name="id" placeholder="42" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="name">Název</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="name" placeholder="VetCare" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="address">Adresa</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="address"
+                        placeholder="Studentska 345, Pardubice 53003" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="phone">Telefonní číslo</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="phone"
+                        placeholder="777 777 777" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="email">Email</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="email"
+                        placeholder="vetcare@gmail.com" />
+                </div>
             </form>
         </div>
     </div>
+    <footer class="footer-klinika">
+        <ul class="crud-list">
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Vytvořit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Editovat</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Odstranit</button></li>
+        </ul>
+    </footer>
 </div>
+<script type="module" src="~/js/filterUtils.js"></script>
+@* todo : pridat oveření vstupu z inputu *@

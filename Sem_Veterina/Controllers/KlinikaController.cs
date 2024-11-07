@@ -18,7 +18,7 @@ namespace Sem_Veterina.Controllers
             _klinikaService = klinikaService;
         }
 
-       
+
 
         // READ - GET ALL
         [HttpGet]
@@ -38,6 +38,5 @@ namespace Sem_Veterina.Controllers
             return Ok(klinika);
         }
 
-       
     }
 }

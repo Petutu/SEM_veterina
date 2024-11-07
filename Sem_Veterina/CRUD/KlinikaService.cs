@@ -28,6 +28,23 @@
             return await _context.Kliniky.FindAsync(id);
         }
 
+        //READ - GER BY ADDRESS OR TELEFONNI_CISLO
+        public async Task<List<KLINIKY>> GetFilteredKlinikyAsync(string? address, string? phone)
+        {
+            var query = _context.Kliniky.AsQueryable();
+
+            if (!string.IsNullOrEmpty(address))
+            {
+                query = query.Where(k => k.ADRESA.Contains(address));
+            }
+
+            if (!string.IsNullOrEmpty(phone))
+            {
+                query = query.Where(k => k.TELEFONNÍ_ČÍSLO.ToString().Contains(phone));
+            }
+
+            return await query.ToListAsync();
+        }
 
     }
 }
