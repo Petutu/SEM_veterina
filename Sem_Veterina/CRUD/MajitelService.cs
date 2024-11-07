@@ -34,6 +34,29 @@
             return await _context.Majitele.FindAsync(id);
         }
 
+        //READ - GER BY ADDRESS OR TELEFONNI_CISLO
+        public async Task<List<MAJITELE>> GetFilteredMajiteleAsync(string? name, string? lastname, string? phone)
+        {
+            var query = _context.Majitele.AsQueryable();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(m => m.JMÉNO.Contains(name));
+            }
+
+            if (!string.IsNullOrEmpty(phone))
+            {
+                query = query.Where(m => m.PŘÍJMENÍ.Contains(lastname));
+            }
+
+            if (!string.IsNullOrEmpty(phone))
+            {
+                query = query.Where(m => m.TELEFONNÍ_ČÍSLO.ToString().Contains(phone));
+            }
+
+            return await query.ToListAsync();
+        }
+
         // UPDATE
         public async Task UpdateMajitelAsync(MAJITELE majitel)
         {
