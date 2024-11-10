@@ -159,11 +159,12 @@ button:focus, button:hover {
     border-radius: 8px;
     /* color: #98A2B3; */
     font-style: normal;
+    color: var(--primary-color);
     font-weight: 400;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 100%;
     align-items: center;
-    padding: 8px 12px;
+    padding: 4px 12px;
 }
 
 .filter-input-address {
@@ -195,9 +196,8 @@ button:focus, button:hover {
 }
 
 .left-panel {
-    width: 800px;
-    flex: 1; 
-    padding-left: 10px;  
+    width: 900px;
+    /* padding-left: 10px;   */
 }
 
 .table-list {
@@ -215,9 +215,13 @@ button:focus, button:hover {
     border-right: 1px solid var(--background-primary-color);
 }
 
+.table-list-body {
+    font-size: 22px;
+}
+
 .table-list-body-column {
     height: 34px;
-    padding-left: 4px;
+    padding-left: 6px;
 }
 
 /* .table-list-body td:not(:last-child) {
@@ -231,6 +235,10 @@ button:focus, button:hover {
 }
 
 /* Pravý panel výpisu dat */
+.right-panel {
+    margin-left: 10px;
+}
+
 .right-panel-form {
     display: flex;
     flex-direction: column;

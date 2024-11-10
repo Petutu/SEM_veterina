@@ -1,28 +1,33 @@
 @using Sem_Veterina.Controllers
 @using Sem_Veterina.Entity
-@model KlinikyViewModel
+@model MajiteleViewModel
 @{
-    ViewData["Title"] = "Správa klinik";
+    ViewData["Title"] = "Správa majitelů";
     Layout = "_AdminLayout";
 }
 
 <div class="admin-container">
     <div class="filter-section">
-        <form class="filter" asp-action="Kliniky" method="get">
+        <form class="filter" asp-action="Majitele" method="get">
             <div class="filter-item">
-                <label for="address">Adresa</label>
-                <input class="filter-input filter-input-address" type="text" name="address"
-                    placeholder="Studentska 345, Pardubice 53003" />
+                <label for="name">Jméno</label>
+                <input class="filter-input filter-input-address" type="text" name="name" placeholder="Martin" />
+            </div>
+            <div class="filter-item">
+                <label for="lastname">Příjmení</label>
+                <input class="filter-input filter-input-number" type="text" name="lastname" placeholder="Liješek" />
             </div>
             <div class="filter-item">
                 <label for="phone">Tel. číslo</label>
                 <input class="filter-input filter-input-number" type="text" name="phone" placeholder="777 777 777" />
             </div>
             <div class="filter-buttons">
-                <button class="btn-filter" type="submit"><img src="~/imgs/search.svg" alt="Vyhledavání"></button>
-                <button class="btn-filter" type="submit"><img src="~/imgs/reset.svg" alt="Vymazat filter"
-                        onclick="resetFormAndSubmit()"></button>
-                @* <a href="/Kliniky">Reset</a> *@
+                <button class="btn-filter" type="submit">
+                    <img src="~/imgs/search.svg" alt="Vyhledavání">
+                </button>
+                <button class="btn-filter" type="submit">
+                    <img src="~/imgs/reset.svg" alt="Vymazat filter" onclick="resetFormAndSubmit()">
+                </button>
             </div>
         </form>
     </div>
@@ -32,42 +37,32 @@
                 <thead class="table-list-header">
                     <tr>
                         <th class="table-list-column-name">ID</th>
-                        <th class="table-list-column-name">Název</th>
-                        <th class="table-list-column-name">Adresa</th>
+                        <th class="table-list-column-name">Jméno</th>
+                        <th class="table-list-column-name">Příjmení</th>
                         <th class="table-list-column-name">Tel.číslo</th>
-                        <th class="table-list-column-name">Email</th>
+                        @* <th class="table-list-column-name">Zvíře ID</th>
+                        <th class="table-list-column-name">Zvíře Jméno</th> *@
                     </tr>
                 </thead>
                 <tbody class="table-list-body">
-                    @foreach (var klinika in Model.Kliniky)
+                    @foreach (var majitel in Model.Majitele)
                     {
                         <tr class="table-list-body-row">
-                            <td class="table-list-body-column">@klinika.ID_KLINIKA</td>
-                            <td class="table-list-body-column">@klinika.NÁZEV</td>
-                            <td class="table-list-body-column">@klinika.ADRESA</td>
-                            <td class="table-list-body-column">@klinika.TELEFONNÍ_ČÍSLO</td>
-                            <td class="table-list-body-column">@klinika.EMAIL</td>
+                            <td class="table-list-body-column">@majitel.ID_KLINIKA</td>
+                            <td class="table-list-body-column">@majitel.JMÉNO</td>
+                            <td class="table-list-body-column">@majitel.PŘÍJMENÍ</td>
+                            <td class="table-list-body-column">@majitel.TELEFONNÍ_ČÍSLO</td>
+                            @* <td class="table-list-body-column">@majitel.ZVÍŘATA.First().ID_ZVÍŘE</td>
+                        <td class="table-list-body-column">@majitel.ZVÍŘATA.First().JMÉNO</td> *@
                         </tr>
                     }
                 </tbody>
             </table>
-            @* <ul>
-            @foreach (var klinika in Model.Kliniky)
-            {
-            <li>
-            <a asp-action="KlinikaDetail" asp-route-id="@klinika.ID_KLINIKA" data-ajax="true"
-            data-ajax-mode="replace" data-ajax-update="#detailPanel">
-            @klinika.NÁZEV
-            </a>
-            </li>
-            }
-            </ul> *@
         </div>
         <div class="right-panel" id="detailPanel">
-            <form class="right-panel-form" method="post" action="/Kliniky/Edit">
+            <form class="right-panel-form" method="post" action="/Majitele/Edit">
                 <div class="right-panel-form-item filter-item">
                     <label for="id">ID</label>
-                    @* name="id" *@
                     <input class="right-panel-form-input-id filter-input" type="text" name="id" placeholder="42" />
                 </div>
                 <div class="right-panel-form-item filter-item">
