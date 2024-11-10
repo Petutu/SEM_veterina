@@ -158,7 +158,7 @@ namespace Sem_Veterina
         .ToTable("LEKY");
 
             modelBuilder.Entity<LECBY>()
-                .ToTable("LECBA");
+                .ToTable("LECBY");
 
             modelBuilder.Entity<PERSONAL>()
                 .ToTable("PERSONAL");

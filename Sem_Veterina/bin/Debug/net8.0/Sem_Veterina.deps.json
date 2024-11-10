@@ -439,7 +439,7 @@
         "runtime": {
           "lib/net8.0/Oracle.ManagedDataAccess.dll": {
             "assemblyVersion": "23.1.0.0",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "23.1.0.0"
           }
         }
       },

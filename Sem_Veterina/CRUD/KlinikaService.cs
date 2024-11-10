@@ -1,11 +1,12 @@
-﻿namespace Sem_Veterina.CRUD
-{
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Microsoft.EntityFrameworkCore;
-    using Sem_Veterina.Entity;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Oracle.ManagedDataAccess.Client;
+using Sem_Veterina.Entity;
 
+namespace Sem_Veterina.CRUD
+{
     public class KlinikaService
     {
         private readonly OracleDbContext _context;
@@ -15,36 +16,34 @@
             _context = context;
         }
 
-
         // READ - GET ALL
         public async Task<List<KLINIKY>> GetAllKlinikyAsync()
         {
-            return await _context.Kliniky.ToListAsync();
+            var sql = "SELECT * FROM KLINIKY";
+            return await _context.Kliniky.FromSqlRaw(sql).ToListAsync();
         }
 
         // READ - GET BY ID
         public async Task<KLINIKY> GetKlinikaByIdAsync(int id)
         {
-            return await _context.Kliniky.FindAsync(id);
+            var sql = "SELECT * FROM KLINIKY WHERE ID_KLINIKA = :Id";
+            var param = new OracleParameter("Id", id);
+            return await _context.Kliniky.FromSqlRaw(sql, param).FirstOrDefaultAsync();
         }
 
-        //READ - GER BY ADDRESS OR TELEFONNI_CISLO
+        // READ - GET BY ADDRESS OR TELEFONNI_CISLO
         public async Task<List<KLINIKY>> GetFilteredKlinikyAsync(string? address, string? phone)
         {
-            var query = _context.Kliniky.AsQueryable();
+            var sql = "SELECT * FROM KLINIKY WHERE (:Address IS NULL OR ADRESA LIKE '%' || :Address || '%') " +
+                      "AND (:Phone IS NULL OR TELEFONNÍ_ČÍSLO LIKE '%' || :Phone || '%')";
 
-            if (!string.IsNullOrEmpty(address))
+            var parameters = new[]
             {
-                query = query.Where(k => k.ADRESA.Contains(address));
-            }
+                new OracleParameter("Address", address ?? (object)DBNull.Value),
+                new OracleParameter("Phone", phone ?? (object)DBNull.Value)
+            };
 
-            if (!string.IsNullOrEmpty(phone))
-            {
-                query = query.Where(k => k.TELEFONNÍ_ČÍSLO.ToString().Contains(phone));
-            }
-
-            return await query.ToListAsync();
+            return await _context.Kliniky.FromSqlRaw(sql, parameters).ToListAsync();
         }
-
     }
 }

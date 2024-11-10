@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Oracle.ManagedDataAccess.Client;
 using Sem_Veterina.Entity;
 
 namespace Sem_Veterina.CRUD
@@ -15,43 +18,47 @@ namespace Sem_Veterina.CRUD
         // CREATE
         public async Task AddPristrojAsync(PRISTROJE pristroj)
         {
-            _context.Pristroje.Add(pristroj);
-            await _context.SaveChangesAsync();
+            var sql = "INSERT INTO PRISTROJE (ID_PŘÍSTROJ, NÁZEV, FUNKCE, ID_KLINIKA) " +
+                      "VALUES (:Id, :Nazev, :Funkce, :IdKlinika)";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("Id", pristroj.ID_PŘÍSTROJ),
+                new OracleParameter("Nazev", pristroj.NÁZEV),
+                new OracleParameter("Funkce", pristroj.FUNKCE),
+                new OracleParameter("IdKlinika", pristroj.ID_KLINIKA));
         }
 
         // READ - GET ALL
         public async Task<List<PRISTROJE>> GetAllPristrojeAsync()
         {
-            return await _context.Pristroje.ToListAsync();
+            var sql = "SELECT * FROM PRISTROJE";
+            return await _context.Pristroje.FromSqlRaw(sql).ToListAsync();
         }
 
         // READ - GET BY ID
         public async Task<PRISTROJE> GetPristrojByIdAsync(int id)
         {
-            return await _context.Pristroje.FindAsync(id);
+            var sql = "SELECT * FROM PRISTROJE WHERE ID_PŘÍSTROJ = :Id";
+            var param = new OracleParameter("Id", id);
+            return await _context.Pristroje.FromSqlRaw(sql, param).FirstOrDefaultAsync();
         }
 
         // UPDATE
         public async Task UpdatePristrojAsync(PRISTROJE pristroj)
         {
-            var existingPristroj = await _context.Pristroje.FindAsync(pristroj.ID_PŘÍSTROJ);
-            if (existingPristroj != null)
-            {
-                _context.Entry(existingPristroj).CurrentValues.SetValues(pristroj);
-                await _context.SaveChangesAsync();
-            }
+            var sql = "UPDATE PRISTROJE SET NÁZEV = :Nazev, FUNKCE = :Funkce, ID_KLINIKA = :IdKlinika " +
+                      "WHERE ID_PŘÍSTROJ = :Id";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("Nazev", pristroj.NÁZEV),
+                new OracleParameter("Funkce", pristroj.FUNKCE),
+                new OracleParameter("IdKlinika", pristroj.ID_KLINIKA),
+                new OracleParameter("Id", pristroj.ID_PŘÍSTROJ));
         }
 
         // DELETE
         public async Task DeletePristrojAsync(int id)
         {
-            var pristroj = await _context.Pristroje.FindAsync(id);
-            if (pristroj != null)
-            {
-                _context.Pristroje.Remove(pristroj);
-                await _context.SaveChangesAsync();
-            }
+            var sql = "DELETE FROM PRISTROJE WHERE ID_PŘÍSTROJ = :Id";
+            await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
         }
     }
-
 }

@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Oracle.ManagedDataAccess.Client;
 using Sem_Veterina.Entity;
 
 namespace Sem_Veterina.CRUD
@@ -15,42 +18,53 @@ namespace Sem_Veterina.CRUD
         // CREATE
         public async Task AddZvireAsync(ZVIRATA zvire)
         {
-            _context.Zvirata.Add(zvire);
-            await _context.SaveChangesAsync();
+            var sql = "INSERT INTO ZVIRATA (ID_ZVÍŘE, JMÉNO, DRUH, VĚK, ZDRAVOTNÍ_STAV, VÁHA, ID_MAJITEL) " +
+                      "VALUES (:Id, :Jmeno, :Druh, :Vek, :ZdravotniStav, :Vaha, :IdMajitel)";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("Id", zvire.ID_ZVÍŘE),
+                new OracleParameter("Jmeno", zvire.JMÉNO),
+                new OracleParameter("Druh", zvire.DRUH),
+                new OracleParameter("Vek", zvire.VĚK),
+                new OracleParameter("ZdravotniStav", zvire.ZDRAVOTNÍ_STAV),
+                new OracleParameter("Vaha", zvire.VÁHA),
+                new OracleParameter("IdMajitel", zvire.ID_MAJITEL));
         }
 
         // READ - GET ALL
         public async Task<List<ZVIRATA>> GetAllZvirataAsync()
         {
-            return await _context.Zvirata.ToListAsync();
+            var sql = "SELECT * FROM ZVIRATA";
+            return await _context.Zvirata.FromSqlRaw(sql).ToListAsync();
         }
 
         // READ - GET BY ID
         public async Task<ZVIRATA> GetZvireByIdAsync(int id)
         {
-            return await _context.Zvirata.FindAsync(id);
+            var sql = "SELECT * FROM ZVIRATA WHERE ID_ZVÍŘE = :Id";
+            var param = new OracleParameter("Id", id);
+            return await _context.Zvirata.FromSqlRaw(sql, param).FirstOrDefaultAsync();
         }
 
         // UPDATE
         public async Task UpdateZvireAsync(ZVIRATA zvire)
         {
-            var existingZvire = await _context.Zvirata.FindAsync(zvire.ID_ZVÍŘE);
-            if (existingZvire != null)
-            {
-                _context.Entry(existingZvire).CurrentValues.SetValues(zvire);
-                await _context.SaveChangesAsync();
-            }
+            var sql = "UPDATE ZVIRATA SET JMÉNO = :Jmeno, DRUH = :Druh, VĚK = :Vek, ZDRAVOTNÍ_STAV = :ZdravotniStav, " +
+                      "VÁHA = :Vaha, ID_MAJITEL = :IdMajitel WHERE ID_ZVÍŘE = :Id";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("Jmeno", zvire.JMÉNO),
+                new OracleParameter("Druh", zvire.DRUH),
+                new OracleParameter("Vek", zvire.VĚK),
+                new OracleParameter("ZdravotniStav", zvire.ZDRAVOTNÍ_STAV),
+                new OracleParameter("Vaha", zvire.VÁHA),
+                new OracleParameter("IdMajitel", zvire.ID_MAJITEL),
+                new OracleParameter("Id", zvire.ID_ZVÍŘE));
         }
 
         // DELETE
         public async Task DeleteZvireAsync(int id)
         {
-            var zvire = await _context.Zvirata.FindAsync(id);
-            if (zvire != null)
-            {
-                _context.Zvirata.Remove(zvire);
-                await _context.SaveChangesAsync();
-            }
+            var sql = "DELETE FROM ZVIRATA WHERE ID_ZVÍŘE = :Id";
+            await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
         }
     }
 }
