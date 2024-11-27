@@ -1,0 +1,78 @@
+:root {
+    --primary-color: #1D52AD;
+    --second-color: #176BC6;
+    --background-primary-color: #F7F7F7;
+    --focus-and-hover-color: #85E0FF;
+    --notification-success-color: #1DAD6E;
+    --notification-failure: #AD301D;
+    --background-form-color: #176BC6B3;
+    --placeholder-color-input: #98A2B3;
+}
+
+body {
+    color: var(--primary-color);
+    background-color: var(--background-primary-color);
+    font-family: "Podkova", serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.125;
+    letter-spacing: 0.04em;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button:focus,
+button:hover {
+    cursor: pointer;
+}
+
+.header {
+    width: 100%;
+    height: 70px;
+    color: var(--background-primary-color);
+    background-color: var(--second-color);
+    /* border: 1px solid var(--primary-color); */
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.nav {
+    padding-top: 8px;
+    margin-left: 40px;
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between; */
+}
+
+.main-titul {
+    margin-left: 70px;
+    margin-top: 60px;
+}
+
+.img-kliniky {
+    margin-left: 70px;
+    margin-top: 10px;
+}
+
+.description {
+    width: 577px;
+    margin-left: 40px;
+}
+
+.modal-titel {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+}
