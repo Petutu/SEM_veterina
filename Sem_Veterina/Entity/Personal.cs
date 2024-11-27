@@ -3,7 +3,7 @@
     public class PERSONAL
     {
         public int ID_PRESONÁL { get; set; }/// PODLE DATABÁZE...
-        /// </summary>
+                                            /// </summary>
         public string JMÉNO { get; set; } // VARCHAR(12)
         public string PŘÍJMENÍ { get; set; } // VARCHAR(12)
         public string SPECIALIZACE { get; set; } // VARCHAR(30)
@@ -17,5 +17,8 @@
         public KLINIKY KLINIKA { get; set; }
 
         public int ID_KLINIKA { get; set; }
+
+        public int? ID_UZIVATEL { get; set; }
+        public UZIVATEL? UZIVATEL { get; set; }
     }
 }

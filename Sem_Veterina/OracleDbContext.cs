@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Sem_Veterina.Entity;
 namespace Sem_Veterina
 {
-    
+
 
     public class OracleDbContext : DbContext
     {
@@ -21,16 +21,19 @@ namespace Sem_Veterina
         public DbSet<VYSETRENI> Vysetreni { get; set; }
         public DbSet<VYSLEDKYKRVE> VysledkyKrve { get; set; }
         public DbSet<ZAKROK> Zakroky { get; set; }
+        public DbSet<ROLE> Role { get; set; }
+        public DbSet<UZIVATEL> Uzivatele { get; set; }
+        public DbSet<LOGOVANI> Logovani { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-       /*     modelBuilder.Entity<DIAGNOZY>()
-        .HasOne(d => d.LÉČBY)
-        .WithOne(l => l.)
-        .HasPrincipalKey<DIAGNOZY>(d => d.ID_DIAGNÓZA)
-        .HasForeignKey<LECBY>(l => l.ID_LÉČBA); // Odkazuje na sloupec, který již v databázi existuje*/
+            /*     modelBuilder.Entity<DIAGNOZY>()
+             .HasOne(d => d.LÉČBY)
+             .WithOne(l => l.)
+             .HasPrincipalKey<DIAGNOZY>(d => d.ID_DIAGNÓZA)
+             .HasForeignKey<LECBY>(l => l.ID_LÉČBA); // Odkazuje na sloupec, který již v databázi existuje*/
 
-            
+            modelBuilder.Entity<UZIVATEL>().HasOne(u => u.ROLE).WithMany(r => r.UZIVATELE).HasForeignKey(u => u.ID_ROLE);
 
             modelBuilder.Entity<DIAGNOZY>()
                 .HasOne(d => d.ZVÍŘE)
@@ -41,6 +44,11 @@ namespace Sem_Veterina
        .HasOne(z => z.MAJITELE)
        .WithMany(m => m.ZVÍŘATA)
        .HasForeignKey(z => z.ID_MAJITEL).IsRequired(); // ID_Majitel v Zvirata je cizí klíč
+
+            modelBuilder.Entity<MAJITELE>()
+            .HasOne(m => m.UZIVATEL)
+            .WithOne(u => u.MAJITEL)
+            .HasForeignKey<MAJITELE>(m => m.ID_UZIVATEL);
 
             modelBuilder.Entity<MAJITELE>()
     .HasOne(m => m.KLINIKA)///
@@ -90,6 +98,11 @@ namespace Sem_Veterina
     .HasForeignKey(p => p.ID_KLINIKA)
     .IsRequired();
 
+            modelBuilder.Entity<PERSONAL>()
+            .HasOne(p => p.UZIVATEL)
+            .WithOne(u => u.PERSONAL)
+            .HasForeignKey<PERSONAL>(p => p.ID_UZIVATEL);
+
             modelBuilder.Entity<DIAGNOZY>()
     .HasOne(d => d.PERSONÁL)
     .WithMany(p => p.DIAGNÓZY)
@@ -102,13 +115,12 @@ namespace Sem_Veterina
     .HasForeignKey(p => p.ID_KLINIKA)
     .IsRequired();
 
+            modelBuilder.Entity<LOGOVANI>().HasKey(l => l.ID_LOGOVANI);
 
+            modelBuilder.Entity<UZIVATEL>().HasKey(u => u.ID_UZIVATEL);
 
-
-
-
-
-
+            modelBuilder.Entity<ROLE>()
+        .HasKey(r => r.ID_ROLE);
 
             modelBuilder.Entity<DIAGNOZY>()
         .HasKey(d => d.ID_DIAGNÓZA);
@@ -143,10 +155,12 @@ namespace Sem_Veterina
             modelBuilder.Entity<ZAKROK>()
        .HasKey(za => za.ID_AKCE); // Nastavení primárního klíče
 
-
-
             modelBuilder.Entity<PRISTROJE>()
         .HasKey(p => p.ID_PŘÍSTROJ); // Nastavení primárního klíče
+
+            modelBuilder.Entity<UZIVATEL>().ToTable("UZIVATEL");
+
+            modelBuilder.Entity<ROLE>().ToTable("ROLE");
 
             modelBuilder.Entity<KLINIKY>()
         .ToTable("KLINIKY");
@@ -189,6 +203,6 @@ namespace Sem_Veterina
              // Další vazby mezi tabulkami zde...*/
         }
     }
- 
+
 }
 
