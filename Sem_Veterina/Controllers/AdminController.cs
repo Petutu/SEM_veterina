@@ -44,39 +44,19 @@ namespace Sem_Veterina.Controllers
             return View();
         }
 
-        // // Akce pro stránku "Kliniky"
-        // public async Task<IActionResult> Kliniky()
-        // {
-        //     var viewModel = new KlinikyViewModel
-        //     {
-        //     };
-        //     viewModel.Kliniky = await _klinikaService.GetAllKlinikyAsync();
-        //     return View("Kliniky", viewModel);  // Vrátí seznam klinik do pohledu Kliniky.cshtml
-        // }
-
         // Akce pro stránku "Kliniky"
         public async Task<IActionResult> Kliniky(string? address, string? phone)
         {
             var viewModel = new KlinikyViewModel();
             viewModel.Kliniky = await _klinikaService.GetFilteredKlinikyAsync(address, phone);
             viewModel.SelectedKlinika = viewModel.Kliniky.FirstOrDefault();
-            // var kliniky = await _klinikaService.GetFilteredKlinikyAsync(address, phone);
-            // var viewModel = new KlinikyViewModel
-            // {
-            //     Kliniky = kliniky
-            // };
             return View("Kliniky", viewModel);  // Vrátí seznam klinik do pohledu Kliniky.cshtml
         }
-
+        // Akce pro stránku "Majitele"
         public async Task<IActionResult> Majitele(string? name, string? lastname, string? phone)
         {
             var viewModel = new MajiteleViewModel();
             viewModel.Majitele = await _majitelService.GetFilteredMajiteleAsync(name, lastname, phone);
-            // var kliniky = await _klinikaService.GetFilteredKlinikyAsync(address, phone);
-            // var viewModel = new KlinikyViewModel
-            // {
-            //     Kliniky = kliniky
-            // };
             return View("Majitele", viewModel);  // Vrátí seznam klinik do pohledu Kliniky.cshtml
         }
 
