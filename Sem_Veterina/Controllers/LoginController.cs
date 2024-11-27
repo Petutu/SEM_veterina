@@ -10,21 +10,61 @@ namespace Sem_Veterina.Controllers
 {
     public class LOGOVANIController : Controller
     {
-        private readonly LogovaniService _logovaniService;
+        private readonly UzivatelService _uzivatelService;
+        // private readonly RoleService _roleService;
+        // private readonly PersonalService _personalService;
+        // private readonly MajitelService _majitelService;
 
-        public LOGOVANIController(LogovaniService logovaniService)
+        public LoginController(
+            UzivatelService uzivatelService
+        )
         {
-            _logovaniService = logovaniService;
+            _uzivatelService = uzivatelService;
+            // _roleService = roleService;
+            // _personalService = personalService;
+            // _majitelService = majitelService;
         }
 
         // GET: /LOGOVANI/Index
         public async Task<IActionResult> Index()
         {
-            // var viewModel = new LoginViewModel
-            // {
-            // };
-            // return View(viewModel);
-            return View();
+            var viewModel = new LoginViewModel
+            {
+            };
+            return View("Index", viewModel);
+            //return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> RegisterAsync(string Username, string Heslo)
+        {
+            // Validace vstupů
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Heslo))
+            {
+                ModelState.AddModelError("", "Uživatelské jméno a heslo jsou povinné.");
+                return View("Index"); // Nebo vrátit modální chybu, pokud používáte AJAX
+            }
+
+            // Kontrola, zda uživatel již existuje
+            var existujiciUzivatel = await _uzivatelService.GetUzivatelByUsernameAsync(Username);
+            if (existujiciUzivatel != null)
+            {
+                ModelState.AddModelError("Username", "Uživatel s tímto jménem již existuje.");
+                return View(); // Vrať se na stránku registrace s chybou
+            }
+
+            // Vytvoření nového uživatele
+            var novyUzivatel = new UZIVATEL
+            {
+                USERNAME = Username,
+                HESLO = BCrypt.Net.BCrypt.HashPassword(Heslo), // Použijte šifrování hesla
+                ID_ROLE = 2
+            };
+
+            await _uzivatelService.AddUzivatelAsync(novyUzivatel);
+
+            // Přesměrování na přihlašovací stránku
+            TempData["SuccessMessage"] = "Účet byl úspěšně vytvořen. Nyní se můžete přihlásit.";
+            return RedirectToAction("Index", "Login");
         }
 
         // GET: /LOGOVANI/Create
@@ -134,5 +174,42 @@ namespace Sem_Veterina.Controllers
             await _logovaniService.DeleteLogAsync(id);
             return RedirectToAction(nameof(Index));
         }
+        [HttpPost]
+        public async Task<IActionResult> Login(string Username, string Heslo)
+        {
+            // Validace vstupů
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Heslo))
+            {
+                ModelState.AddModelError("", "Uživatelské jméno a heslo jsou povinné.");
+                return View("Index");
+            }
+
+            // Získání uživatele z databáze podle uživatelského jména
+            var uzivatel = await _uzivatelService.GetUzivatelByUsernameAsync(Username);
+            if (uzivatel == null)
+            {
+                ModelState.AddModelError("Username", "Tento uživatel neexistuje.");
+                return View();
+            }
+
+            // Porovnání zadaného hesla s hashovaným heslem z databáze
+            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(Heslo, uzivatel.HESLO);
+            if (!isPasswordValid)
+            {
+                ModelState.AddModelError("Heslo", "Nesprávné heslo.");
+                return View();
+            }
+
+            // Přihlášení uživatele (uložení do session nebo cookies)
+            HttpContext.Session.SetString("UserId", uzivatel.ID_UZIVATEL.ToString());
+            HttpContext.Session.SetString("Role", uzivatel.ID_ROLE.ToString());
+
+            //todo : smerovani podle role 
+            // if uzivatel.ROLE = "Admin" tak presmerovani pro admina.....a tak dale
+
+            // Přesměrování na domovskou stránku nebo dashboard
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

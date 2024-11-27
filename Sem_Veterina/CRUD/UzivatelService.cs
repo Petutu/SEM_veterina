@@ -19,11 +19,12 @@ namespace Sem_Veterina.CRUD
         public async Task AddUzivatelAsync(UZIVATEL uzivatel)
         {
             var sql = "INSERT INTO UZIVATEL (ID_UZIVATEL, USERNAME, HESLO, ID_ROLE) " +
-                      "VALUES (null, :Username, :Heslo, 2)";
+                      "VALUES (null, :Username, :Heslo, :Role)";
             await _context.Database.ExecuteSqlRawAsync(sql,
                 // new OracleParameter("Id", uzivatel.ID_UZIVATEL),
                 new OracleParameter("Username", uzivatel.USERNAME),
-                new OracleParameter("Heslo", uzivatel.HESLO));
+                new OracleParameter("Heslo", uzivatel.HESLO),
+                new OracleParameter("Role", uzivatel.ID_ROLE));
         }
 
         // READ - GET ALL
@@ -73,5 +74,12 @@ namespace Sem_Veterina.CRUD
             return await _context.Uzivatele.FromSqlRaw(sql, parameters).ToListAsync();
         }
 
+        // READ - GET BY USERNAME
+        public async Task<UZIVATEL> GetUzivatelByUsernameAsync(string username)
+        {
+            var sql = "SELECT * FROM UZIVATEL WHERE USERNAME = :Username";
+            var param = new OracleParameter("Username", username);
+            return await _context.Uzivatele.FromSqlRaw(sql, param).FirstOrDefaultAsync();
+        }
     }
 }
