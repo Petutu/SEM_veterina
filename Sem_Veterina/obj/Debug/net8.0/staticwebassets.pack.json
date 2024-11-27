@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets/css/admin.css"
     },
     {
+      "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/css/login.css",
+      "PackagePath": "staticwebassets/css/login.css"
+    },
+    {
       "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
@@ -27,6 +31,10 @@
     {
       "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/imgs/search.svg",
       "PackagePath": "staticwebassets/imgs/search.svg"
+    },
+    {
+      "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/imgs/vetCare.png",
+      "PackagePath": "staticwebassets/imgs/vetCare.png"
     },
     {
       "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/filterUtils.js",

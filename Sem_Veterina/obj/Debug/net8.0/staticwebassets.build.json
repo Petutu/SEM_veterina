@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zJET67GfjhIrREmmFS000LITXdCjBtTBNn5g/jaczdk=",
+  "Hash": "sBnJW3ZEFsR4AqCvZ8gsPYZ7xGjISP0kXvKPafi2Ivo=",
   "Source": "Sem_Veterina",
   "BasePath": "_content/Sem_Veterina",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/admin.css"
+    },
+    {
+      "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/css/login.css",
+      "SourceId": "Sem_Veterina",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/",
+      "BasePath": "_content/Sem_Veterina",
+      "RelativePath": "css/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/login.css"
     },
     {
       "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/css/site.css",
@@ -167,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/imgs/search.svg"
+    },
+    {
+      "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/imgs/vetCare.png",
+      "SourceId": "Sem_Veterina",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/",
+      "BasePath": "_content/Sem_Veterina",
+      "RelativePath": "imgs/vetCare.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/imgs/vetCare.png"
     },
     {
       "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/filterUtils.js",
