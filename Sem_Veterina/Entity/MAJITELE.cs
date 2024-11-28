@@ -14,7 +14,7 @@
         public KLINIKY KLINIKA { get; set; }
         public int ID_KLINIKA { get; set; }
 
-        public string? ID_UZIVATEL { get; set; }
+        public int? ID_UZIVATEL { get; set; }
         public UZIVATEL? UZIVATEL { get; set; }
 
     }

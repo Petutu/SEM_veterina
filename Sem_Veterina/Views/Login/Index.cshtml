@@ -1,0 +1,90 @@
+@using Sem_Veterina.Controllers
+@using Sem_Veterina.Entity
+@model Sem_Veterina.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Svět zvířat";
+    Layout = "_LoginLayout"; // Používáme layout
+}
+
+<main class="main">
+    <h1 class="main-titul">Vítejte v systému <span class="main-logo">Svět zvířat</span></h1>
+    <div class="main-info">
+        <img class="img-kliniky" src="~/imgs/vetCare.png" alt="Obrázek kliniky" width="426" height="400" />
+        <div class="main-description">
+            <p class="description">Tento systém vám umožňuje snadno sledovat zdravotní stav vašich mazlíčků.</p>
+            <p class="description">Získejte přístup ke kompletním informacím o pacientech, včetně zákroků, diagnóz a
+                laboratorních výsledků – vše na jednom místě, přehledně a jednoduše.
+            </p>
+        </div>
+    </div>
+    @* <div class="buttons-form mt-4"> *@
+    @* <button class="button-form btn me-2" *@
+    <div class="buttons-form">
+        @* btn-primary *@
+        <button class="button-form btn" data-bs-toggle="modal" data-bs-target="#registerModal">Registrovat
+            se</button>
+        @* btn-secondary *@
+        <button class="button-form btn" data-bs-toggle="modal" data-bs-target="#loginModal">Přihlásit
+            se</button>
+    </div>
+</main>
+<!-- Modal pro Registraci -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Registrace</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-titel">Vytvořte si účet pro přístup</p>
+                <form asp-action="Register" asp-controller="Login">
+                    <div>
+                        <label for="username" class="form-label">Uživatelské jméno</label>
+                        <input type="text" class="form-control" name="USERNAME" id="username" required
+                            placeholder="AnnaSvobodova">
+                            @* pro zobrazeni chyb *@
+                        @Html.ValidationMessage("Username", null, new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        <label for="password" class="form-label">Heslo</label>
+                        <input type="password" class="form-control" name="HESLO" id="password" required
+                            placeholder="Zadejte své heslo">
+                        @Html.ValidationMessage("Heslo", null, new { @class = "text-danger" })
+                    </div>
+                    <button type="submit" class="btn btn-primary">Vytvořit účet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal pro Přihlášení -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Přihlášení</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-titel">Vítejte zpět! Přihlaste se</p>
+                <form asp-action="Login" asp-controller="Login">
+                    <div>
+                        <label for="username" class="form-label">Uživatelské jméno</label>
+                        <input type="text" class="form-control" name="Username" id="username" required
+                            placeholder="AnnaSvobodova">
+                        @Html.ValidationMessage("Username", null, new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        <label for="password" class="form-label">Heslo</label>
+                        <input type="password" class="form-control" name="Heslo" id="password" required
+                            placeholder="Zadejte své heslo">
+                        @Html.ValidationMessage("Heslo", null, new { @class = "text-danger" })
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Přihlasit se</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
