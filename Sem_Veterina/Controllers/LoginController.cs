@@ -26,11 +26,11 @@ namespace Sem_Veterina.Controllers
 
         public IActionResult Index()
         {
-            var viewModel = new LoginViewModel
-            {
-            };
-            return View("Index", viewModel);
-            //return View();
+            // var viewModel = new LoginViewModel
+            // {
+            // };
+            // return View(viewModel);
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> RegisterAsync(string Username, string Heslo)
@@ -62,7 +62,7 @@ namespace Sem_Veterina.Controllers
 
             // Přesměrování na přihlašovací stránku
             TempData["SuccessMessage"] = "Účet byl úspěšně vytvořen. Nyní se můžete přihlásit.";
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -80,7 +80,8 @@ namespace Sem_Veterina.Controllers
             if (uzivatel == null)
             {
                 ModelState.AddModelError("Username", "Tento uživatel neexistuje.");
-                return View();
+                //return View();
+                return View("Index");
             }
 
             // Porovnání zadaného hesla s hashovaným heslem z databáze
@@ -88,7 +89,8 @@ namespace Sem_Veterina.Controllers
             if (!isPasswordValid)
             {
                 ModelState.AddModelError("Heslo", "Nesprávné heslo.");
-                return View();
+                //return View();
+                return View("Index");
             }
 
             // Přihlášení uživatele (uložení do session nebo cookies)

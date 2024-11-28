@@ -9,15 +9,24 @@
 
 <main class="main">
     <h1 class="main-titul">Vítejte v systému <span class="main-logo">Svět zvířat</span></h1>
-    <img class="img-kliniky" src="~/imgs/vetCare.png" alt="Obrázek kliniky" width="426" height="400" />
-    <p class="description">Tento systém vám umožňuje snadno sledovat zdravotní stav vašich mazlíčků.</p>
-    <p class="description">Získejte přístup ke kompletním informacím o pacientech, včetně zákroků, diagnóz a
-        laboratorních výsledků – vše na jednom místě, přehledně a jednoduše.
-    </p>
-    <div class="mt-4">
-        <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#registerModal">Registrovat
+    <div class="main-info">
+        <img class="img-kliniky" src="~/imgs/vetCare.png" alt="Obrázek kliniky" width="426" height="400" />
+        <div class="main-description">
+            <p class="description">Tento systém vám umožňuje snadno sledovat zdravotní stav vašich mazlíčků.</p>
+            <p class="description">Získejte přístup ke kompletním informacím o pacientech, včetně zákroků, diagnóz a
+                laboratorních výsledků – vše na jednom místě, přehledně a jednoduše.
+            </p>
+        </div>
+    </div>
+    @* <div class="buttons-form mt-4"> *@
+    @* <button class="button-form btn me-2" *@
+    <div class="buttons-form">
+        @* btn-primary *@
+        <button class="button-form btn" data-bs-toggle="modal" data-bs-target="#registerModal">Registrovat
             se</button>
-        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Přihlásit se</button>
+        @* btn-secondary *@
+        <button class="button-form btn" data-bs-toggle="modal" data-bs-target="#loginModal">Přihlásit
+            se</button>
     </div>
 </main>
 <!-- Modal pro Registraci -->
@@ -35,11 +44,14 @@
                         <label for="username" class="form-label">Uživatelské jméno</label>
                         <input type="text" class="form-control" name="USERNAME" id="username" required
                             placeholder="AnnaSvobodova">
+                            @* pro zobrazeni chyb *@
+                        @Html.ValidationMessage("Username", null, new { @class = "text-danger" })
                     </div>
                     <div>
                         <label for="password" class="form-label">Heslo</label>
                         <input type="password" class="form-control" name="HESLO" id="password" required
                             placeholder="Zadejte své heslo">
+                        @Html.ValidationMessage("Heslo", null, new { @class = "text-danger" })
                     </div>
                     <button type="submit" class="btn btn-primary">Vytvořit účet</button>
                 </form>
@@ -62,11 +74,13 @@
                         <label for="username" class="form-label">Uživatelské jméno</label>
                         <input type="text" class="form-control" name="Username" id="username" required
                             placeholder="AnnaSvobodova">
+                        @Html.ValidationMessage("Username", null, new { @class = "text-danger" })
                     </div>
                     <div>
                         <label for="password" class="form-label">Heslo</label>
                         <input type="password" class="form-control" name="Heslo" id="password" required
                             placeholder="Zadejte své heslo">
+                        @Html.ValidationMessage("Heslo", null, new { @class = "text-danger" })
                     </div>
                     <button type="submit" class="btn btn-secondary">Přihlasit se</button>
                 </form>

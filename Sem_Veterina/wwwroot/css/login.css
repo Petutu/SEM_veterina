@@ -31,6 +31,7 @@ a {
 button:focus,
 button:hover {
     cursor: pointer;
+    border: none;
 }
 
 .header {
@@ -54,16 +55,9 @@ button:hover {
 .main-titul {
     margin-left: 70px;
     margin-top: 60px;
-}
-
-.img-kliniky {
-    margin-left: 70px;
-    margin-top: 10px;
-}
-
-.description {
-    width: 577px;
-    margin-left: 40px;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1.12;
 }
 
 .modal-titel {
@@ -75,4 +69,52 @@ button:hover {
     display: flex;
     align-items: center;
     color: var(--primary-color);
+}
+
+.main-logo {
+    font-size: 56px;
+}
+
+.main-info {
+    margin-left: 70px;
+    margin-top: 30px;
+    display: flex;
+}
+
+.main-description {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    column-gap: 24px;
+    width: 577px;
+    margin-left: 40px;
+}
+
+/* .description {
+    width: 577px;
+    margin-left: 40px;
+} */
+
+.buttons-form {
+    margin-left: 584px;
+    margin-top: -86px;
+}
+
+.button-form {
+    margin-right: 100px;
+    width: 209px;
+    height: 61px;
+    font-size: 28px;
+    background-color: var(--second-color);
+    color: var(--background-primary-color);
+    border-radius: 18px;
+}
+
+.button-form:hover, .button-form:focus {
+    color: var(--primary-color);
+    background-color: var(--focus-and-hover-color);
+}
+
+.footer-login {
+    margin: 40px;
 }
