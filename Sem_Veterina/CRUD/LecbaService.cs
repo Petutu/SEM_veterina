@@ -56,4 +56,17 @@ public class LecbaService
         var sql = "DELETE FROM LECBY WHERE ID_LÉČBA = :Id";
         await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
     }
+
+    public async Task<List<LECBY>> GetFilteredLecbyAsync(string? description)
+    {
+        var sql = "SELECT * FROM LECBY WHERE (:Description IS NULL OR POPIS LIKE '%' || :Description || '%')";
+
+        var parameters = new[]
+        {
+        new OracleParameter("Description", description ?? (object)DBNull.Value)
+    };
+
+        return await _context.Lecby.FromSqlRaw(sql, parameters).ToListAsync();
+    }
+
 }

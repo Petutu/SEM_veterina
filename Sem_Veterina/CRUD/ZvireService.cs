@@ -66,5 +66,19 @@ namespace Sem_Veterina.CRUD
             var sql = "DELETE FROM ZVIRATA WHERE ID_ZVÍŘE = :Id";
             await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
         }
+
+        public async Task<List<ZVIRATA>> GetFilteredZvirataAsync(string? name, string? species)
+        {
+            var sql = "SELECT * FROM ZVIRATA WHERE (:Name IS NULL OR JMÉNO LIKE '%' || :Name || '%') " +
+                      "AND (:Species IS NULL OR DRUH LIKE '%' || :Species || '%')";
+
+            var parameters = new[]
+            {
+        new OracleParameter("Name", name ?? (object)DBNull.Value),
+        new OracleParameter("Species", species ?? (object)DBNull.Value)
+    };
+
+            return await _context.Zvirata.FromSqlRaw(sql, parameters).ToListAsync();
+        }
     }
 }
