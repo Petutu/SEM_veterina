@@ -66,5 +66,23 @@ namespace Sem_Veterina.CRUD
             var sql = "DELETE FROM PERSONAL WHERE ID_PRESONÁL = :Id";
             await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
         }
+
+        public async Task<List<PERSONAL>> GetFilteredPersonalAsync(string? name, string? surname, string? specialization, int? klinikaId)
+        {
+            var sql = "SELECT * FROM PERSONAL WHERE (:Name IS NULL OR JMÉNO LIKE '%' || :Name || '%') " +
+                      "AND (:Surname IS NULL OR PŘÍJMENÍ LIKE '%' || :Surname || '%') " +
+                      "AND (:Specialization IS NULL OR SPECIALIZACE LIKE '%' || :Specialization || '%') " +
+                      "AND (:KlinikaId IS NULL OR ID_KLINIKA = :KlinikaId)";
+
+            var parameters = new[]
+            {
+        new OracleParameter("Name", name ?? (object)DBNull.Value),
+        new OracleParameter("Surname", surname ?? (object)DBNull.Value),
+        new OracleParameter("Specialization", specialization ?? (object)DBNull.Value),
+        new OracleParameter("KlinikaId", klinikaId ?? (object)DBNull.Value)
+    };
+
+            return await _context.Personal.FromSqlRaw(sql, parameters).ToListAsync();
+        }
     }
 }

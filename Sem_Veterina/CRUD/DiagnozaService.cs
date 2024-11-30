@@ -62,4 +62,19 @@ public class DiagnozaService
         var sql = "DELETE FROM DIAGNOZY WHERE ID_DIAGNÓZA = :Id";
         await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
     }
+
+    public async Task<List<DIAGNOZY>> GetFilteredDiagnózyAsync(string? name, string? description)
+    {
+        var sql = "SELECT * FROM DIAGNOZY WHERE (:Name IS NULL OR NÁZEV LIKE '%' || :Name || '%') " +
+                  "AND (:Description IS NULL OR POPIS LIKE '%' || :Description || '%')";
+
+        var parameters = new[]
+        {
+        new OracleParameter("Name", name ?? (object)DBNull.Value),
+        new OracleParameter("Description", description ?? (object)DBNull.Value)
+    };
+
+        return await _context.Diagnozy.FromSqlRaw(sql, parameters).ToListAsync();
+    }
+
 }

@@ -45,25 +45,17 @@ namespace Sem_Veterina.CRUD
             return await _context.Majitele.FromSqlRaw(sql, param).FirstOrDefaultAsync();
         }
 
-        //READ - GER BY ADDRESS OR TELEFONNI_CISLO
+        // FILTERED READ
         public async Task<List<MAJITELE>> GetFilteredMajiteleAsync(string? name, string? lastname, string? phone)
         {
             var query = _context.Majitele.AsQueryable();
 
             if (!string.IsNullOrEmpty(name))
-            {
                 query = query.Where(m => m.JMÉNO.Contains(name));
-            }
-
-            if (!string.IsNullOrEmpty(phone))
-            {
+            if (!string.IsNullOrEmpty(lastname))
                 query = query.Where(m => m.PŘÍJMENÍ.Contains(lastname));
-            }
-
             if (!string.IsNullOrEmpty(phone))
-            {
                 query = query.Where(m => m.TELEFONNÍ_ČÍSLO.ToString().Contains(phone));
-            }
 
             return await query.ToListAsync();
         }
@@ -88,6 +80,12 @@ namespace Sem_Veterina.CRUD
         {
             var sql = "DELETE FROM MAJITELI WHERE ID_MAJITEL = :Id";
             await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
+        }
+
+        // EXISTENCE CHECK
+        public async Task<bool> MajitelExistsAsync(int id)
+        {
+            return await _context.Majitele.AnyAsync(m => m.ID_MAJITEL == id);
         }
     }
 }

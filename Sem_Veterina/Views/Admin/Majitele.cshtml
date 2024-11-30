@@ -10,15 +10,15 @@
     <div class="filter-section">
         <form class="filter" asp-action="Majitele" method="get">
             <div class="filter-item">
-                <label for="name">Jméno</label>
+                <label for="namefil">Jméno</label>
                 <input class="filter-input filter-input-address" type="text" name="name" placeholder="Martin" />
             </div>
             <div class="filter-item">
-                <label for="lastname">Příjmení</label>
+                <label for="lastnamefil">Příjmení</label>
                 <input class="filter-input filter-input-number" type="text" name="lastname" placeholder="Liješek" />
             </div>
             <div class="filter-item">
-                <label for="phone">Tel. číslo</label>
+                <label for="phonefil">Tel. číslo</label>
                 <input class="filter-input filter-input-number" type="text" name="phone" placeholder="777 777 777" />
             </div>
             <div class="filter-buttons">
@@ -47,7 +47,11 @@
                 <tbody class="table-list-body">
                     @foreach (var majitel in Model.Majitele)
                     {
-                        <tr class="table-list-body-row">
+                        <tr class="table-list-body-row" data-id="@majitel.ID_KLINIKA"
+                            data-jmeno="@majitel.JMÉNO"
+                            data-prijmeni="@majitel.PŘÍJMENÍ"
+                            data-telefon="@majitel.TELEFONNÍ_ČÍSLO"
+                            onclick="fillDetailPanel(this)">
                             <td class="table-list-body-column">@majitel.ID_KLINIKA</td>
                             <td class="table-list-body-column">@majitel.JMÉNO</td>
                             <td class="table-list-body-column">@majitel.PŘÍJMENÍ</td>
@@ -60,40 +64,118 @@
             </table>
         </div>
         <div class="right-panel" id="detailPanel">
-            <form class="right-panel-form" method="post" action="/Majitele/Edit">
+            <form id="create-form" class="right-panel-form">
                 <div class="right-panel-form-item filter-item">
-                    <label for="id">ID</label>
-                    <input class="right-panel-form-input-id filter-input" type="text" name="id" placeholder="42" />
+                    <label for="name">Jméno</label>
+                    <input class="right-panel-form-input" type="text" name="JMÉNO" placeholder="Martin" required />
                 </div>
                 <div class="right-panel-form-item filter-item">
-                    <label for="name">Název</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="name" placeholder="VetCare" />
-                </div>
-                <div class="right-panel-form-item filter-item">
-                    <label for="address">Adresa</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="address"
-                        placeholder="Studentska 345, Pardubice 53003" />
+                    <label for="lastname">Příjmení</label>
+                    <input class="right-panel-form-input" type="text" name="PŘÍJMENÍ" placeholder="Liješek" required />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="phone">Telefonní číslo</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="phone"
-                        placeholder="777 777 777" />
+                    <input class="right-panel-form-input" type="text" name="TELEFONNÍ_ČÍSLO" placeholder="777 777 777" />
                 </div>
+             
                 <div class="right-panel-form-item filter-item">
                     <label for="email">Email</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="email"
-                        placeholder="vetcare@gmail.com" />
+                    <input class="right-panel-form-input" type="email" name="EMAIL" placeholder="example@domain.com" />
                 </div>
+                <button type="button" class="crud-list-btn btn-filter" id="create-button">Vytvořit</button>
             </form>
         </div>
     </div>
     <footer class="footer-klinika">
         <ul class="crud-list">
-            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Vytvořit</button></li>
-            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Editovat</button></li>
-            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Odstranit</button></li>
+            <!-- Tlačítko pro vytvoření -->
+            <li class="crud-list-item">
+                <button type="submit" class="crud-list-btn btn-filter" formaction="/Majitel/Create">Vytvořit</button>
+            </li>
+            <!-- Tlačítko pro úpravu -->
+            <li class="crud-list-item">
+                <button type="submit" class="crud-list-btn btn-filter" formaction="/Majitel/Edit">Editovat</button>
+            </li>
+            <!-- Tlačítko pro smazání -->
+            <li class="crud-list-item">
+                <button type="submit" class="crud-list-btn btn-filter" formaction="/Majitel/Delete" onclick="return confirm('Opravdu chcete smazat tento záznam?');">Odstranit</button>
+            </li>
         </ul>
     </footer>
 </div>
 <script type="module" src="~/js/filterUtils.js"></script>
 @* todo : pridat oveření vstupu z inputu *@
+
+<script>
+    // Funkce pro vyplnění pravého panelu
+    function fillDetailPanel(row) {
+        // Načtení dat z atributů vybraného řádku
+        const id = row.getAttribute("data-id");
+        const jmeno = row.getAttribute("data-jmeno");
+        const prijmeni = row.getAttribute("data-prijmeni");
+        const telefon = row.getAttribute("data-telefon");
+
+        // Přiřazení dat do odpovídajících polí v pravém panelu
+        document.querySelector('.right-panel-form input[name="id"]').value = id;
+        document.querySelector('.right-panel-form input[name="JMÉNO"]').value = jmeno;
+        document.querySelector('.right-panel-form input[name="lastname"]').value = prijmeni;
+        document.querySelector('.right-panel-form input[name="phone"]').value = telefon;
+    }
+
+    // Resetovací funkce
+    function resetFormAndSubmit() {
+        document.querySelector('.filter').reset();
+        document.querySelector('.filter').submit();
+    }
+</script>
+
+
+<style>
+    .table-list-body-row:hover {
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    document.getElementById('create-button').addEventListener('click', function () {
+        const form = document.getElementById('create-form');
+        const formData = new FormData(form);
+
+        // Převod FormData na JSON
+        const jsonData = {};
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });
+
+        fetch('/Majitel/Create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(jsonData),
+        })
+            .then(async response => {
+                if (response.ok) {
+                    const result = await response.json();
+                    alert(result.message); // Úspěšná zpráva
+                    location.reload(); // Obnovit stránku
+                } else {
+                    try {
+                        const errorResult = await response.json();
+                        let errorMessage = errorResult.message || "Neznámá chyba.";
+                        if (errorResult.errors) {
+                            errorMessage += "\n" + errorResult.errors.join("\n");
+                        }
+                        alert("Chyba při vytváření majitele: " + errorMessage);
+                    } catch (jsonError) {
+                        alert("Chyba při vytváření majitele: Server vrátil neplatnou odpověď.");
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Network Error:', error);
+                alert('Chyba při vytváření majitele: ' + error.message);
+            });
+    });
+</script>

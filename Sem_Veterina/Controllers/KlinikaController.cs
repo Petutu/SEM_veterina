@@ -2,9 +2,9 @@
 
 namespace Sem_Veterina.Controllers
 {
+    using global::Sem_Veterina.CRUD;
     using Microsoft.AspNetCore.Mvc;
-    using Sem_Veterina.CRUD;
-    using Sem_Veterina.Entity;
+  
     using System.Threading.Tasks;
 
     [Route("api/[controller]")]

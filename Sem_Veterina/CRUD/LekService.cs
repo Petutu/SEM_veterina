@@ -64,4 +64,18 @@ public class LekyService
         var sql = "DELETE FROM LEKY WHERE ID_LÉK = :Id";
         await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
     }
+
+    public async Task<List<LEKY>> GetFilteredLekyAsync(string? name)
+    {
+        var sql = "SELECT * FROM LEKY WHERE (:Name IS NULL OR NÁZEV LIKE '%' || :Name || '%') " ;
+
+        var parameters = new[]
+        {
+        new OracleParameter("Name", name ?? (object)DBNull.Value),
+        
+    };
+
+        return await _context.Leky.FromSqlRaw(sql, parameters).ToListAsync();
+    }
+
 }

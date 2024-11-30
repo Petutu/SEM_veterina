@@ -27,7 +27,17 @@
   },
   {
     "ContainingType": "Sem_Veterina.Controllers.MajitelController",
-    "Method": "CreateMajitel",
+    "Method": "Majitele",
+    "RelativePath": "api/Majitel",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Sem_Veterina.Controllers.MajitelController",
+    "Method": "Create",
     "RelativePath": "api/Majitel",
     "HttpMethod": "POST",
     "IsController": true,
@@ -43,43 +53,12 @@
   },
   {
     "ContainingType": "Sem_Veterina.Controllers.MajitelController",
-    "Method": "GetAllMajitele",
+    "Method": "Edit",
     "RelativePath": "api/Majitel",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Sem_Veterina.Controllers.MajitelController",
-    "Method": "GetMajitelById",
-    "RelativePath": "api/Majitel/{id}",
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Sem_Veterina.Controllers.MajitelController",
-    "Method": "UpdateMajitel",
-    "RelativePath": "api/Majitel/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
       {
         "Name": "majitel",
         "Type": "Sem_Veterina.Entity.MAJITELE",
@@ -90,16 +69,16 @@
   },
   {
     "ContainingType": "Sem_Veterina.Controllers.MajitelController",
-    "Method": "DeleteMajitel",
-    "RelativePath": "api/Majitel/{id}",
-    "HttpMethod": "DELETE",
+    "Method": "Delete",
+    "RelativePath": "api/Majitel",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
