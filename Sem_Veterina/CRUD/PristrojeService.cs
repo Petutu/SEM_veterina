@@ -70,11 +70,11 @@ namespace Sem_Veterina.CRUD
 
             var parameters = new[]
             {
-        new OracleParameter("Name", name ?? (object)DBNull.Value),
-        new OracleParameter("Surname", surname ?? (object)DBNull.Value),
-        new OracleParameter("Specialization", specialization ?? (object)DBNull.Value),
-        new OracleParameter("KlinikaId", klinikaId ?? (object)DBNull.Value)
-    };
+                new OracleParameter("Name", name ?? (object)DBNull.Value),
+                new OracleParameter("Surname", surname ?? (object)DBNull.Value),
+                new OracleParameter("Specialization", specialization ?? (object)DBNull.Value),
+                new OracleParameter("KlinikaId", klinikaId ?? (object)DBNull.Value)
+            };
 
             return await _context.Personal.FromSqlRaw(sql, parameters).ToListAsync();
         }

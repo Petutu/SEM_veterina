@@ -30,6 +30,7 @@ builder.Services.AddTransient<LecbaService>();
 builder.Services.AddTransient<LekyService>();
 builder.Services.AddTransient<PersonalService>();
 builder.Services.AddTransient<UzivatelService>();
+builder.Services.AddTransient<LogovaniService>();
 
 // P�id�n� MVC a dal��ch slu�eb
 builder.Services.AddControllersWithViews();

@@ -4,50 +4,21 @@ using System.Collections.Generic;
 
 using Sem_Veterina.Models;
 using Sem_Veterina.Entity;
-using Sem_Veterina.CRUD; // Import modelu LOGOVANI
+using Sem_Veterina.CRUD;
 
 namespace Sem_Veterina.Controllers
 {
-    public class LOGOVANIController : Controller
+    public class LoginController : Controller
     {
         private readonly UzivatelService _uzivatelService;
-        // private readonly RoleService _roleService;
-        // private readonly PersonalService _personalService;
-        // private readonly MajitelService _majitelService;
 
         public LoginController(
             UzivatelService uzivatelService
         )
         {
             _uzivatelService = uzivatelService;
-            // _roleService = roleService;
-            // _personalService = personalService;
-            // _majitelService = majitelService;
         }
 
-        // GET: /LOGOVANI/Index
-        public async Task<IActionResult> Index()
-        {
-            List<LOGOVANI> logy = await _logovaniService.GetAllLogsAsync();
-            return View(logy);
-        }
-
-        // GET: /LOGOVANI/Details/5
-        public async Task<IActionResult> Details(int id)
-        {
-            var log = await _logovaniService.GetLogByIdAsync(id);
-            if (log == null)
-            {
-                return NotFound();
-            }
-            return View(log);
-        }
-
-        // GET: /LOGOVANI/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
         [HttpPost]
         public async Task<IActionResult> RegisterAsync(string Username, string Heslo)
         {

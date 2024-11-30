@@ -17,6 +17,9 @@ namespace Sem_Veterina.Controllers
         private readonly LecbaService _lecbaService;
         private readonly LekyService _lekyService;
         private readonly PersonalService _personalService;
+        private readonly DiagnozaService _diagnozaService;
+        private readonly LogovaniService _logovaniService;
+        private readonly UzivatelService _uzivatelService;
 
         public AdminController(
             KlinikaService klinikaService,
@@ -26,7 +29,10 @@ namespace Sem_Veterina.Controllers
             PristrojeService pristrojeService,
             LecbaService lecbaService,
             LekyService lekyService,
-            PersonalService personalService
+            PersonalService personalService,
+            DiagnozaService diagnozaService,
+            LogovaniService logovaniService,
+            UzivatelService uzivatelService
         )
         {
             _klinikaService = klinikaService;
@@ -37,6 +43,9 @@ namespace Sem_Veterina.Controllers
             _lecbaService = lecbaService;
             _lekyService = lekyService;
             _personalService = personalService;
+            _diagnozaService = diagnozaService;
+            _logovaniService = logovaniService;
+            _uzivatelService = uzivatelService;
         }
 
         public IActionResult Index()
@@ -87,7 +96,7 @@ namespace Sem_Veterina.Controllers
         public async Task<IActionResult> Leky(string? name, string? instructions)
         {
             var viewModel = new LekyViewModel();
-            viewModel.Leky = await _lekService.GetFilteredLekyAsync(name, instructions);
+            viewModel.Leky = await _lekyService.GetFilteredLekyAsync(name, instructions);
             viewModel.SelectedLek = viewModel.Leky.FirstOrDefault();
             return View("Leky", viewModel);  // Vrátí seznam léků do pohledu Leky.cshtml
         }
@@ -100,13 +109,13 @@ namespace Sem_Veterina.Controllers
             return View("Personal", viewModel);  // Vrátí seznam personálu do pohledu Personal.cshtml
         }
 
-        public async Task<IActionResult> Pristroje(string? name, string? function, int? klinikaId)
-        {
-            var viewModel = new PristrojeViewModel();
-            viewModel.Pristroje = await _pristrojeService.GetFilteredPristrojeAsync(name, function, klinikaId);
-            viewModel.SelectedPristroj = viewModel.Pristroje.FirstOrDefault();
-            return View("Pristroje", viewModel);  // Vrátí seznam přístrojů do pohledu Pristroje.cshtml
-        }
+        // public async Task<IActionResult> Pristroje(string? name, string? function, int? klinikaId)
+        // {
+        //     var viewModel = new PristrojeViewModel();
+        //     viewModel.Pristroje = await _pristrojeService.GetFilteredPristrojeAsync(name, function, klinikaId);
+        //     viewModel.SelectedPristroj = viewModel.Pristroje.FirstOrDefault();
+        //     return View("Pristroje", viewModel);  // Vrátí seznam přístrojů do pohledu Pristroje.cshtml
+        // }
 
         public async Task<IActionResult> Uzivatele(string? username, string? roleName)
         {

@@ -65,15 +65,16 @@ public class LekyService
         await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
     }
 
-    public async Task<List<LEKY>> GetFilteredLekyAsync(string? name)
+    public async Task<List<LEKY>> GetFilteredLekyAsync(string? name, string? instructions)
     {
-        var sql = "SELECT * FROM LEKY WHERE (:Name IS NULL OR NÁZEV LIKE '%' || :Name || '%') " ;
+        var sql = @"SELECT * FROM LEKY WHERE (:Name IS NULL OR NÁZEV LIKE '%' || :Name || '%') 
+                    AND (:Instructions IS NULL OR INSTRUKCE LIKE '%' || :Instructions || '%')";
 
         var parameters = new[]
         {
-        new OracleParameter("Name", name ?? (object)DBNull.Value),
-        
-    };
+            new OracleParameter("Name", name ?? (object)DBNull.Value),
+            new OracleParameter("Instructions", instructions ?? (object)DBNull.Value),
+        };
 
         return await _context.Leky.FromSqlRaw(sql, parameters).ToListAsync();
     }
