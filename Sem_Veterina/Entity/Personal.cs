@@ -13,6 +13,7 @@
         // Relace
         public ICollection<DIAGNOZY> DIAGNÓZY { get; set; }
         public ICollection<ZDRAVOTNIAKCE> ZDRAVOTNÍAKCE { get; set; }
+        //public ICollection<PERSONAL> PODRIZENE { get; set; }
 
         public KLINIKY KLINIKA { get; set; }
 
@@ -20,5 +21,8 @@
 
         public int? ID_UZIVATEL { get; set; }
         public UZIVATEL? UZIVATEL { get; set; }
+
+        // public int? ID_NADRIZENY { get; set; }
+        // public PERSONAL? NADRIZENY { get; set; }
     }
 }

@@ -1,0 +1,108 @@
+@using Sem_Veterina.Controllers
+@using Sem_Veterina.Entity
+@model PersonalViewModel
+@{
+    ViewData["Title"] = "Správa personálu";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-container">
+    <div class="filter-section">
+        <form class="filter" asp-controller="Admin" asp-action="Personal" method="get">
+            <div class="filter-item">
+                <label for="name">Jméno</label>
+                <input class="filter-input filter-input-address" type="text" name="name" placeholder="Martin" />
+            </div>
+            <div class="filter-item">
+                <label for="surname">Příjmení</label>
+                <input class="filter-input filter-input-number" type="text" name="surname" placeholder="Liješek" />
+            </div>
+            <div class="filter-item">
+                <label for="specialization">Specializace</label>
+                <input class="filter-input filter-input-number" type="text" name="specialization"
+                    placeholder="Assistant" />
+            </div>
+            <div class="filter-item">
+                <label for="klinikaId">Id Kliniky</label>
+                <input class="filter-input filter-input-number" type="text" name="klinikaId" placeholder="4536" />
+            </div>
+            <div class="filter-buttons">
+                <button class="btn-filter" type="submit"><img src="~/imgs/search.svg" alt="Vyhledavání"></button>
+                <button class="btn-filter" type="submit"><img src="~/imgs/reset.svg" alt="Vymazat filter"
+                        onclick="resetFormAndSubmit()"></button>
+            </div>
+        </form>
+    </div>
+    <div class="data-section">
+        <div class="left-panel">
+            <table class="table-list">
+                <thead class="table-list-header">
+                    <tr>
+                        <th class="table-list-column-name">Jméno</th>
+                        <th class="table-list-column-name">Příjmení</th>
+                        <th class="table-list-column-name">Specializace</th>
+                        <th class="table-list-column-name">Telefonní číslo</th>
+                        <th class="table-list-column-name">Adresa</th>
+                        @* <th class="table-list-column-name">Nadřízený</th> *@
+                    </tr>
+                </thead>
+                <tbody class="table-list-body">
+                    @foreach (var person in Model.Personal)
+                    {
+                        <tr class="table-list-body-row">
+                            <td class="table-list-body-column">@person.JMÉNO</td>
+                            <td class="table-list-body-column">@person.PŘÍJMENÍ</td>
+                            <td class="table-list-body-column">@person.SPECIALIZACE</td>
+                            <td class="table-list-body-column">@person.TELEFONNÍ_ČÍSLO</td>
+                            <td class="table-list-body-column">@person.ADRESA</td>
+                            @* <td class="table-list-body-column">@person.NADRIZENY?.JMÉNO ?? "není"</td> *@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="right-panel" id="detailPanel">
+            <form class="right-panel-form" method="post" action="/Kliniky/Edit">
+                <div class="right-panel-form-item filter-item">
+                    <label for="name">JMÉNO</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="name" placeholder="Martin" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="surname">Příjmení</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="surname"
+                        placeholder="Liješek" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="specialization">Specializace</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="specialization"
+                        placeholder="Assistant" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="phone">Telefonní číslo</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="phone"
+                        placeholder="777 777 777" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="address">Adresa</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="address"
+                        placeholder="1 Tomscot Junction" />
+                </div>
+                @* <div class="right-panel-form-item filter-item">
+                    <label for="klinika">Klinika</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="address"
+                        placeholder="1 Tomscot Junction" />
+                </div> *@
+                @* add nadrizeny, uzivatel udaje *@
+            </form>
+        </div>
+    </div>
+    <footer class="footer-klinika">
+        <ul class="crud-list">
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Vytvořit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Editovat</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Odstranit</button></li>
+        </ul>
+    </footer>
+</div>
+<script type="module" src="~/js/filterUtils.js"></script>
+@* todo : pridat oveření vstupu z inputu *@

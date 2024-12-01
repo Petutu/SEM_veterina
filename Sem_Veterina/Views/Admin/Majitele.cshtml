@@ -46,9 +46,8 @@
                 <tbody class="table-list-body">
                     @foreach (var majitel in Model.Majitele)
                     {
-                        <tr class="table-list-body-row" data-id="@majitel.ID_KLINIKA" data-jmeno="@majitel.JMÉNO"
-                            data-prijmeni="@majitel.PŘÍJMENÍ" data-telefon="@majitel.TELEFONNÍ_ČÍSLO"
-                            onclick="fillDetailPanel(this)">
+                        <tr class="table-list-body-row" data-jmeno="@majitel.JMÉNO" data-prijmeni="@majitel.PŘÍJMENÍ"
+                            data-telefon="@majitel.TELEFONNÍ_ČÍSLO" onclick="fillDetailPanel(this)">
                             <td class="table-list-body-column">@majitel.JMÉNO</td>
                             <td class="table-list-body-column">@majitel.PŘÍJMENÍ</td>
                             <td class="table-list-body-column">@majitel.TELEFONNÍ_ČÍSLO</td>

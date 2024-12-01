@@ -27,8 +27,13 @@
                         asp-action="Kliniky">Kliniky</a></li>
                 <li class="nav-list-admin-item"><a class="nav-list-admin-link" asp-area="" asp-controller="Admin"
                         asp-action="Majitele">Majitelé</a></li>
-                <li class="nav-list-admin-item"><a class="nav-list-admin-link" href="/Zvirata">Malí pacienti</a></li>
-                <li class="nav-list-admin-item"><a class="nav-list-admin-link" href="/Personal">Personál</a></li>
+                <li class="nav-list-admin-item">
+                    <a class="nav-list-admin-link" asp-area="" asp-controller="Admin" asp-action="Zvirata">Malí
+                        pacienti</a>
+                </li>
+                <li class="nav-list-admin-item">
+                    <a class="nav-list-admin-link" asp-area="" asp-controller="Admin" asp-action="Personal">Personál</a>
+                </li>
                 <li class="nav-list-admin-item"><a class="nav-list-admin-link" href="/Pristroje">Přístroje</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-list-admin-link" href="#" id="navbarDropdown"

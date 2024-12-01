@@ -53,7 +53,7 @@ namespace Sem_Veterina.Controllers
             return View();
         }
 
-        // Akce pro stránku "Kliniky"
+        // Akce pro stránku "Kliniky"`
         public async Task<IActionResult> Kliniky(string? address, string? phone)
         {
             var viewModel = new KlinikyViewModel();
@@ -66,14 +66,18 @@ namespace Sem_Veterina.Controllers
         {
             var viewModel = new MajiteleViewModel();
             viewModel.Majitele = await _majitelService.GetFilteredMajiteleAsync(name, lastname, phone);
-            return View("Majitele", viewModel);  // Vrátí seznam klinik do pohledu Kliniky.cshtml
+            return View("Majitele", viewModel);  // Vrátí seznam majitel do pohledu Kliniky.cshtml
         }
-
+        // Akce pro stránku "Malí pacienty"
         public async Task<IActionResult> Zvirata(string? name, string? species)
         {
+            Debug.WriteLine("AdminController -> Zvirata volán");
             var viewModel = new ZvirataViewModel();
             viewModel.Zvirata = await _zvireService.GetFilteredZvirataAsync(name, species);
             viewModel.SelectedZvire = viewModel.Zvirata.FirstOrDefault();
+            Debug.WriteLine($"Zvirata count: {viewModel.Zvirata?.Count}");
+            Debug.WriteLine($"First Zvire name: {viewModel.Zvirata?.FirstOrDefault()?.JMÉNO}");
+            //return View("~/Views/Admin/Zvirata.cshtml", viewModel);
             return View("Zvirata", viewModel);  // Vrátí seznam zvířat do pohledu Zvirata.cshtml
         }
 

@@ -25,6 +25,7 @@ namespace Sem_Veterina.Controllers
             {
             };
             return View("Index", viewModel);
+            // return View();
         }
 
         [HttpPost]

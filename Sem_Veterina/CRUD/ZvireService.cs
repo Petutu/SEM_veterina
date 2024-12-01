@@ -74,9 +74,9 @@ namespace Sem_Veterina.CRUD
 
             var parameters = new[]
             {
-        new OracleParameter("Name", name ?? (object)DBNull.Value),
-        new OracleParameter("Species", species ?? (object)DBNull.Value)
-    };
+                new OracleParameter("Name", name ?? (object)DBNull.Value),
+                new OracleParameter("Species", species ?? (object)DBNull.Value)
+            };
 
             return await _context.Zvirata.FromSqlRaw(sql, parameters).ToListAsync();
         }

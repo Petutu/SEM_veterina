@@ -1,0 +1,117 @@
+@using Sem_Veterina.Controllers
+@using Sem_Veterina.Entity
+@using Sem_Veterina.Models
+@model ZvirataViewModel
+@{
+    ViewData["Title"] = "Správa zvířat";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-container">
+    <div class="filter-section">
+        <form class="filter" asp-action="Zvirata" method="get">
+            <div class="filter-item">
+                <label for="name">Jméno</label>
+                <input class="filter-input filter-input-address" type="text" name="name" placeholder="Savier" />
+            </div>
+            <div class="filter-item">
+                <label for="species">Druh</label>
+                <input class="filter-input filter-input-number" type="text" name="species" placeholder="Papoušek" />
+            </div>
+            <div class="filter-buttons">
+                <button class="btn-filter" type="submit"><img src="~/imgs/search.svg" alt="Vyhledavání"></button>
+                <button class="btn-filter" type="submit"><img src="~/imgs/reset.svg" alt="Vymazat filter"
+                        onclick="resetFormAndSubmit()"></button>
+            </div>
+        </form>
+    </div>
+    <div class="data-section">
+        <div class="left-panel">
+            <table class="table-list">
+                <thead class="table-list-header">
+                    <tr>
+                        <th class="table-list-column-name">Jméno</th>
+                        <th class="table-list-column-name">Druh</th>
+                        <th class="table-list-column-name">Věk</th>
+                        <th class="table-list-column-name">Zdravotní stav</th>
+                        @* <th class="table-list-column-name">Majitel</th> *@
+                        <th class="table-list-column-name">Váha</th>
+                    </tr>
+                </thead>
+                <tbody class="table-list-body">
+                    @foreach (var zvire in Model.Zvirata)
+                    {
+                        <tr class="table-list-body-row">
+                            <td class="table-list-body-column">@zvire.JMÉNO</td>
+                            <td class="table-list-body-column">@zvire.DRUH</td>
+                            <td class="table-list-body-column">@zvire.VĚK</td>
+                            <td class="table-list-body-column">@zvire.ZDRAVOTNÍ_STAV</td>
+                            @* <td class="table-list-body-column">@zvire.MAJITELE.JMÉNO</td> *@
+                            <td class="table-list-body-column">@zvire.VÁHA</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="right-panel" id="detailPanel">
+            <form class="right-panel-form" method="post" action="/Zvire/Edit">
+                <div class="right-panel-form-item filter-item">
+                    <label for="name">Jméno</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="name" placeholder="Savier" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="species">Druh</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="species"
+                        placeholder="Papoušek" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="age">Věk</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="age" placeholder="9" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="health">Zdravotní stav</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="health" placeholder="Zdravé" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="owner">Majitel</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="owner" placeholder="owner" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="weight">Váha</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="weight" placeholder="3,5" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer-klinika">
+        <ul class="crud-list">
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Vytvořit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Editovat</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Odstranit</button></li>
+        </ul>
+    </footer>
+</div>
+<script type="module" src="~/js/filterUtils.js"></script>
+@* todo : pridat oveření vstupu z inputu *@
+
+@* @if (Model?.Zvirata == null || !Model.Zvirata.Any())
+{
+    <tr>
+    <td colspan="6">Žádná data k zobrazení.</td>
+</tr>
+}
+else
+{
+    @foreach (var zvire in Model.Zvirata)
+    {
+        <tr class="table-list-body-row">
+    <td class="table-list-body-column">@zvire.JMÉNO</td>
+    <td class="table-list-body-column">@zvire.DRUH</td>
+    <td class="table-list-body-column">@zvire.VĚK</td>
+    <td class="table-list-body-column">@zvire.ZDRAVOTNÍ_STAV</td>
+    <td class="table-list-body-column">@zvire.MAJITELE?.JMÉNO ?? "Neznámý majitel"</td>
+    <td class="table-list-body-column">@zvire.VÁHA</td>
+</tr>
+    }
+} *@
+`

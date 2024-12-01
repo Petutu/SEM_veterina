@@ -12,15 +12,17 @@
 <p>Vyberte databáze pro správu:</p>
 <ul class="menu-admin-databaze">
     <li class="menu-admin-databaze-item">
-        @* nav-link text-dark *@
         <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin" asp-action="Kliniky">Klinika</a>
     </li>
     <li class="menu-admin-databaze-item">
-        @* nav-link text-dark *@
         <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin" asp-action="Majitele">Majitelé</a>
     </li>
-    <li class="menu-admin-databaze-item"><a class="menu-admin-databaze-link" href="">Malí pacienty</a></li>
-    <li class="menu-admin-databaze-item"><a class="menu-admin-databaze-link" href="">Personál</a></li>
+    <li class="menu-admin-databaze-item">
+        <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin" asp-action="Zvirata">Malí pacienty</a>
+    </li>
+    <li class="menu-admin-databaze-item">
+        <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin" asp-action="Personal">Personál</a>
+    </li>
     <li class="menu-admin-databaze-item"><a class="menu-admin-databaze-link" href="">Přístroje</a></li>
     <li class="menu-admin-databaze-item">Vyšetření</li>
     <li class="menu-admin-databaze-item">Lab. výsledky</li>
