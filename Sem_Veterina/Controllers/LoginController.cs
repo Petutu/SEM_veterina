@@ -19,6 +19,14 @@ namespace Sem_Veterina.Controllers
             _uzivatelService = uzivatelService;
         }
 
+        public IActionResult Index()
+        {
+            var viewModel = new LoginViewModel
+            {
+            };
+            return View("Index", viewModel);
+        }
+
         [HttpPost]
         public async Task<IActionResult> RegisterAsync(string Username, string Heslo)
         {
