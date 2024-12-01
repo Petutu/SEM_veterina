@@ -22,7 +22,6 @@
                 <button class="btn-filter" type="submit"><img src="~/imgs/search.svg" alt="Vyhledavání"></button>
                 <button class="btn-filter" type="submit"><img src="~/imgs/reset.svg" alt="Vymazat filter"
                         onclick="resetFormAndSubmit()"></button>
-                @* <a href="/Kliniky">Reset</a> *@
             </div>
         </form>
     </div>
@@ -31,7 +30,6 @@
             <table class="table-list">
                 <thead class="table-list-header">
                     <tr>
-                        <th class="table-list-column-name">ID</th>
                         <th class="table-list-column-name">Název</th>
                         <th class="table-list-column-name">Adresa</th>
                         <th class="table-list-column-name">Tel.číslo</th>
@@ -42,7 +40,6 @@
                     @foreach (var klinika in Model.Kliniky)
                     {
                         <tr class="table-list-body-row">
-                            <td class="table-list-body-column">@klinika.ID_KLINIKA</td>
                             <td class="table-list-body-column">@klinika.NÁZEV</td>
                             <td class="table-list-body-column">@klinika.ADRESA</td>
                             <td class="table-list-body-column">@klinika.TELEFONNÍ_ČÍSLO</td>
@@ -51,25 +48,9 @@
                     }
                 </tbody>
             </table>
-            @* <ul>
-            @foreach (var klinika in Model.Kliniky)
-            {
-            <li>
-            <a asp-action="KlinikaDetail" asp-route-id="@klinika.ID_KLINIKA" data-ajax="true"
-            data-ajax-mode="replace" data-ajax-update="#detailPanel">
-            @klinika.NÁZEV
-            </a>
-            </li>
-            }
-            </ul> *@
         </div>
         <div class="right-panel" id="detailPanel">
             <form class="right-panel-form" method="post" action="/Kliniky/Edit">
-                <div class="right-panel-form-item filter-item">
-                    <label for="id">ID</label>
-                    @* name="id" *@
-                    <input class="right-panel-form-input-id filter-input" type="text" name="id" placeholder="42" />
-                </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="name">Název</label>
                     <input class="right-panel-form-input filter-input" type="text" name="name" placeholder="VetCare" />

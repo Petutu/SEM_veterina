@@ -36,7 +36,6 @@
             <table class="table-list">
                 <thead class="table-list-header">
                     <tr>
-                        <th class="table-list-column-name">ID</th>
                         <th class="table-list-column-name">Jméno</th>
                         <th class="table-list-column-name">Příjmení</th>
                         <th class="table-list-column-name">Tel.číslo</th>
@@ -47,12 +46,9 @@
                 <tbody class="table-list-body">
                     @foreach (var majitel in Model.Majitele)
                     {
-                        <tr class="table-list-body-row" data-id="@majitel.ID_KLINIKA"
-                            data-jmeno="@majitel.JMÉNO"
-                            data-prijmeni="@majitel.PŘÍJMENÍ"
-                            data-telefon="@majitel.TELEFONNÍ_ČÍSLO"
+                        <tr class="table-list-body-row" data-id="@majitel.ID_KLINIKA" data-jmeno="@majitel.JMÉNO"
+                            data-prijmeni="@majitel.PŘÍJMENÍ" data-telefon="@majitel.TELEFONNÍ_ČÍSLO"
                             onclick="fillDetailPanel(this)">
-                            <td class="table-list-body-column">@majitel.ID_KLINIKA</td>
                             <td class="table-list-body-column">@majitel.JMÉNO</td>
                             <td class="table-list-body-column">@majitel.PŘÍJMENÍ</td>
                             <td class="table-list-body-column">@majitel.TELEFONNÍ_ČÍSLO</td>
@@ -75,9 +71,10 @@
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="phone">Telefonní číslo</label>
-                    <input class="right-panel-form-input" type="text" name="TELEFONNÍ_ČÍSLO" placeholder="777 777 777" />
+                    <input class="right-panel-form-input" type="text" name="TELEFONNÍ_ČÍSLO"
+                        placeholder="777 777 777" />
                 </div>
-             
+
                 <div class="right-panel-form-item filter-item">
                     <label for="email">Email</label>
                     <input class="right-panel-form-input" type="email" name="EMAIL" placeholder="example@domain.com" />
@@ -98,7 +95,8 @@
             </li>
             <!-- Tlačítko pro smazání -->
             <li class="crud-list-item">
-                <button type="submit" class="crud-list-btn btn-filter" formaction="/Majitel/Delete" onclick="return confirm('Opravdu chcete smazat tento záznam?');">Odstranit</button>
+                <button type="submit" class="crud-list-btn btn-filter" formaction="/Majitel/Delete"
+                    onclick="return confirm('Opravdu chcete smazat tento záznam?');">Odstranit</button>
             </li>
         </ul>
     </footer>
@@ -110,13 +108,11 @@
     // Funkce pro vyplnění pravého panelu
     function fillDetailPanel(row) {
         // Načtení dat z atributů vybraného řádku
-        const id = row.getAttribute("data-id");
         const jmeno = row.getAttribute("data-jmeno");
         const prijmeni = row.getAttribute("data-prijmeni");
         const telefon = row.getAttribute("data-telefon");
 
         // Přiřazení dat do odpovídajících polí v pravém panelu
-        document.querySelector('.right-panel-form input[name="id"]').value = id;
         document.querySelector('.right-panel-form input[name="JMÉNO"]').value = jmeno;
         document.querySelector('.right-panel-form input[name="lastname"]').value = prijmeni;
         document.querySelector('.right-panel-form input[name="phone"]').value = telefon;
