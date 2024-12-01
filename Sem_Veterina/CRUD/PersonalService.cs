@@ -84,5 +84,8 @@ namespace Sem_Veterina.CRUD
 
             return await _context.Personal.FromSqlRaw(sql, parameters).ToListAsync();
         }
+
+       
+       
     }
 }

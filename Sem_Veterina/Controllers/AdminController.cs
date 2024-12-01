@@ -17,6 +17,10 @@ namespace Sem_Veterina.Controllers
         private readonly LecbaService _lecbaService;
         private readonly LekyService _lekyService;
         private readonly PersonalService _personalService;
+        private readonly DiagnozaService _diagnozaService;
+        private readonly LekyService _lekService;
+        private readonly UzivatelService _uzivatelService;
+        private readonly LogovaniService _logovaniService;
 
         public AdminController(
             KlinikaService klinikaService,
@@ -84,10 +88,10 @@ namespace Sem_Veterina.Controllers
             return View("Lecby", viewModel);  // Vrátí seznam léčeb do pohledu Lecby.cshtml
         }
 
-        public async Task<IActionResult> Leky(string? name, string? instructions)
+        public async Task<IActionResult> Leky(string? name)
         {
             var viewModel = new LekyViewModel();
-            viewModel.Leky = await _lekService.GetFilteredLekyAsync(name, instructions);
+            viewModel.Leky = await _lekService.GetFilteredLekyAsync(name);
             viewModel.SelectedLek = viewModel.Leky.FirstOrDefault();
             return View("Leky", viewModel);  // Vrátí seznam léků do pohledu Leky.cshtml
         }
