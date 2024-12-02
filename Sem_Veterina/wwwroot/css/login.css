@@ -61,14 +61,74 @@ button:hover {
 }
 
 .modal-titel {
-    font-family: 'Poppins';
-    font-style: normal;
+    /* font-family: 'Poppins';
+    font-style: normal; */
     font-weight: 600;
     font-size: 28px;
     line-height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     color: var(--primary-color);
+}
+
+.modal-dialog-custom {
+    font-family: 'Poppins';
+    font-style: normal;
+    margin: auto;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 186px;
+}
+
+.modal-backdrop {
+    background-color: var(--background-form-color);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-close {
+    margin-left: 374px;
+    margin-top: 6px;
+    color: var(--primary-color);
+}
+
+.modal-content {
+    width: 420px;
+    height: 434px;
+    border-radius: 24px;
+    display: block;
+}
+
+.form-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-label {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.filter-input {
+    height: 30px;
+    border: 2px solid #1D52AD;
+    border-radius: 8px;
+    /* color: #98A2B3; */
+    font-style: normal;
+    color: var(--primary-color);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    align-items: center;
+    padding: 4px 12px;
 }
 
 .main-logo {
@@ -113,6 +173,10 @@ button:hover {
 .button-form:hover, .button-form:focus {
     color: var(--primary-color);
     background-color: var(--focus-and-hover-color);
+}
+
+.modal-body .button-form {
+    width: 100%;
 }
 
 .footer-login {

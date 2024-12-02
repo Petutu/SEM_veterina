@@ -27,29 +27,26 @@
 </main>
 <!-- Modal pro Registraci -->
 <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-custom">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="registerModalLabel">Registrace</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body">
                 <p class="modal-titel">Vytvořte si účet pro přístup</p>
-                <form asp-action="Register" asp-controller="Login">
+                <form asp-action="Register" asp-controller="Login" class="form-modal">
                     <div>
                         <label for="register-username" class="form-label">Uživatelské jméno</label>
-                        <input type="text" class="form-control" name="Username" id="register-username" required
+                        <input type="text" class="form-control filter-input" name="Username" id="register-username"
                             placeholder="AnnaSvobodova">
                             @* pro zobrazeni chyb *@
                         @Html.ValidationMessage("Username", null, new { @class = "text-danger" })
                     </div>
                     <div>
                         <label for="register-password" class="form-label">Heslo</label>
-                        <input type="password" class="form-control" name="Heslo" id="register-password" required
+                        <input type="password" class="form-control filter-input" name="Heslo" id="register-password"
                             placeholder="Zadejte své heslo">
                         @Html.ValidationMessage("Heslo", null, new { @class = "text-danger" })
                     </div>
-                    <button type="submit" class="btn">Vytvořit účet</button>
+                    <button type="submit" class="button-form btn">Vytvořit účet</button>
                 </form>
             </div>
         </div>
@@ -57,28 +54,25 @@
 </div>
 <!-- Modal pro Přihlášení -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-custom">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Přihlášení</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body">
                 <p class="modal-titel">Vítejte zpět! Přihlaste se</p>
-                <form asp-action="Login" asp-controller="Login">
+                <form asp-action="Login" asp-controller="Login" class="form-modal">
                     <div>
                         <label for="login-username" class="form-label">Uživatelské jméno</label>
-                        <input type="text" class="form-control" name="Username" id="login-username" required
+                        <input type="text" class="form-control filter-input" name="Username" id="login-username"
                             placeholder="AnnaSvobodova">
                         @Html.ValidationMessage("Username", null, new { @class = "text-danger" })
                     </div>
                     <div>
-                        <label for="login-password" class="form-label">Heslo</label>
-                        <input type="password" class="form-control" name="Heslo" id="login-password" required
+                        <label for="login-password`" class="form-label">Heslo</label>
+                        <input type="password" class="form-control filter-input" name="Heslo" id="login-password"
                             placeholder="Zadejte své heslo">
                         @Html.ValidationMessage("Heslo", null, new { @class = "text-danger" })
                     </div>
-                    <button type="submit" class="btn">Přihlasit se</button>
+                    <button type="submit" class="button-form btn">Přihlasit se</button>
                 </form>
             </div>
         </div>
