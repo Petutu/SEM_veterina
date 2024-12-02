@@ -18,13 +18,9 @@
             </p>
         </div>
     </div>
-    @* <div class="buttons-form mt-4"> *@
-    @* <button class="button-form btn me-2" *@
     <div class="buttons-form">
-        @* btn-primary *@
         <button class="button-form btn" data-bs-toggle="modal" data-bs-target="#registerModal">Registrovat
             se</button>
-        @* btn-secondary *@
         <button class="button-form btn" data-bs-toggle="modal" data-bs-target="#loginModal">Přihlásit
             se</button>
     </div>
@@ -41,19 +37,19 @@
                 <p class="modal-titel">Vytvořte si účet pro přístup</p>
                 <form asp-action="Register" asp-controller="Login">
                     <div>
-                        <label for="username" class="form-label">Uživatelské jméno</label>
-                        <input type="text" class="form-control" name="USERNAME" id="username" required
+                        <label for="register-username" class="form-label">Uživatelské jméno</label>
+                        <input type="text" class="form-control" name="Username" id="register-username" required
                             placeholder="AnnaSvobodova">
                             @* pro zobrazeni chyb *@
                         @Html.ValidationMessage("Username", null, new { @class = "text-danger" })
                     </div>
                     <div>
-                        <label for="password" class="form-label">Heslo</label>
-                        <input type="password" class="form-control" name="HESLO" id="password" required
+                        <label for="register-password" class="form-label">Heslo</label>
+                        <input type="password" class="form-control" name="Heslo" id="register-password" required
                             placeholder="Zadejte své heslo">
                         @Html.ValidationMessage("Heslo", null, new { @class = "text-danger" })
                     </div>
-                    <button type="submit" class="btn btn-primary">Vytvořit účet</button>
+                    <button type="submit" class="btn">Vytvořit účet</button>
                 </form>
             </div>
         </div>
@@ -71,18 +67,18 @@
                 <p class="modal-titel">Vítejte zpět! Přihlaste se</p>
                 <form asp-action="Login" asp-controller="Login">
                     <div>
-                        <label for="username" class="form-label">Uživatelské jméno</label>
-                        <input type="text" class="form-control" name="Username" id="username" required
+                        <label for="login-username" class="form-label">Uživatelské jméno</label>
+                        <input type="text" class="form-control" name="Username" id="login-username" required
                             placeholder="AnnaSvobodova">
                         @Html.ValidationMessage("Username", null, new { @class = "text-danger" })
                     </div>
                     <div>
-                        <label for="password" class="form-label">Heslo</label>
-                        <input type="password" class="form-control" name="Heslo" id="password" required
+                        <label for="login-password" class="form-label">Heslo</label>
+                        <input type="password" class="form-control" name="Heslo" id="login-password" required
                             placeholder="Zadejte své heslo">
                         @Html.ValidationMessage("Heslo", null, new { @class = "text-danger" })
                     </div>
-                    <button type="submit" class="btn btn-secondary">Přihlasit se</button>
+                    <button type="submit" class="btn">Přihlasit se</button>
                 </form>
             </div>
         </div>

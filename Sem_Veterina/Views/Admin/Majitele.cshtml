@@ -78,7 +78,7 @@
                     <label for="email">Email</label>
                     <input class="right-panel-form-input" type="email" name="EMAIL" placeholder="example@domain.com" />
                 </div>
-                <button type="button" class="crud-list-btn btn-filter" id="create-button">Vytvořit</button>
+                @* <button type="button" class="crud-list-btn btn-filter" id="create-button">Vytvořit</button> *@
             </form>
         </div>
     </div>
@@ -174,3 +174,10 @@
             });
     });
 </script>
+
+@* --Vytvoření pohledu 
+CREATE OR REPLACE VIEW V_ZDRAVOTNI_AKCI  AS
+SELECT ID_Akce, Datum, ID_presonál, ID_Klinika, Popis_Akce, ID_Přístroj, ID_Zvíře, Jméno, ID_Majitel, Výsledek
+FROM ZDRAVOTNI_AKCI 
+NATURAL JOIN ZVIRATA
+ORDER BY Datum; *@

@@ -25,11 +25,11 @@ namespace Sem_Veterina.Controllers
             {
             };
             return View("Index", viewModel);
-            // return View();
+            //return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterAsync(string Username, string Heslo)
+        public async Task<IActionResult> Register(string Username, string Heslo)
         {
             // Validace vstupů
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Heslo))
@@ -93,8 +93,23 @@ namespace Sem_Veterina.Controllers
             HttpContext.Session.SetString("UserId", uzivatel.ID_UZIVATEL.ToString());
             HttpContext.Session.SetString("Role", uzivatel.ID_ROLE.ToString());
 
-            //todo : smerovani podle role 
-            // if uzivatel.ROLE = "Admin" tak presmerovani pro admina.....a tak dale
+            if (uzivatel.ID_ROLE == 1) // Admin role
+            {
+                return RedirectToAction("Admin", "Index");
+            }
+            // else if (uzivatel.ID_ROLE == 2) // Majitel - běžný uživatel
+            // {
+            //     return RedirectToAction("Majitel", "Index");
+            // }
+            //else if (uzivatel.ID_ROLE == 3) // Vedouce 
+            // {
+            //     return RedirectToAction("Vedouce", "Index");
+            // }
+            // else
+            // {
+            //     return RedirectToAction("Index", "Home"); // Výchozí přesměrování
+            // }
+
 
             // Přesměrování na domovskou stránku nebo dashboard
             return RedirectToAction("Index", "Home");
