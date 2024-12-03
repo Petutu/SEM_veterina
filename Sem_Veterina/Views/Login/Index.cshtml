@@ -32,7 +32,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body">
                 <p class="modal-titel">Vytvořte si účet pro přístup</p>
-                <form asp-action="Register" asp-controller="Login" class="form-modal">
+                <form asp-action="Register" asp-controller="Login" class="form-modal" id="registerForm">
                     <div>
                         <label for="register-username" class="form-label">Uživatelské jméno</label>
                         <input type="text" class="form-control filter-input" name="Username" asp-for="RegisterUsername"
@@ -59,7 +59,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body">
                 <p class="modal-titel">Vítejte zpět! Přihlaste se</p>
-                <form asp-action="Login" asp-controller="Login" class="form-modal">
+                <form asp-action="Login" asp-controller="Login" class="form-modal" id="loginForm">
                     <div>
                         <label for="login-username" class="form-label">Uživatelské jméno</label>
                         <input type="text" class="form-control filter-input" name="Username" asp-for="LoginUsername"
@@ -117,22 +117,32 @@
 </script>
 
 <script>
-    // Resetování validace a chyb při zavření modalu
-    $('#loginModal').on('hide.bs.modal', function () {
-        // Najdi formulář uvnitř modalu
-        var form = $(this).find('form');
-        // Vymaž všechny chyby
-        form.find('.text-danger').remove();
-        // Resetuj třídy validace Bootstrapu
-        form.removeClass('was-validated');
-        // Resetuj obsah polí (pokud je to třeba)
-        form[0].reset();
+    @* document.getElementById('loginModal').addEventListener('hide.bs.modal', function () {
+        const form = this.querySelector('form');
+        if (form) {
+            form.querySelectorAll('.text-danger').forEach(el => el.remove());
+            form.classList.remove('was-validated');
+            form.reset();
+        }
+    }); *@
+
+
+        document.getElementById('loginModal').addEventListener('hide.bs.modal', function () {
+            const form = this.querySelector('form');
+            if (form) {
+                form.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
+                form.classList.remove('was-validated');
+                form.reset();
+            }
+        });
+
+    document.getElementById('registerModal').addEventListener('hide.bs.modal', function () {
+        const form = this.querySelector('form');
+        if (form) {
+            form.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
+            form.classList.remove('was-validated');
+            form.reset();
+        }
     });
 
-    $('#registerModal').on('hide.bs.modal', function () {
-        var form = $(this).find('form');
-        form.find('.text-danger').remove();
-        form.removeClass('was-validated');
-        form[0].reset();
-    });
 </script>
