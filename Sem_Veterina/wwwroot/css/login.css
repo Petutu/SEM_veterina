@@ -187,3 +187,23 @@ button:hover {
     display: block;
     color: var(--notification-failure);
 }
+
+.alert-success {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 336px;
+    color: var(--background-primary-color);
+    background-color: var(--notification-success-color);
+    border: none;
+    border-radius: 24px;
+   
+    font-family: 'Podkova';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.125;
+        
+    letter-spacing: 0.04em;
+}

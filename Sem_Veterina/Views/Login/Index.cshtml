@@ -24,7 +24,9 @@
         <button class="button-form btn" data-bs-toggle="modal" data-bs-target="#loginModal">Přihlásit
             se</button>
     </div>
-
+    <div id="customNotification" class="alert alert-success" style="display: none;">
+        <p>Účet byl úspěšně vytvořen. Nyní se můžete přihlásit.</p>
+    </div>
 </main>
 <!-- Modal pro Registraci -->
 <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
@@ -140,5 +142,18 @@
         $('#loginModal').on('show.bs.modal', function () {
             $('#registerModal form').trigger('reset');
         });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var successMessage = '@TempData["SuccessMessage"]';
+        if (successMessage) {
+            // Zobrazení notifikace
+            $('#customNotification').show();
+
+            setTimeout(function () {
+                $('#customNotification').fadeOut();
+            }, 10000);
+        }
     });
 </script>

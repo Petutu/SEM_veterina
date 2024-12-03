@@ -75,7 +75,7 @@ namespace Sem_Veterina.Controllers
 
             // Přesměrování na přihlašovací stránku
             TempData["SuccessMessage"] = "Účet byl úspěšně vytvořen. Nyní se můžete přihlásit.";
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpPost]
@@ -120,11 +120,32 @@ namespace Sem_Veterina.Controllers
             // HttpContext.Session.SetString("Role", uzivatel.ID_ROLE.ToString());
 
             // Přesměrování podle role
-            return uzivatel.ID_ROLE switch
+            // return uzivatel.ID_ROLE switch
+            // {
+            //     1 => RedirectToAction("Index", "Admin"),
+            //     _ => RedirectToAction("Index", "Home"),
+            // };
+
+            if (uzivatel.ID_ROLE == 1) // Admin role
             {
-                1 => RedirectToAction("Admin", "Index"),
-                _ => RedirectToAction("Index", "Home"),
-            };
+                return RedirectToAction("Index", "Admin");
+            }
+            else if (uzivatel.ID_ROLE == 2) // Majitel - běžný uživatel
+            {
+                return RedirectToAction("Index", "Majitel");
+            }
+            //else if (uzivatel.ID_ROLE == 3) // Vedouce 
+            // {
+            //     return RedirectToAction("Vedouce", "Index");
+            // }
+            // else
+            // {
+            //     return RedirectToAction("Index", "Home"); // Výchozí přesměrování
+            // }
+
+
+            // Přesměrování na domovskou stránku nebo dashboard
+            return RedirectToAction("Index", "Home");
         }
     }
 }
