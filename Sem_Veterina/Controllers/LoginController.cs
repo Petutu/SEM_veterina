@@ -21,27 +21,47 @@ namespace Sem_Veterina.Controllers
 
         public IActionResult Index()
         {
-            var viewModel = new LoginViewModel
+            var model = new LoginRegisterViewModel
             {
+                // LoginModel = new LoginViewModel(),
+                // RegisterModel = new RegisterViewModel()
             };
-            return View("Index", viewModel);
+            return View(model);
+
+
+            // var viewModel = new LoginViewModel
+            // {
+            // };
+            // return View("Index", viewModel);
             //return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(LoginViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
+            // Validace vstupů
             if (!ModelState.IsValid)
             {
-                ViewBag.RegisterModal = true;
-                return View("Index", model);
+                ViewBag.RegisterModel = true; // Otevření modalu při chybě
+                var combinedModel = new LoginRegisterViewModel
+                {
+                    LoginModel = new LoginViewModel(),
+                    RegisterModel = model
+                };
+                return View("Index", combinedModel);
             }
+
+            // if (!ModelState.IsValid)
+            // {
+            //     ViewBag.RegisterModal = true;
+            //     return View("Index", model);
+            // }
 
             // Kontrola uživatele
             var existujiciUzivatel = await _uzivatelService.GetUzivatelByUsernameAsync(model.RegisterUsername);
             if (existujiciUzivatel != null)
             {
-                ModelState.AddModelError("Username", "Uživatel s tímto jménem již existuje.");
+                ModelState.AddModelError("RegisterModel.RegisterUsername", "Uživatel s tímto jménem již existuje.");
                 ViewBag.RegisterModal = true;
                 return View("Index", model);
             }
@@ -67,14 +87,25 @@ namespace Sem_Veterina.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.LoginModal = true; // Otevření modalu při chybě
-                return View("Index", model);
+                var combinedModel = new LoginRegisterViewModel
+                {
+                    LoginModel = model,
+                    RegisterModel = new RegisterViewModel()
+                };
+                return View("Index", combinedModel);
             }
+
+            // if (!ModelState.IsValid)
+            // {
+            //     ViewBag.LoginModal = true; // Otevření modalu při chybě
+            //     return View("Index", model);
+            // }
 
             // Získání uživatele z databáze
             var uzivatel = await _uzivatelService.GetUzivatelByUsernameAsync(model.LoginUsername);
             if (uzivatel == null)
             {
-                ModelState.AddModelError("Username", "Tento uživatel neexistuje.");
+                ModelState.AddModelError("LoginModel.LoginUsername", "Tento uživatel neexistuje.");
                 ViewBag.LoginModal = true;
                 return View("Index", model);
             }
@@ -83,7 +114,7 @@ namespace Sem_Veterina.Controllers
             bool isPasswordValid = BCrypt.Net.BCrypt.Verify(model.LoginPassword, uzivatel.HESLO);
             if (!isPasswordValid)
             {
-                ModelState.AddModelError("Heslo", "Nesprávné heslo.");
+                ModelState.AddModelError("LoginModel.LoginPassword", "Nesprávné heslo.");
                 ViewBag.LoginModal = true;
                 return View("Index", model);
             }

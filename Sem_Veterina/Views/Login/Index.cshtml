@@ -1,6 +1,6 @@
 @using Sem_Veterina.Controllers
 @using Sem_Veterina.Entity
-@model Sem_Veterina.Models.LoginViewModel
+@model Sem_Veterina.Models.LoginRegisterViewModel
 
 @{
     ViewData["Title"] = "Svět zvířat";
@@ -35,16 +35,25 @@
                 <form asp-action="Register" asp-controller="Login" class="form-modal" id="registerForm">
                     <div>
                         <label for="register-username" class="form-label">Uživatelské jméno</label>
-                        <input type="text" class="form-control filter-input" name="Username" asp-for="RegisterUsername"
-                            id="register-username" placeholder="AnnaSvobodova">
+                        <input type="text" class="form-control filter-input" name="Username"
+                            asp-for="RegisterModel.RegisterUsername" id="register-username" placeholder="AnnaSvobodova">
                             @* pro zobrazeni chyb *@
-                        @Html.ValidationMessageFor(m => m.RegisterUsername, null, new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(m => m.RegisterModel.RegisterUsername, null, new
+                            {
+                                @class =
+                                 "text-danger"
+                            })
                     </div>
                     <div>
                         <label for="register-password" class="form-label">Heslo</label>
-                        <input type="password" class="form-control filter-input" name="Heslo" asp-for="RegisterPassword"
-                            id="register-password" placeholder="Zadejte své heslo">
-                        @Html.ValidationMessageFor(m => m.RegisterPassword, null, new { @class = "text-danger" })
+                        <input type="password" class="form-control filter-input" name="Heslo"
+                            asp-for="RegisterModel.RegisterPassword" id="register-password" id="register-password"
+                            placeholder="Zadejte své heslo">
+                        @Html.ValidationMessageFor(m => m.RegisterModel.RegisterPassword, null, new
+                            {
+                                @class =
+                                 "text-danger"
+                            })
                     </div>
                     <button type="submit" class="button-form btn">Vytvořit účet</button>
                 </form>
@@ -62,15 +71,21 @@
                 <form asp-action="Login" asp-controller="Login" class="form-modal" id="loginForm">
                     <div>
                         <label for="login-username" class="form-label">Uživatelské jméno</label>
-                        <input type="text" class="form-control filter-input" name="Username" asp-for="LoginUsername"
-                            id="login-username" placeholder="AnnaSvobodova">
-                        @Html.ValidationMessageFor(m => m.LoginUsername, null, new { @class = "text-danger" })
+                        <input type="text" class="form-control filter-input" name="Username"
+                            asp-for="LoginModel.LoginUsername" id="login-username" placeholder="AnnaSvobodova">
+                        @Html.ValidationMessageFor(m => m.LoginModel.LoginUsername, null, new
+                            {
+                                @class = "text-danger"
+                            })
                     </div>
                     <div>
                         <label for="login-password" class="form-label">Heslo</label>
-                        <input type="password" class="form-control filter-input" name="Heslo" asp-for="LoginPassword"
-                            id="login-password" placeholder="Zadejte své heslo">
-                        @Html.ValidationMessageFor(m => m.LoginPassword, null, new { @class = "text-danger" })
+                        <input type="password" class="form-control filter-input" name="Heslo"
+                            asp-for="LoginModel.LoginPassword" id="login-password" placeholder="Zadejte své heslo">
+                        @Html.ValidationMessageFor(m => m.LoginModel.LoginPassword, null, new
+                            {
+                                @class = "text-danger"
+                            })
                     </div>
                     <button type="submit" class="button-form btn">Přihlasit se</button>
                 </form>
@@ -117,31 +132,46 @@
 </script>
 
 <script>
-    @* document.getElementById('loginModal').addEventListener('hide.bs.modal', function () {
-        const form = this.querySelector('form');
-        if (form) {
-            form.querySelectorAll('.text-danger').forEach(el => el.remove());
-            form.classList.remove('was-validated');
-            form.reset();
+    // Globální proměnná pro sledování stavu
+    let isManualClose = false;
+
+    @* event.target.classList.contains('btn-close') || event.target === this *@
+        document.getElementById('registerModal').addEventListener('click', function (event) {
+            if (event.target.classList.contains('btn-close')) {
+                isManualClose = true;
+            }
+        });
+
+    document.getElementById('loginModal').addEventListener('click', function (event) {
+        if (event.target.classList.contains('btn-close')) {
+            isManualClose = true;
         }
-    }); *@
+    });
 
-
-        document.getElementById('loginModal').addEventListener('hide.bs.modal', function () {
+    // Event listener pro sledování manuálního zavření modalu
+    document.getElementById('loginModal').addEventListener('hide.bs.modal', function (event) {
+        if (isManualClose) {
             const form = this.querySelector('form');
             if (form) {
                 form.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
                 form.classList.remove('was-validated');
                 form.reset();
             }
-        });
+            isManualClose = false; // Reset manuálního stavu
+        }
+    });
 
-    document.getElementById('registerModal').addEventListener('hide.bs.modal', function () {
-        const form = this.querySelector('form');
-        if (form) {
-            form.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
-            form.classList.remove('was-validated');
-            form.reset();
+
+    // Podobné pro registerModal
+    document.getElementById('registerModal').addEventListener('hide.bs.modal', function (event) {
+        if (isManualClose) {
+            const form = this.querySelector('form');
+            if (form) {
+                form.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
+                form.classList.remove('was-validated');
+                form.reset();
+            }
+            isManualClose = false; // Reset manuálního stavu
         }
     });
 
