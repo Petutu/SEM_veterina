@@ -69,6 +69,7 @@ namespace Sem_Veterina.Controllers
             if (string.IsNullOrWhiteSpace(model.RegisterUsername) || string.IsNullOrWhiteSpace(model.RegisterPassword))
             {
                 ModelState.AddModelError("", "Uživatelské jméno a heslo jsou povinné.");
+                ViewBag.RegisterModal = true;
                 return View("Index"); // Nebo vrátit modální chybu, pokud používáte AJAX
             }
 
@@ -76,7 +77,8 @@ namespace Sem_Veterina.Controllers
             var existujiciUzivatel = await _uzivatelService.GetUzivatelByUsernameAsync(model.RegisterUsername);
             if (existujiciUzivatel != null)
             {
-                ModelState.AddModelError("RegisterUsername", "Uživatel s tímto jménem již existuje.");
+                ModelState.AddModelError("Register.RegisterUsername", "Uživatel s tímto jménem již existuje.");
+                ViewBag.RegisterModal = true;
                 return View("Index"); // Vrať se na stránku registrace s chybou
             }
 

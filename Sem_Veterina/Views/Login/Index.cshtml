@@ -33,13 +33,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body">
                 <p class="modal-titel">Vytvořte si účet pro přístup</p>
-                @if (!ViewData.ModelState.IsValid)
+                @* @if (!ViewData.ModelState.IsValid)
                 {
                     foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
                     {
                         <div class="text-danger">@error.ErrorMessage</div>
                     }
-                }
+                } *@
 
                 <form asp-action="Register" asp-controller="Login" class="form-modal" id="registerForm">
                     <div>
@@ -109,8 +109,25 @@
 
 <script>
     // Funkce pro zobrazení modálů
+    $(document).ready(function () {
+        if (@(ViewBag.RegisterModal == true ? "true" : "false")) {
+            $('#registerModal').modal('show');
+        }
+        if (@(ViewBag.LoginModal == true ? "true" : "false")) {
+            $('#loginModal').modal('show');
+        }
+    });
     function displayModal() {
         $(document).ready(function () {
+            if (@(ViewBag.RegisterModal == true ? "true" : "false")) {
+                $('#registerModal').modal('show');
+            }
+            if (@(ViewBag.LoginModal == true ? "true" : "false")) {
+                $('#loginModal').modal('show');
+            }
+        });
+
+    @* $(document).ready(function () {
             if (window.LoginModal === true) {
                 console.log("Zobrazuji login modal");
                 $("#loginModal").modal("show");
@@ -119,31 +136,12 @@
                 console.log("Zobrazuji register modal");
                 $("#registerModal").modal("show");
             }
-        });
+        }); *@
     }
 
     // Nastavení hodnot pro modály
-    window.LoginModal = @((ViewBag.LoginModal != null && ViewBag.LoginModal == true).ToString().ToLower());
-    window.RegisterModal = @((ViewBag.RegisterModal != null && ViewBag.RegisterModal == true).ToString().ToLower());
-    @* 
-        // Zavolání funkce pro zobrazení modálů
-        @if (ViewBag.LoginModal != null && ViewBag.LoginModal == true)
-    {
-        <text>window.LoginModal = true;</text>
-    }
-    else
-    {
-        <text>window.LoginModal = false;</text>
-    }
-
-    @if (ViewBag.RegisterModal != null && ViewBag.RegisterModal == true)
-    {
-        <text>window.RegisterModal = true;</text>
-    }
-    else
-    {
-        <text>window.RegisterModal = false;</text>
-    } *@
+    @* window.LoginModal = @((ViewBag.LoginModal != null && ViewBag.LoginModal == true).ToString().ToLower());
+    window.RegisterModal = @((ViewBag.RegisterModal != null && ViewBag.RegisterModal == true).ToString().ToLower()); *@
 
         displayModal();  // Zavolání funkce po nastavení modálního stavu
 </script>
