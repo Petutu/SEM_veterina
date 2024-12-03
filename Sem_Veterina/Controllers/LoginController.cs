@@ -28,55 +28,117 @@ namespace Sem_Veterina.Controllers
             // };
             // return View(model);
 
-            var viewModel = new LoginViewModel
+            // var viewModel = new LoginViewModel
+            // {
+            // };
+            // return View("Index", viewModel);
+            var model = new CombinedViewModel
             {
+                Login = new LoginViewModel(),
+                Register = new RegisterViewModel()
             };
-            return View("Index", viewModel);
-            return View();
+            return View(model);
+
+            //return View();
         }
 
+        // string RegisterUsername, string RegisterPassword
         [HttpPost]
-        public async Task<IActionResult> Register(LoginViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            // Validace vstupů
-            // if (!ModelState.IsValid)
-            // {
-            //     ViewBag.RegisterModal = true; // Otevření modalu při chybě
-            //     var combinedModel = new LoginRegisterViewModel
-            //     {
-            //         LoginModel = new LoginViewModel(),
-            //         RegisterModel = model
-            //     };
-            //     return View("Index", combinedModel);
-            // }
+
+            // Ladící výstupy
+            Console.WriteLine("Data dorazila na server:");
+            Console.WriteLine($"Username: {model.RegisterUsername}, Password: {model.RegisterPassword}");
 
             if (!ModelState.IsValid)
             {
+                Console.WriteLine("ModelState obsahuje chyby:");
+                foreach (var key in ModelState.Keys)
+                {
+                    foreach (var error in ModelState[key].Errors)
+                    {
+                        Console.WriteLine($"Key: {key}, Error: {error.ErrorMessage}");
+                    }
+                }
                 ViewBag.RegisterModal = true;
                 return View("Index", model);
             }
 
-            // Kontrola uživatele
+            // Validace vstupů
+            if (string.IsNullOrWhiteSpace(model.RegisterUsername) || string.IsNullOrWhiteSpace(model.RegisterPassword))
+            {
+                ModelState.AddModelError("", "Uživatelské jméno a heslo jsou povinné.");
+                return View("Index"); // Nebo vrátit modální chybu, pokud používáte AJAX
+            }
+
+            // Kontrola, zda uživatel již existuje
             var existujiciUzivatel = await _uzivatelService.GetUzivatelByUsernameAsync(model.RegisterUsername);
             if (existujiciUzivatel != null)
             {
                 ModelState.AddModelError("RegisterUsername", "Uživatel s tímto jménem již existuje.");
-                ViewBag.RegisterModal = true;
-                return View("Index", model);
+                return View("Index"); // Vrať se na stránku registrace s chybou
             }
 
-            // Vytvoření uživatele
+            // Vytvoření nového uživatele
             var novyUzivatel = new UZIVATEL
             {
                 USERNAME = model.RegisterUsername,
-                HESLO = BCrypt.Net.BCrypt.HashPassword(model.RegisterPassword),
+                HESLO = BCrypt.Net.BCrypt.HashPassword(model.RegisterPassword), // Použijte šifrování hesla
                 ID_ROLE = 2
             };
+
+            //ModelState.Clear();
+
             await _uzivatelService.AddUzivatelAsync(novyUzivatel);
 
+            // Přesměrování na přihlašovací stránku
             TempData["SuccessMessage"] = "Účet byl úspěšně vytvořen. Nyní se můžete přihlásit.";
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
+
+        // [HttpPost]
+        // public async Task<IActionResult> Register(LoginViewModel model)
+        // {
+        //     // Validace vstupů
+        //     // if (!ModelState.IsValid)
+        //     // {
+        //     //     ViewBag.RegisterModal = true; // Otevření modalu při chybě
+        //     //     var combinedModel = new LoginRegisterViewModel
+        //     //     {
+        //     //         LoginModel = new LoginViewModel(),
+        //     //         RegisterModel = model
+        //     //     };
+        //     //     return View("Index", combinedModel);
+        //     // }
+
+        //     if (!ModelState.IsValid)
+        //     {
+        //         ViewBag.RegisterModal = true;
+        //         return View("Index", model);
+        //     }
+
+        //     // Kontrola uživatele
+        //     var existujiciUzivatel = await _uzivatelService.GetUzivatelByUsernameAsync(model.RegisterUsername);
+        //     if (existujiciUzivatel != null)
+        //     {
+        //         ModelState.AddModelError("RegisterUsername", "Uživatel s tímto jménem již existuje.");
+        //         ViewBag.RegisterModal = true;
+        //         return View("Index", model);
+        //     }
+
+        //     // Vytvoření uživatele
+        //     var novyUzivatel = new UZIVATEL
+        //     {
+        //         USERNAME = model.RegisterUsername,
+        //         HESLO = BCrypt.Net.BCrypt.HashPassword(model.RegisterPassword),
+        //         ID_ROLE = 2
+        //     };
+        //     await _uzivatelService.AddUzivatelAsync(novyUzivatel);
+        //     // Přesměrování na přihlašovací stránku
+        //     TempData["SuccessMessage"] = "Účet byl úspěšně vytvořen. Nyní se můžete přihlásit.";
+        //     return RedirectToAction("Index");
+        // }
 
 
         [HttpPost]

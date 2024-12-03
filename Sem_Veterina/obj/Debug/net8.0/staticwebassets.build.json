@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sBnJW3ZEFsR4AqCvZ8gsPYZ7xGjISP0kXvKPafi2Ivo=",
+  "Hash": "rIQFhFFD4av4ttkfvKRBigmxwCvLfga0cXafjP57kFY=",
   "Source": "Sem_Veterina",
   "BasePath": "_content/Sem_Veterina",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/login.css"
+    },
+    {
+      "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/css/majitel.css",
+      "SourceId": "Sem_Veterina",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/",
+      "BasePath": "_content/Sem_Veterina",
+      "RelativePath": "css/majitel.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/majitel.css"
     },
     {
       "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/css/site.css",
@@ -224,25 +243,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/filterUtils.js"
-    },
-    {
-      "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/site.js",
-      "SourceId": "Sem_Veterina",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/",
-      "BasePath": "_content/Sem_Veterina",
-      "RelativePath": "js/site.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/site.js"
     },
     {
       "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",

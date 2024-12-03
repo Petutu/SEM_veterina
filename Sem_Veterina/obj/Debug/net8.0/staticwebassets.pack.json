@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/css/login.css"
     },
     {
+      "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/css/majitel.css",
+      "PackagePath": "staticwebassets/css/majitel.css"
+    },
+    {
       "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
@@ -39,10 +43,6 @@
     {
       "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/filterUtils.js",
       "PackagePath": "staticwebassets/js/filterUtils.js"
-    },
-    {
-      "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/site.js",
-      "PackagePath": "staticwebassets/js/site.js"
     },
     {
       "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/lib/bootstrap/LICENSE",
