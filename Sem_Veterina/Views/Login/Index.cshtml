@@ -82,7 +82,8 @@
                     <div>
                         <label for="login-username" class="form-label">Uživatelské jméno</label>
                         <input type="text" class="form-control filter-input" name="LoginUsername"
-                            asp-for="Login.LoginUsername" id="login-username" placeholder="AnnaSvobodova">
+                            asp-for="Login.LoginUsername" id="login-username" placeholder="AnnaSvobodova"
+                            data-val="true">
                         @Html.ValidationMessageFor(m => m.Login.LoginUsername, null, new
                             {
                                 @class = "text-danger"
@@ -91,7 +92,8 @@
                     <div>
                         <label for="login-password" class="form-label">Heslo</label>
                         <input type="password" class="form-control filter-input" name="LoginPassword"
-                            asp-for="Login.LoginPassword" id="login-password" placeholder="Zadejte své heslo">
+                            asp-for="Login.LoginPassword" id="login-password" placeholder="Zadejte své heslo"
+                            data-val="true">
                         @Html.ValidationMessageFor(m => m.Login.LoginPassword, null, new
                             {
                                 @class = "text-danger"
@@ -108,104 +110,35 @@
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
 <script>
-    // Funkce pro zobrazení modálů
     $(document).ready(function () {
+        // Automatické zobrazení modálů na základě ViewBag hodnot
         if (@(ViewBag.RegisterModal == true ? "true" : "false")) {
             $('#registerModal').modal('show');
         }
         if (@(ViewBag.LoginModal == true ? "true" : "false")) {
             $('#loginModal').modal('show');
         }
-    });
-    function displayModal() {
-        $(document).ready(function () {
-            if (@(ViewBag.RegisterModal == true ? "true" : "false")) {
-                $('#registerModal').modal('show');
-            }
-            if (@(ViewBag.LoginModal == true ? "true" : "false")) {
-                $('#loginModal').modal('show');
+
+        // Vyčištění formulářů při zavření modálu
+        $('#registerModal, #loginModal').on('hidden.bs.modal', function () {
+            const form = this.querySelector('form');
+            if (form) {
+                form.reset(); // Reset všech polí
+                form.querySelectorAll('.text-danger').forEach(el => el.textContent = ''); // Odstranění chybových hlášek
+                form.classList.remove('was-validated'); // Odstranění validace
+                $(form).find('.form-control').removeClass('input-validation-error'); // Reset chybného zvýraznění
+                // Explicitní vyčištění textových polí
+                $(form).find('input[type="text"], input[type="password"], textarea').val('');
             }
         });
 
-    @* $(document).ready(function () {
-            if (window.LoginModal === true) {
-                console.log("Zobrazuji login modal");
-                $("#loginModal").modal("show");
-            }
-            if (window.RegisterModal === true) {
-                console.log("Zobrazuji register modal");
-                $("#registerModal").modal("show");
-            }
-        }); *@
-    }
-
-    // Nastavení hodnot pro modály
-    @* window.LoginModal = @((ViewBag.LoginModal != null && ViewBag.LoginModal == true).ToString().ToLower());
-    window.RegisterModal = @((ViewBag.RegisterModal != null && ViewBag.RegisterModal == true).ToString().ToLower()); *@
-
-        displayModal();  // Zavolání funkce po nastavení modálního stavu
-</script>
-
-<script>
-    // Globální proměnná pro sledování stavu
-    let isManualClose = false;
-
-    @* event.target.classList.contains('btn-close') || event.target === this *@
-        document.getElementById('registerModal').addEventListener('click', function (event) {
-            if (event.target.classList.contains('btn-close')) {
-                isManualClose = true;
-            }
+        // Vyčištění při přepínání mezi modály
+        $('#registerModal').on('show.bs.modal', function () {
+            $('#loginModal form').trigger('reset');
         });
 
-    document.getElementById('loginModal').addEventListener('click', function (event) {
-        if (event.target.classList.contains('btn-close')) {
-            isManualClose = true;
-        }
+        $('#loginModal').on('show.bs.modal', function () {
+            $('#registerModal form').trigger('reset');
+        });
     });
-
-    // Event listener pro sledování manuálního zavření modalu
-    document.getElementById('loginModal').addEventListener('hide.bs.modal', function (event) {
-        if (isManualClose) {
-            const form = this.querySelector('form');
-            if (form) {
-                form.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
-                form.classList.remove('was-validated');
-                form.reset();
-            }
-            isManualClose = false; // Reset manuálního stavu
-        }
-    });
-
-    // Podobné pro registerModal
-    document.getElementById('registerModal').addEventListener('hide.bs.modal', function (event) {
-        if (isManualClose) {
-            const form = this.querySelector('form');
-            if (form) {
-                form.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
-                form.classList.remove('was-validated');
-                form.reset();
-            }
-            isManualClose = false; // Reset manuálního stavu
-        }
-    });
-
-    document.getElementById('registerModal').addEventListener('show.bs.modal', function () {
-        const loginForm = document.querySelector('#loginModal form');
-        if (loginForm) {
-            loginForm.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
-            loginForm.classList.remove('was-validated');
-            loginForm.reset();
-        }
-    });
-
-    document.getElementById('loginModal').addEventListener('show.bs.modal', function () {
-        const registerForm = document.querySelector('#registerModal form');
-        if (registerForm) {
-            registerForm.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
-            registerForm.classList.remove('was-validated');
-            registerForm.reset();
-        }
-    });
-
-
 </script>
