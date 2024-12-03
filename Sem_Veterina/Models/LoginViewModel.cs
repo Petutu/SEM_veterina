@@ -6,6 +6,7 @@ namespace Sem_Veterina.Models
 
     public class LoginViewModel
     {
+        [StringLength(50, MinimumLength = 2)]
         [Required(ErrorMessage = "Uživatelské jméno je povinné.")]
         public string LoginUsername { get; set; }
 

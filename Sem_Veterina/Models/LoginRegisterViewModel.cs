@@ -4,11 +4,5 @@ namespace Sem_Veterina.Models
     {
         public LoginViewModel LoginModel { get; set; }
         public RegisterViewModel RegisterModel { get; set; }
-
-        public LoginRegisterViewModel()
-        {
-            LoginModel = new LoginViewModel();
-            RegisterModel = new RegisterViewModel();
-        }
     }
 }

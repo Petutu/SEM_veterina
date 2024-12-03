@@ -182,3 +182,8 @@ button:hover {
 .footer-login {
     margin: 40px;
 }
+
+.text-danger {
+    display: block;
+    color: var(--notification-failure);
+}
