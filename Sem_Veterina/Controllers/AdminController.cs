@@ -104,7 +104,7 @@ namespace Sem_Veterina.Controllers
             viewModel.SelectedLek = viewModel.Leky.FirstOrDefault();
             return View("Leky", viewModel);  // Vrátí seznam léků do pohledu Leky.cshtml
         }
-
+        // Akce pro stránku "Personál"
         public async Task<IActionResult> Personal(string? name, string? surname, string? specialization, int? klinikaId)
         {
             var viewModel = new PersonalViewModel();
@@ -113,13 +113,14 @@ namespace Sem_Veterina.Controllers
             return View("Personal", viewModel);  // Vrátí seznam personálu do pohledu Personal.cshtml
         }
 
-        // public async Task<IActionResult> Pristroje(string? name, string? function, int? klinikaId)
-        // {
-        //     var viewModel = new PristrojeViewModel();
-        //     viewModel.Pristroje = await _pristrojeService.GetFilteredPristrojeAsync(name, function, klinikaId);
-        //     viewModel.SelectedPristroj = viewModel.Pristroje.FirstOrDefault();
-        //     return View("Pristroje", viewModel);  // Vrátí seznam přístrojů do pohledu Pristroje.cshtml
-        // }
+        // Akce pro stránku "Personál"
+        public async Task<IActionResult> Pristroje(string? name, string? function, int? klinikaId)
+        {
+            var viewModel = new PristrojeViewModel();
+            viewModel.Pristroje = await _pristrojeService.GetFilteredPristrojeAsync(name, function, klinikaId);
+            viewModel.SelectedPristroj = viewModel.Pristroje.FirstOrDefault();
+            return View("Pristroje", viewModel);  // Vrátí seznam přístrojů do pohledu Pristroje.cshtml
+        }
 
         public async Task<IActionResult> Uzivatele(string? username, string? roleName)
         {

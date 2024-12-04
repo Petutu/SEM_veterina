@@ -1,0 +1,84 @@
+@using Sem_Veterina.Controllers
+@using Sem_Veterina.Entity
+@model PristrojeViewModel
+@{
+    ViewData["Title"] = "Správa přístroj";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-container">
+    <div class="filter-section">
+        <form class="filter" asp-controller="Admin" asp-action="Pristroje" method="get">
+            <div class="filter-item">
+                <label for="name">Název</label>
+                <input class="filter-input filter-input-address" type="text" name="name" placeholder="Ultrazvuk" />
+            </div>
+            <div class="filter-item">
+                <label for="function">Tel. číslo</label>
+                <input class="filter-input filter-input-number" type="text" name="function"
+                    placeholder="Diagnostika a vyhodnocování orgánů" />
+            </div>
+            @* <div class="filter-item">
+                <label for="klidika">Tel. číslo</label>
+                <input class="filter-input filter-input-number" type="text" name="function"
+                    placeholder="Diagnostika a vyhodnocování orgánů" />
+            </div> *@
+            <div class="filter-buttons">
+                <button class="btn-filter" type="submit"><img src="~/imgs/search.svg" alt="Vyhledavání"></button>
+                <button class="btn-filter" type="submit"><img src="~/imgs/reset.svg" alt="Vymazat filter"
+                        onclick="resetFormAndSubmit()"></button>
+            </div>
+        </form>
+    </div>
+    <div class="data-section">
+        <div class="left-panel">
+            <table class="table-list">
+                <thead class="table-list-header">
+                    <tr>
+                        <th class="table-list-column-name">Název</th>
+                        <th class="table-list-column-name">Funkce</th>
+                        <th class="table-list-column-name">Klinika</th>
+                    </tr>
+                </thead>
+                <tbody class="table-list-body">
+                    @foreach (var pristroj in Model.Pristroje)
+                    {
+                        <tr class="table-list-body-row">
+                            <td class="table-list-body-column">@pristroj.NÁZEV</td>
+                            <td class="table-list-body-column">@pristroj.FUNKCE</td>
+                            <td class="table-list-body-column">@pristroj.KLINIKA.NÁZEV</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="right-panel" id="detailPanel">
+            <form class="right-panel-form" method="post" action="/Kliniky/Edit">
+                <div class="right-panel-form-item filter-item">
+                    <label for="name">Název</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="name"
+                        placeholder="Ultrazvuk" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="function">Funkce</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="function"
+                        placeholder="Diagnostika a vyhodnocování orgánů" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="klinika">Klinika</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="klinika"
+                        placeholder="VetCare" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer-klinika">
+        <ul class="crud-list">
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Vytvořit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Editovat</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Odstranit</button></li>
+        </ul>
+    </footer>
+</div>
+<script type="module" src="~/js/filterUtils.js"></script>
+@* todo : pridat oveření vstupu z inputu *@
