@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rIQFhFFD4av4ttkfvKRBigmxwCvLfga0cXafjP57kFY=",
+  "Hash": "xhULsOy8YU6qPKcST+8K6NwF60cOvOnDB/pEuXL6wdU=",
   "Source": "Sem_Veterina",
   "BasePath": "_content/Sem_Veterina",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/imgs/edit.svg",
+      "SourceId": "Sem_Veterina",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/",
+      "BasePath": "_content/Sem_Veterina",
+      "RelativePath": "imgs/edit.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/imgs/edit.svg"
     },
     {
       "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/imgs/logo.svg",

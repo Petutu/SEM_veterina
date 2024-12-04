@@ -41,6 +41,7 @@ button:focus, button:hover {
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
 }
+
 .nav {
     padding-top: 8px;
     margin-left: 40px;
@@ -48,10 +49,6 @@ button:focus, button:hover {
     align-items: center;
     justify-content: space-between; */
 }
-
-/* .logo-link {
-    text-decoration: none;   
-} */
 
 .nav-list-admin {
     display: flex;
@@ -130,13 +127,70 @@ button:focus, button:hover {
     display: block;
 }
 
-.header-admin {
+.title-admin {
     margin-left: 40px;
+}
+
+.menu-admin-databaze {
+    list-style: initial;
 }
 
 .menu-admin-databaze-link:focus, .menu-admin-databaze-link:hover {
     color: var(--focus-and-hover-color);
     transition: color 0.3s ease;
+}
+
+.main-admin {
+    display: flex;
+}
+
+.section-admin-databaze {
+    padding: 10px;
+    border: 3px solid;
+    border-radius: 24px;
+    margin-left: 40px;
+}
+
+.text {
+    padding: 0;
+    margin: 0;
+    font-size: 28px;;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.section-left {
+    width: 360px;
+    margin-left: 20px;
+    border-right: 4px solid var(--primary-color);
+    /* padding-right: 50px; */
+}
+
+.section-right {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.section-fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-fields {
+    display: flex;
+    gap: 6px;
+}
+
+.input-field {
+    width: 300px;
+}
+
+.section-right-div {
+    display: flex;
 }
 
 .filter {
@@ -152,7 +206,6 @@ button:focus, button:hover {
     height: 30px;
     border: 2px solid #1D52AD;
     border-radius: 8px;
-    /* color: #98A2B3; */
     font-style: normal;
     color: var(--primary-color);
     font-weight: 400;
@@ -185,7 +238,6 @@ button:focus, button:hover {
     cursor: pointer;
 }
 
-/* Levý panel výpisu dat */
 .data-section {
     display: flex;
 }

@@ -5,26 +5,100 @@
     ViewData["Title"] = "Admin Panel";
     Layout = "_AdminLayout";
 }
-
-<h2 class="header-admin">Režím admin</h2>
-<p>Nastavení</p>
-<p>Přejít do databáze</p>
-<p>Vyberte databáze pro správu:</p>
-<ul class="menu-admin-databaze">
-    <li class="menu-admin-databaze-item">
-        <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin" asp-action="Kliniky">Klinika</a>
-    </li>
-    <li class="menu-admin-databaze-item">
-        <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin" asp-action="Majitele">Majitelé</a>
-    </li>
-    <li class="menu-admin-databaze-item">
-        <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin" asp-action="Zvirata">Malí pacienty</a>
-    </li>
-    <li class="menu-admin-databaze-item">
-        <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin" asp-action="Personal">Personál</a>
-    </li>
-    <li class="menu-admin-databaze-item"><a class="menu-admin-databaze-link" href="">Přístroje</a></li>
-    <li class="menu-admin-databaze-item">Vyšetření</li>
-    <li class="menu-admin-databaze-item">Lab. výsledky</li>
-    <li class="menu-admin-databaze-item">Zákroky</li>
-</ul>
+<div class="main-admin">
+    <div class="section section-left">
+        <div class="">
+            <h2 class="title-admin">Režím admin</h2>
+            <p class="text">Moje údaje:</p>
+        </div>
+        <div class="section-fields">
+            <label for="Username">Uzername</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="Username">
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="name">Jméno</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="name">
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="surname">Příjmení</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="surname">
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="specialization">Specializace</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="specialization">
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="phone">Telefonní číslo</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="phone">
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="email">Email</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="email">
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="address">Adresa</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="address">
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+    </div>
+    <div class="section section-right">
+        <p class="text">Nastavení</p>
+        <div class="section-right-div">
+            <div class="section-admin-databaze">
+                <p class="text">Vyberte databáze pro správu:</p>
+                <ul class="menu-admin-databaze">
+                    <li class="menu-admin-databaze-item">
+                        <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin"
+                            asp-action="Kliniky">Klinika</a>
+                    </li>
+                    <li class="menu-admin-databaze-item">
+                        <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin"
+                            asp-action="Majitele">Majitelé</a>
+                    </li>
+                    <li class="menu-admin-databaze-item">
+                        <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin" asp-action="Zvirata">Malí
+                            pacienty</a>
+                    </li>
+                    <li class="menu-admin-databaze-item">
+                        <a class="menu-admin-databaze-link" asp-area="" asp-controller="Admin"
+                            asp-action="Personal">Personál</a>
+                    </li>
+                    <li class="menu-admin-databaze-item"><a class="menu-admin-databaze-link" href="">Přístroje</a></li>
+                    <li class="menu-admin-databaze-item">Vyšetření</li>
+                    <li class="menu-admin-databaze-item">Lab. výsledky</li>
+                    <li class="menu-admin-databaze-item">Zákroky</li>
+                    <li class="menu-admin-databaze-item">Uživatelé</li>
+                    <li class="menu-admin-databaze-item">Historie</li>
+                    <li class="menu-admin-databaze-item">Systémový katalog</li>
+                </ul>
+            </div>
+            <div class="section section-admin-databaze">
+                <p class="text">Změna role</p>
+                <p class="text">Nastavit databáze pro uživatele</p>
+            </div>
+        </div>
+        <div class="section section-admin-databaze">
+            <p class="text">Přepnout na jiného uživatele</p>
+        </div>
+    </div>
+</div>

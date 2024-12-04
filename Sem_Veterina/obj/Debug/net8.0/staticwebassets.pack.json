@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/imgs/edit.svg",
+      "PackagePath": "staticwebassets/imgs/edit.svg"
+    },
+    {
       "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/imgs/logo.svg",
       "PackagePath": "staticwebassets/imgs/logo.svg"
     },
