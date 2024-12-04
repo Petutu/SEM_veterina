@@ -18,17 +18,18 @@ namespace Sem_Veterina.CRUD
         // CREATE
         public async Task AddPersonalAsync(PERSONAL personal)
         {
-            var sql = "INSERT INTO PERSONAL (ID_PRESONÁL, JMÉNO, PŘÍJMENÍ, SPECIALIZACE, TELEFONNÍ_ČÍSLO, ADRESA, ID_KLINIKA) " +
-                      "VALUES (:Id, :Jmeno, :Prijmeni, :Specializace, :Telefon, :Adresa, :IdKlinika)";
+            var sql = "BEGIN PROC_CREATE_PERSONAL(:Jmeno, :Prijmeni, :Specializace, :TelefonniCislo, :Adresa, :IdKlinika, :IdNadrizeny, :IdUzivatel); END;";
             await _context.Database.ExecuteSqlRawAsync(sql,
-                new OracleParameter("Id", personal.ID_PRESONÁL),
                 new OracleParameter("Jmeno", personal.JMÉNO),
                 new OracleParameter("Prijmeni", personal.PŘÍJMENÍ),
                 new OracleParameter("Specializace", personal.SPECIALIZACE),
-                new OracleParameter("Telefon", personal.TELEFONNÍ_ČÍSLO ?? (object)DBNull.Value),
+                new OracleParameter("TelefonniCislo", personal.TELEFONNÍ_ČÍSLO ?? (object)DBNull.Value),
                 new OracleParameter("Adresa", personal.ADRESA ?? (object)DBNull.Value),
-                new OracleParameter("IdKlinika", personal.ID_KLINIKA));
+                new OracleParameter("IdKlinika", personal.ID_KLINIKA),
+                new OracleParameter("IdNadrizeny", personal.ID_NADRIZENY ?? (object)DBNull.Value),
+                new OracleParameter("IdUzivatel", personal.ID_UZIVATEL ?? (object)DBNull.Value));
         }
+
 
         // READ - GET ALL
         public async Task<List<PERSONAL>> GetAllPersonalAsync()
@@ -48,24 +49,28 @@ namespace Sem_Veterina.CRUD
         // UPDATE
         public async Task UpdatePersonalAsync(PERSONAL personal)
         {
-            var sql = "UPDATE PERSONAL SET JMÉNO = :Jmeno, PŘÍJMENÍ = :Prijmeni, SPECIALIZACE = :Specializace, " +
-                      "TELEFONNÍ_ČÍSLO = :Telefon, ADRESA = :Adresa, ID_KLINIKA = :IdKlinika WHERE ID_PRESONÁL = :Id";
+            var sql = "BEGIN PROC_EDIT_PERSONAL(:IdPersonal, :Jmeno, :Prijmeni, :Specializace, :TelefonniCislo, :Adresa, :IdKlinika, :IdNadrizeny, :IdUzivatel); END;";
             await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("IdPersonal", personal.ID_PRESONÁL),
                 new OracleParameter("Jmeno", personal.JMÉNO),
                 new OracleParameter("Prijmeni", personal.PŘÍJMENÍ),
                 new OracleParameter("Specializace", personal.SPECIALIZACE),
-                new OracleParameter("Telefon", personal.TELEFONNÍ_ČÍSLO ?? (object)DBNull.Value),
+                new OracleParameter("TelefonniCislo", personal.TELEFONNÍ_ČÍSLO ?? (object)DBNull.Value),
                 new OracleParameter("Adresa", personal.ADRESA ?? (object)DBNull.Value),
                 new OracleParameter("IdKlinika", personal.ID_KLINIKA),
-                new OracleParameter("Id", personal.ID_PRESONÁL));
+                new OracleParameter("IdNadrizeny", personal.ID_NADRIZENY ?? (object)DBNull.Value),
+                new OracleParameter("IdUzivatel", personal.ID_UZIVATEL ?? (object)DBNull.Value));
         }
 
+
         // DELETE
-        public async Task DeletePersonalAsync(int id)
+        public async Task DeletePersonalAsync(int idPersonal)
         {
-            var sql = "DELETE FROM PERSONAL WHERE ID_PRESONÁL = :Id";
-            await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
+            var sql = "BEGIN PROC_DELETE_PERSONAL(:IdPersonal); END;";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("IdPersonal", idPersonal));
         }
+
 
         public async Task<List<PERSONAL>> GetFilteredPersonalAsync(string? name, string? surname, string? specialization, int? klinikaId)
         {

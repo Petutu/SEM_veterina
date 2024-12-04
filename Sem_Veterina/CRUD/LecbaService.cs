@@ -18,12 +18,12 @@ public class LecbaService
     // CREATE
     public async Task AddLecbaAsync(LECBY lecba)
     {
-        var sql = "INSERT INTO LECBY (ID_LÉČBA, POPIS, ID_DIAGNÓZA) VALUES (:Id, :Popis, :IdDiagnoza)";
+        var sql = "BEGIN PROC_CREATE_LECBA(:Popis, :IdDiagnoza); END;";
         await _context.Database.ExecuteSqlRawAsync(sql,
-            new OracleParameter("Id", lecba.ID_LÉČBA),
             new OracleParameter("Popis", lecba.POPIS),
             new OracleParameter("IdDiagnoza", lecba.ID_DIAGNÓZA));
     }
+
 
     // READ - GET ALL
     public async Task<List<LECBY>> GetAllLecbyAsync()
@@ -43,19 +43,22 @@ public class LecbaService
     // UPDATE
     public async Task UpdateLecbaAsync(LECBY lecba)
     {
-        var sql = "UPDATE LECBY SET POPIS = :Popis, ID_DIAGNÓZA = :IdDiagnoza WHERE ID_LÉČBA = :Id";
+        var sql = "BEGIN PROC_EDIT_LECBA(:IdLecba, :Popis, :IdDiagnoza); END;";
         await _context.Database.ExecuteSqlRawAsync(sql,
+            new OracleParameter("IdLecba", lecba.ID_LÉČBA),
             new OracleParameter("Popis", lecba.POPIS),
-            new OracleParameter("IdDiagnoza", lecba.ID_DIAGNÓZA),
-            new OracleParameter("Id", lecba.ID_LÉČBA));
+            new OracleParameter("IdDiagnoza", lecba.ID_DIAGNÓZA));
     }
 
+
     // DELETE
-    public async Task DeleteLecbaAsync(int id)
+    public async Task DeleteLecbaAsync(int idLecba)
     {
-        var sql = "DELETE FROM LECBY WHERE ID_LÉČBA = :Id";
-        await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
+        var sql = "BEGIN PROC_DELETE_LECBA(:IdLecba); END;";
+        await _context.Database.ExecuteSqlRawAsync(sql,
+            new OracleParameter("IdLecba", idLecba));
     }
+
 
     public async Task<List<LECBY>> GetFilteredLecbyAsync(string? description)
     {

@@ -18,16 +18,14 @@ namespace Sem_Veterina.CRUD
         // CREATE
         public async Task AddZvireAsync(ZVIRATA zvire)
         {
-            var sql = "INSERT INTO ZVIRATA (ID_ZVÍŘE, JMÉNO, DRUH, VĚK, ZDRAVOTNÍ_STAV, VÁHA, ID_MAJITEL) " +
-                      "VALUES (:Id, :Jmeno, :Druh, :Vek, :ZdravotniStav, :Vaha, :IdMajitel)";
+            var sql = "BEGIN CREATE_ZVIRE(:JMENO, :DRUH, :VEK, :ZDRAVOTNI_STAV, :ID_MAJITEL, :VAHA); END;";
             await _context.Database.ExecuteSqlRawAsync(sql,
-                new OracleParameter("Id", zvire.ID_ZVÍŘE),
-                new OracleParameter("Jmeno", zvire.JMÉNO),
-                new OracleParameter("Druh", zvire.DRUH),
-                new OracleParameter("Vek", zvire.VĚK),
-                new OracleParameter("ZdravotniStav", zvire.ZDRAVOTNÍ_STAV),
-                new OracleParameter("Vaha", zvire.VÁHA),
-                new OracleParameter("IdMajitel", zvire.ID_MAJITEL));
+                new OracleParameter("JMENO", zvire.JMÉNO),
+                new OracleParameter("DRUH", zvire.DRUH),
+                new OracleParameter("VEK", zvire.VĚK),
+                new OracleParameter("ZDRAVOTNI_STAV", zvire.ZDRAVOTNÍ_STAV),
+                new OracleParameter("ID_MAJITEL", zvire.ID_MAJITEL),
+                new OracleParameter("VAHA", zvire.VÁHA));
         }
 
         // READ - GET ALL
@@ -48,24 +46,28 @@ namespace Sem_Veterina.CRUD
         // UPDATE
         public async Task UpdateZvireAsync(ZVIRATA zvire)
         {
-            var sql = "UPDATE ZVIRATA SET JMÉNO = :Jmeno, DRUH = :Druh, VĚK = :Vek, ZDRAVOTNÍ_STAV = :ZdravotniStav, " +
-                      "VÁHA = :Vaha, ID_MAJITEL = :IdMajitel WHERE ID_ZVÍŘE = :Id";
-            await _context.Database.ExecuteSqlRawAsync(sql,
-                new OracleParameter("Jmeno", zvire.JMÉNO),
-                new OracleParameter("Druh", zvire.DRUH),
-                new OracleParameter("Vek", zvire.VĚK),
-                new OracleParameter("ZdravotniStav", zvire.ZDRAVOTNÍ_STAV),
-                new OracleParameter("Vaha", zvire.VÁHA),
-                new OracleParameter("IdMajitel", zvire.ID_MAJITEL),
-                new OracleParameter("Id", zvire.ID_ZVÍŘE));
+            
+                var sql = "BEGIN EDIT_ZVIRE(:ID_ZVIRE, :JMENO, :DRUH, :VEK, :ZDRAVOTNI_STAV, :ID_MAJITEL, :VAHA); END;";
+                await _context.Database.ExecuteSqlRawAsync(sql,
+                    new OracleParameter("ID_ZVIRE", zvire.ID_ZVÍŘE),
+                    new OracleParameter("JMENO", zvire.JMÉNO),
+                    new OracleParameter("DRUH", zvire.DRUH),
+                    new OracleParameter("VEK", zvire.VĚK),
+                    new OracleParameter("ZDRAVOTNI_STAV", zvire.ZDRAVOTNÍ_STAV),
+                    new OracleParameter("ID_MAJITEL", zvire.ID_MAJITEL),
+                    new OracleParameter("VAHA", zvire.VÁHA));
+            
+
         }
 
         // DELETE
         public async Task DeleteZvireAsync(int id)
         {
-            var sql = "DELETE FROM ZVIRATA WHERE ID_ZVÍŘE = :Id";
-            await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
+            var sql = "BEGIN DELETE_ZVIRE(:ID_ZVIRE); END;";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("ID_ZVIRE", id));
         }
+
 
         public async Task<List<ZVIRATA>> GetFilteredZvirataAsync(string? name, string? species)
         {

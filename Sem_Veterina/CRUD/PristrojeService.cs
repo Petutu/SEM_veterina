@@ -18,14 +18,13 @@ namespace Sem_Veterina.CRUD
         // CREATE
         public async Task AddPristrojAsync(PRISTROJE pristroj)
         {
-            var sql = "INSERT INTO PRISTROJE (ID_PŘÍSTROJ, NÁZEV, FUNKCE, ID_KLINIKA) " +
-                      "VALUES (:Id, :Nazev, :Funkce, :IdKlinika)";
+            var sql = "BEGIN PROC_CREATE_PRISTROJ(:Nazev, :Funkce, :IdKlinika); END;";
             await _context.Database.ExecuteSqlRawAsync(sql,
-                new OracleParameter("Id", pristroj.ID_PŘÍSTROJ),
                 new OracleParameter("Nazev", pristroj.NÁZEV),
                 new OracleParameter("Funkce", pristroj.FUNKCE),
                 new OracleParameter("IdKlinika", pristroj.ID_KLINIKA));
         }
+
 
         // READ - GET ALL
         public async Task<List<PRISTROJE>> GetAllPristrojeAsync()
@@ -45,21 +44,22 @@ namespace Sem_Veterina.CRUD
         // UPDATE
         public async Task UpdatePristrojAsync(PRISTROJE pristroj)
         {
-            var sql = "UPDATE PRISTROJE SET NÁZEV = :Nazev, FUNKCE = :Funkce, ID_KLINIKA = :IdKlinika " +
-                      "WHERE ID_PŘÍSTROJ = :Id";
+            var sql = "BEGIN PROC_EDIT_PRISTROJ(:IdPristroj, :Nazev, :Funkce, :IdKlinika); END;";
             await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("IdPristroj", pristroj.ID_PŘÍSTROJ),
                 new OracleParameter("Nazev", pristroj.NÁZEV),
                 new OracleParameter("Funkce", pristroj.FUNKCE),
-                new OracleParameter("IdKlinika", pristroj.ID_KLINIKA),
-                new OracleParameter("Id", pristroj.ID_PŘÍSTROJ));
+                new OracleParameter("IdKlinika", pristroj.ID_KLINIKA));
         }
 
         // DELETE
-        public async Task DeletePristrojAsync(int id)
+        public async Task DeletePristrojAsync(int idPristroj)
         {
-            var sql = "DELETE FROM PRISTROJE WHERE ID_PŘÍSTROJ = :Id";
-            await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
+            var sql = "BEGIN PROC_DELETE_PRISTROJ(:IdPristroj); END;";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("IdPristroj", idPristroj));
         }
+
 
         public async Task<List<PRISTROJE>> GetFilteredPristrojeAsync(string? name, string? function, int? klinikaId)
         {

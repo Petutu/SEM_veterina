@@ -18,16 +18,16 @@ public class LekyService
     // CREATE
     public async Task AddLekAsync(LEKY lek)
     {
-        var sql = "INSERT INTO LEKY (ID_LÉK, NÁZEV, DÁVKOVÁNÍ, POKYNY, ÚČINKY, ID_LÉČBA) " +
-                  "VALUES (:Id, :Nazev, :Davkovani, :Pokyny, :Ucinky, :IdLecba)";
+        var sql = "BEGIN PROC_CREATE_LEK(:Nazev, :Davkovani, :Pokyny, :Ucinky, :IdLecba, :IdDiagnoza); END;";
         await _context.Database.ExecuteSqlRawAsync(sql,
-            new OracleParameter("Id", lek.ID_LÉK),
             new OracleParameter("Nazev", lek.NÁZEV),
             new OracleParameter("Davkovani", lek.DÁVKOVÁNÍ),
             new OracleParameter("Pokyny", lek.POKYNY),
             new OracleParameter("Ucinky", lek.ÚČINKY ?? (object)DBNull.Value),
-            new OracleParameter("IdLecba", lek.ID_LÉČBA));
+            new OracleParameter("IdLecba", lek.ID_LÉČBA),
+            new OracleParameter("IdDiagnoza", lek.ID_DIAGNÓZA));
     }
+
 
     // READ - GET ALL
     public async Task<List<LEKY>> GetAllLekyAsync()

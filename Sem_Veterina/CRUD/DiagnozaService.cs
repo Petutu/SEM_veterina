@@ -18,14 +18,14 @@ public class DiagnozaService
     // CREATE
     public async Task AddDiagnozaAsync(DIAGNOZY diagnoza)
     {
-        var sql = "INSERT INTO DIAGNOZY (ID_DIAGNÓZA, NÁZEV, POPIS, ID_ZVÍŘE, Id_PRESONÁL) " +
-                  "VALUES (:Id, :Nazev, :Popis, :IdZvire, :IdPersonal)";
+        var sql = "BEGIN PROC_CREATE_DIAGNOZA(:Nazev, :Popis, :IdZvire, :IdMajitel, :IdPersonal, :IdKlinika); END;";
         await _context.Database.ExecuteSqlRawAsync(sql,
-            new OracleParameter("Id", diagnoza.ID_DIAGNÓZA),
             new OracleParameter("Nazev", diagnoza.NÁZEV),
             new OracleParameter("Popis", diagnoza.POPIS),
             new OracleParameter("IdZvire", diagnoza.ID_ZVÍŘE),
-            new OracleParameter("IdPersonal", diagnoza.ID_PERSONÁL));
+            new OracleParameter("IdMajitel", diagnoza.ID_MAJITEL),
+            new OracleParameter("IdPersonal", diagnoza.ID_PERSONÁL),
+            new OracleParameter("IdKlinika", diagnoza.ID_KLINIKA));
     }
 
     // READ - GET ALL

@@ -18,14 +18,13 @@ namespace Sem_Veterina.CRUD
         // CREATE
         public async Task AddUzivatelAsync(UZIVATEL uzivatel)
         {
-            var sql = "INSERT INTO UZIVATEL (ID_UZIVATEL, USERNAME, HESLO, ID_ROLE) " +
-                      "VALUES (null, :Username, :Heslo, :Role)";
+            var sql = "BEGIN PROC_CREATE_UZIVATEL(:Username, :Heslo, :Role); END;";
             await _context.Database.ExecuteSqlRawAsync(sql,
-                // new OracleParameter("Id", uzivatel.ID_UZIVATEL),
                 new OracleParameter("Username", uzivatel.USERNAME),
                 new OracleParameter("Heslo", uzivatel.HESLO),
                 new OracleParameter("Role", uzivatel.ID_ROLE));
         }
+
 
         // READ - GET ALL
         public async Task<List<UZIVATEL>> GetAllUzivateleAsync()
@@ -50,21 +49,23 @@ namespace Sem_Veterina.CRUD
 
         public async Task UpdateUzivatelAsync(UZIVATEL uzivatel)
         {
-            var sql = "UPDATE UZIVATEL SET USERNAME = :Username, HESLO = :Heslo, ID_ROLE = :IdRole " +
-                      "WHERE ID_UZIVATEL = :Id";
+            var sql = "BEGIN PROC_EDIT_UZIVATEL(:IdUzivatel, :Username, :Heslo, :Role); END;";
             await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("IdUzivatel", uzivatel.ID_UZIVATEL),
                 new OracleParameter("Username", uzivatel.USERNAME),
                 new OracleParameter("Heslo", uzivatel.HESLO),
-                new OracleParameter("IdRole", uzivatel.ID_ROLE),
-                new OracleParameter("Id", uzivatel.ID_UZIVATEL));
+                new OracleParameter("Role", uzivatel.ID_ROLE));
         }
 
+
         // DELETE
-        public async Task DeleteUzivatelAsync(int id)
+        public async Task DeleteUzivatelAsync(int idUzivatel)
         {
-            var sql = "DELETE FROM UZIVATEL WHERE ID_UZIVATEL = :Id";
-            await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
+            var sql = "BEGIN PROC_DELETE_UZIVATEL(:IdUzivatel); END;";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("IdUzivatel", idUzivatel));
         }
+
 
         public async Task<List<UZIVATEL>> GetFilteredUzivateleAsync(string? username, string? roleName)
         {

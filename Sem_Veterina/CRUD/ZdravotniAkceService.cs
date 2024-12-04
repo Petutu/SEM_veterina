@@ -18,17 +18,18 @@ namespace Sem_Veterina.CRUD
         // CREATE
         public async Task AddZdravotniAkceAsync(ZDRAVOTNIAKCE akce)
         {
-            var sql = "INSERT INTO ZDRAVOTNI_AKCI (ID_AKCE, DATUM, POPIS_AKCE, VÝSLEDEK, ID_PRESONÁL, ID_PŘÍSTROJ, ID_ZVÍŘE) " +
-                      "VALUES (:Id, :Datum, :PopisAkce, :Vysledek, :IdPersonal, :IdPristroj, :IdZvire)";
+            var sql = "BEGIN PROC_CREATE_ZDRAVOTNI_AKCI(:Datum, :IdPersonal, :IdKlinika, :PopisAkce, :IdPristroj, :IdZvire, :IdMajitel, :Vysledek); END;";
             await _context.Database.ExecuteSqlRawAsync(sql,
-                new OracleParameter("Id", akce.ID_AKCE),
                 new OracleParameter("Datum", akce.DATUM),
-                new OracleParameter("PopisAkce", akce.POPIS_AKCE),
-                new OracleParameter("Vysledek", akce.VÝSLEDEK),
                 new OracleParameter("IdPersonal", akce.ID_PRESONÁL),
+                new OracleParameter("IdKlinika", akce.ID_KLINIKA),
+                new OracleParameter("PopisAkce", akce.POPIS_AKCE),
                 new OracleParameter("IdPristroj", akce.ID_PŘÍSTROJ),
-                new OracleParameter("IdZvire", akce.ID_ZVÍŘE));
+                new OracleParameter("IdZvire", akce.ID_ZVÍŘE),
+                new OracleParameter("IdMajitel", akce.ID_MAJITEL),
+                new OracleParameter("Vysledek", akce.VÝSLEDEK));
         }
+
 
         // READ - GET ALL
         public async Task<List<ZDRAVOTNIAKCE>> GetAllZdravotniAkceAsync()
@@ -48,23 +49,30 @@ namespace Sem_Veterina.CRUD
         // UPDATE
         public async Task UpdateZdravotniAkceAsync(ZDRAVOTNIAKCE akce)
         {
-            var sql = "UPDATE ZDRAVOTNI_AKCI SET DATUM = :Datum, POPIS_AKCE = :PopisAkce, VÝSLEDEK = :Vysledek, " +
-                      "ID_PRESONÁL = :IdPersonal, ID_PŘÍSTROJ = :IdPristroj, ID_ZVÍŘE = :IdZvire WHERE ID_AKCE = :Id";
-            await _context.Database.ExecuteSqlRawAsync(sql,
-                new OracleParameter("Datum", akce.DATUM),
-                new OracleParameter("PopisAkce", akce.POPIS_AKCE),
-                new OracleParameter("Vysledek", akce.VÝSLEDEK),
-                new OracleParameter("IdPersonal", akce.ID_PRESONÁL),
-                new OracleParameter("IdPristroj", akce.ID_PŘÍSTROJ),
-                new OracleParameter("IdZvire", akce.ID_ZVÍŘE),
-                new OracleParameter("Id", akce.ID_AKCE));
+            
+            
+                var sql = "BEGIN PROC_EDIT_ZDRAVOTNI_AKCI(:IdAkce, :Datum, :IdPersonal, :IdKlinika, :PopisAkce, :IdPristroj, :IdZvire, :IdMajitel, :Vysledek); END;";
+                await _context.Database.ExecuteSqlRawAsync(sql,
+                    new OracleParameter("IdAkce", akce.ID_AKCE),
+                    new OracleParameter("Datum", akce.DATUM),
+                    new OracleParameter("IdPersonal", akce.ID_PRESONÁL),
+                    new OracleParameter("IdKlinika", akce.ID_KLINIKA),
+                    new OracleParameter("PopisAkce", akce.POPIS_AKCE),
+                    new OracleParameter("IdPristroj", akce.ID_PŘÍSTROJ),
+                    new OracleParameter("IdZvire", akce.ID_ZVÍŘE),
+                    new OracleParameter("IdMajitel", akce.ID_MAJITEL),
+                    new OracleParameter("Vysledek", akce.VÝSLEDEK));
+            
+
         }
 
         // DELETE
-        public async Task DeleteZdravotniAkceAsync(int id)
+        public async Task DeleteZdravotniAkceAsync(int idAkce)
         {
-            var sql = "DELETE FROM ZDRAVOTNI_AKCI WHERE ID_AKCE = :Id";
-            await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("Id", id));
+            var sql = "BEGIN PROC_DELETE_ZDRAVOTNI_AKCI(:IdAkce); END;";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("IdAkce", idAkce));
         }
+
     }
 }

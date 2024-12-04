@@ -21,8 +21,9 @@
 
         public int? ID_UZIVATEL { get; set; }
         public UZIVATEL? UZIVATEL { get; set; }
+        public int? ID_NADRIZENY { get; internal set; }
 
         // public int? ID_NADRIZENY { get; set; }
-        // public PERSONAL? NADRIZENY { get; set; }
+         public PERSONAL? NADRIZENY { get; set; }
     }
 }

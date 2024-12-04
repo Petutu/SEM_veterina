@@ -1,4 +1,6 @@
-﻿namespace Sem_Veterina.Entity
+﻿using Oracle.ManagedDataAccess.Client;
+
+namespace Sem_Veterina.Entity
 {
     public class ZDRAVOTNIAKCE
     {
@@ -16,5 +18,9 @@
 
         public int ID_ZVÍŘE { get; set; }
         public ZVIRATA ZVÍŘE { get; set; }
+        public int ID_KLINIKA { get; set; }
+        public KLINIKY KLINIKA { get; set; }
+        public int ID_MAJITEL { get; set; }
+        public MAJITELE MAJITEL { get; set; }
     }
 }

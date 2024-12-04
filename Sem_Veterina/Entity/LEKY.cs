@@ -11,5 +11,8 @@
         // Cizi klic
         public int ID_LÉČBA { get; set; }
         public LECBY LÉČBA { get; set; }
+
+        public int ID_DIAGNÓZA { get; set; }
+        public DIAGNOZY DIAGNÓZA { get; set; }
     }
 }

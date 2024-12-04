@@ -19,12 +19,11 @@ namespace Sem_Veterina.CRUD
         // CREATE
         public async Task AddRoleAsync(ROLE role)
         {
-            var sql = "INSERT INTO ROLE (ID_ROLE, NAZEV_ROLE) " +
-                      "VALUES (:IdRole, :NazevRole)";
+            var sql = "BEGIN PROC_CREATE_ROLE(:NazevRole); END;";
             await _context.Database.ExecuteSqlRawAsync(sql,
-                new OracleParameter("IdRole", role.ID_ROLE),
                 new OracleParameter("NazevRole", role.NAZEV_ROLE));
         }
+
 
         // READ - GET ALL
         public async Task<List<ROLE>> GetAllRoleAsync()
@@ -44,17 +43,19 @@ namespace Sem_Veterina.CRUD
         // UPDATE
         public async Task UpdateRoleAsync(ROLE role)
         {
-            var sql = "UPDATE ROLE SET NAZEV_ROLE = :NazevRole WHERE ID_ROLE = :IdRole";
+            var sql = "BEGIN PROC_EDIT_ROLE(:IdRole, :NazevRole); END;";
             await _context.Database.ExecuteSqlRawAsync(sql,
-                new OracleParameter("NazevRole", role.NAZEV_ROLE),
-                new OracleParameter("IdRole", role.ID_ROLE));
+                new OracleParameter("IdRole", role.ID_ROLE),
+                new OracleParameter("NazevRole", role.NAZEV_ROLE));
         }
 
+
         // DELETE
-        public async Task DeleteRoleAsync(int id)
+        public async Task DeleteRoleAsync(int idRole)
         {
-            var sql = "DELETE FROM ROLE WHERE ID_ROLE = :IdRole";
-            await _context.Database.ExecuteSqlRawAsync(sql, new OracleParameter("IdRole", id));
+            var sql = "BEGIN PROC_DELETE_ROLE(:IdRole); END;";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("IdRole", idRole));
         }
 
 
