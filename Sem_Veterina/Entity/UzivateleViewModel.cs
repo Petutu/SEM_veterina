@@ -5,6 +5,7 @@ namespace Sem_Veterina.Entity
     {
         public List<UZIVATEL> Uzivatele { get; set; } = new List<UZIVATEL>();
         public UZIVATEL SelectedUzivatel { get; set; }
+
         public List<ROLE> Role { get; set; } = new List<ROLE>(); // Možný seznam rolí pro výběr
     }
 }

@@ -11,20 +11,20 @@
         <form class="filter" asp-controller="Admin" asp-action="Personal" method="get">
             <div class="filter-item">
                 <label for="name">Jméno</label>
-                <input class="filter-input filter-input-address" type="text" name="name" placeholder="Martin" />
+                <input class="filter-input" type="text" name="name" placeholder="Martin" />
             </div>
+            @* filter-input-number *@
             <div class="filter-item">
                 <label for="surname">Příjmení</label>
-                <input class="filter-input filter-input-number" type="text" name="surname" placeholder="Liješek" />
+                <input class="filter-input" type="text" name="surname" placeholder="Liješek" />
             </div>
             <div class="filter-item">
                 <label for="specialization">Specializace</label>
-                <input class="filter-input filter-input-number" type="text" name="specialization"
-                    placeholder="Assistant" />
+                <input class="filter-input" type="text" name="specialization" placeholder="Assistant" />
             </div>
             <div class="filter-item">
                 <label for="klinikaId">Id Kliniky</label>
-                <input class="filter-input filter-input-number" type="text" name="klinikaId" placeholder="4536" />
+                <input class="filter-input" type="text" name="klinikaId" placeholder="4536" />
             </div>
             <div class="filter-buttons">
                 <button class="btn-filter" type="submit"><img src="~/imgs/search.svg" alt="Vyhledavání"></button>

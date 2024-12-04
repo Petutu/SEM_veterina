@@ -11,15 +11,15 @@
         <form class="filter" asp-controller="Admin" asp-action="Pristroje" method="get">
             <div class="filter-item">
                 <label for="name">Název</label>
-                <input class="filter-input filter-input-address" type="text" name="name" placeholder="Ultrazvuk" />
+                <input class="filter-input" type="text" name="name" placeholder="Ultrazvuk" />
             </div>
             <div class="filter-item">
-                <label for="function">Tel. číslo</label>
-                <input class="filter-input filter-input-number" type="text" name="function"
+                <label for="function">Funkce</label>
+                <input class="filter-input" type="text" name="function"
                     placeholder="Diagnostika a vyhodnocování orgánů" />
             </div>
             @* <div class="filter-item">
-                <label for="klidika">Tel. číslo</label>
+                <label for="klidika">Adresa kliniky</label>
                 <input class="filter-input filter-input-number" type="text" name="function"
                     placeholder="Diagnostika a vyhodnocování orgánů" />
             </div> *@
@@ -37,7 +37,7 @@
                     <tr>
                         <th class="table-list-column-name">Název</th>
                         <th class="table-list-column-name">Funkce</th>
-                        <th class="table-list-column-name">Klinika</th>
+                        @* <th class="table-list-column-name">Klinika</th> *@
                     </tr>
                 </thead>
                 <tbody class="table-list-body">
@@ -46,7 +46,7 @@
                         <tr class="table-list-body-row">
                             <td class="table-list-body-column">@pristroj.NÁZEV</td>
                             <td class="table-list-body-column">@pristroj.FUNKCE</td>
-                            <td class="table-list-body-column">@pristroj.KLINIKA.NÁZEV</td>
+                            @* <td class="table-list-body-column">@pristroj.KLINIKA.NÁZEV</td> *@
                         </tr>
                     }
                 </tbody>

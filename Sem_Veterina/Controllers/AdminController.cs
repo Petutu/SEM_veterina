@@ -80,7 +80,7 @@ namespace Sem_Veterina.Controllers
             //return View("~/Views/Admin/Zvirata.cshtml", viewModel);
             return View("Zvirata", viewModel);  // Vrátí seznam zvířat do pohledu Zvirata.cshtml
         }
-
+        // Akce pro stránku "Diagnózy"
         public async Task<IActionResult> Diagnozy(string? name, string? description)
         {
             var viewModel = new DiagnozyViewModel();
@@ -88,7 +88,7 @@ namespace Sem_Veterina.Controllers
             viewModel.SelectedDiagnoza = viewModel.Diagnozy.FirstOrDefault();
             return View("Diagnozy", viewModel);  // Vrátí seznam diagnóz do pohledu Diagnozy.cshtml
         }
-
+        // Akce pro stránku "Léčby"
         public async Task<IActionResult> Lecby(string? description)
         {
             var viewModel = new LecbyViewModel();
@@ -96,7 +96,7 @@ namespace Sem_Veterina.Controllers
             viewModel.SelectedLecba = viewModel.Lecby.FirstOrDefault();
             return View("Lecby", viewModel);  // Vrátí seznam léčeb do pohledu Lecby.cshtml
         }
-
+        // Akce pro stránku "Léky"
         public async Task<IActionResult> Leky(string? name, string? instructions)
         {
             var viewModel = new LekyViewModel();
@@ -113,7 +113,7 @@ namespace Sem_Veterina.Controllers
             return View("Personal", viewModel);  // Vrátí seznam personálu do pohledu Personal.cshtml
         }
 
-        // Akce pro stránku "Personál"
+        // Akce pro stránku "Přístroje"
         public async Task<IActionResult> Pristroje(string? name, string? function, int? klinikaId)
         {
             var viewModel = new PristrojeViewModel();
@@ -121,7 +121,7 @@ namespace Sem_Veterina.Controllers
             viewModel.SelectedPristroj = viewModel.Pristroje.FirstOrDefault();
             return View("Pristroje", viewModel);  // Vrátí seznam přístrojů do pohledu Pristroje.cshtml
         }
-
+        // Akce pro stránku "Uživatelé"
         public async Task<IActionResult> Uzivatele(string? username, string? roleName)
         {
             var viewModel = new UzivateleViewModel();
@@ -129,7 +129,7 @@ namespace Sem_Veterina.Controllers
             viewModel.SelectedUzivatel = viewModel.Uzivatele.FirstOrDefault();
             return View("Uzivatele", viewModel);  // Vrátí seznam uživatelů do pohledu Uzivatele.cshtml
         }
-
+        // Akce pro stránku "Logování"
         public async Task<IActionResult> Logovani(string? tableName, string? operation)
         {
             var viewModel = new LogovaniViewModel();
@@ -137,8 +137,8 @@ namespace Sem_Veterina.Controllers
             viewModel.SelectedLog = viewModel.Logovani.FirstOrDefault();
             return View("Logovani", viewModel);  // Vrátí seznam logů do pohledu Logovani.cshtml
         }
-
-
+        // Akce pro stránku "Historie"
+        // Akce pro stránku "Systémný katalog"
 
     }
 }

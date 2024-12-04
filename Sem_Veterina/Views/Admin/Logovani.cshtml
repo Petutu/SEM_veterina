@@ -1,8 +1,8 @@
 @using Sem_Veterina.Controllers
 @using Sem_Veterina.Entity
-@model LekyViewModel
+@model LogovaniViewModel
 @{
-    ViewData["Title"] = "Správa lék";
+    ViewData["Title"] = "Správa logování";
     Layout = "_AdminLayout";
 }
 
@@ -10,14 +10,18 @@
     <div class="filter-section">
         <form class="filter" asp-action="Uzivatele" method="get">
             <div class="filter-item">
-                <label for="name">Název</label>
+                <label for="tableName">Tabulka</label>
                 @* filter-input-address *@
-                <input class="filter-input" type="text" name="name" placeholder="AnnaSvobodova" />
+                <input class="filter-input" type="text" name="tableName" placeholder="Kliniky" />
             </div>
             <div class="filter-item">
-                <label for="instructions">Pokyn</label>
-                <input class="filter-input" type="text" name="instructions" placeholder="Uživatel" />
+                <label for="operation">Operace</label>
+                <input class="filter-input" type="text" name="operation" placeholder="Insert" />
             </div>
+            @* <div class="filter-item">
+                <label for="date">Datum</label>
+                <input class="filter-input" type="text" name="date" placeholder="Insert" />
+            </div> *@
             <div class="filter-buttons">
                 <button class="btn-filter" type="submit">
                     <img src="~/imgs/search.svg" alt="Vyhledavání">
@@ -34,21 +38,21 @@
                 <thead class="table-list-header">
                     <tr>
                         <th class="table-list-column-name">Název</th>
-                        <th class="table-list-column-name">Dávkování</th>
-                        <th class="table-list-column-name">Pokuny</th>
-                        <th class="table-list-column-name">Účinky</th>
-                        <th class="table-list-column-name">Léčba</th>
+                        <th class="table-list-column-name">Operace</th>
+                        @* <th class="table-list-column-name">Sloupec</th> *@
+                        <th class="table-list-column-name">Čas provedení</th>
+                        <th class="table-list-column-name">Popis změny</th>
                     </tr>
                 </thead>
                 <tbody class="table-list-body">
-                    @foreach (var lek in Model.Leky)
+                    @foreach (var login in Model.Logovani)
                     {
                         <tr class="table-list-body-row">
-                            <td class="table-list-body-column">@lek.NÁZEV</td>
-                            <td class="table-list-body-column">@lek.DÁVKOVÁNÍ</td>
-                            <td class="table-list-body-column">@lek.POKYNY</td>
-                            <td class="table-list-body-column">@lek.ÚČINKY</td>
-                            @* <td class="table-list-body-column">@Jméno</td> *@
+                            <td class="table-list-body-column">@login.NAZEV_TABULKY</td>
+                            <td class="table-list-body-column">@login.OPERACE</td>
+                            @* <td class="table-list-body-column">@login.ID_ZAZNAMU</td> *@
+                            <td class="table-list-body-column">@login.CAS_PROVEDENI</td>
+                            <td class="table-list-body-column">@login.POPIS_ZMENY</td>
                         </tr>
                     }
                 </tbody>
@@ -57,29 +61,24 @@
         <div class="right-panel" id="detailPanel">
             <form id="create-form" class="right-panel-form">
                 <div class="right-panel-form-item filter-item">
-                    <label for="name">Název</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="name"
-                        placeholder="AnnaSvobodova" required />
+                    <label for="tableName">Název tabulky</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="tableName"
+                        placeholder="Kliniky" required />
                 </div>
                 <div class="right-panel-form-item filter-item">
-                    <label for="dosage">Dávkování</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="dosage" placeholder=""
+                    <label for="operation">Operace</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="operation" placeholder="Insert"
                         required />
                 </div>
                 <div class="right-panel-form-item filter-item">
-                    <label for="instructions">Pokyn</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="instructions" placeholder=""
-                        required />
-                </div>
-                <div class="right-panel-form-item filter-item">
-                    <label for="effects">Účinky</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="effects"
-                        placeholder="Běžný uživatel" />
+                    <label for="date">Čas provedení</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="date"
+                        placeholder="22.2.2002" />
                 </div>
 
                 <div class="right-panel-form-item filter-item">
-                    <label for="therapy">Léčba</label>
-                    <input class="right-panel-form-input filter-input" type="email" name="therapy" placeholder="Anna" />
+                    <label for="descrip">Popis změny</label>
+                    <input class="right-panel-form-input filter-input" type="email" name="descrip" />
                 </div>
             </form>
         </div>
