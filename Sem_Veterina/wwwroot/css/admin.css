@@ -273,6 +273,10 @@ button:focus, button:hover {
     font-size: 22px;
 }
 
+.table-list-body-row:hover {
+    background-color: var(--focus-and-hover-color);
+}
+
 .table-list-body-column {
     height: 34px;
     padding-left: 6px;

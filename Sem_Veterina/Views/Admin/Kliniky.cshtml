@@ -39,7 +39,7 @@
                 <tbody class="table-list-body">
                     @foreach (var klinika in Model.Kliniky)
                     {
-                        <tr class="table-list-body-row">
+                        <tr class="table-list-body-row" data-id="@klinika.ID_KLINIKA" onclick="selectRow(this)">
                             <td class="table-list-body-column">@klinika.NÁZEV</td>
                             <td class="table-list-body-column">@klinika.ADRESA</td>
                             <td class="table-list-body-column">@klinika.TELEFONNÍ_ČÍSLO</td>
@@ -53,22 +53,33 @@
             <form class="right-panel-form" method="post" action="/Kliniky/Edit">
                 <div class="right-panel-form-item filter-item">
                     <label for="name">Název</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="name" placeholder="VetCare" />
+                    <input class="right-panel-form-input filter-input" type="text" name="name" id="detail-name"
+                        placeholder="VetCare" />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="address">Adresa</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="address"
+                    <input class="right-panel-form-input filter-input" type="text" name="address" id="detail-address"
                         placeholder="Studentska 345, Pardubice 53003" />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="phone">Telefonní číslo</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="phone"
+                    <input class="right-panel-form-input filter-input" type="text" name="phone" id="detail-phone"
                         placeholder="777 777 777" />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="email">Email</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="email"
+                    <input class="right-panel-form-input filter-input" type="text" name="email" id="detail-email"
                         placeholder="vetcare@gmail.com" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="">Počet personálů</label>
+                    @* <input class="right-panel-form-input filter-input" type="text" name=""
+                        placeholder="vetcare@gmail.com" /> *@
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="">Počet majitelů</label>
+                    @* <input class="right-panel-form-input filter-input" type="text" name=""
+                        placeholder="vetcare@gmail.com" /> *@
                 </div>
             </form>
         </div>
@@ -82,4 +93,4 @@
     </footer>
 </div>
 <script type="module" src="~/js/filterUtils.js"></script>
-@* todo : pridat oveření vstupu z inputu *@
+<script type="module" src="~/js/klinikaDetails.js"></script>

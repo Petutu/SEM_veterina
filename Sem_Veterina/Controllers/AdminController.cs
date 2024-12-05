@@ -61,6 +61,7 @@ namespace Sem_Veterina.Controllers
             viewModel.SelectedKlinika = viewModel.Kliniky.FirstOrDefault();
             return View("Kliniky", viewModel);  // Vrátí seznam klinik do pohledu Kliniky.cshtml
         }
+
         // Akce pro stránku "Majitele"
         public async Task<IActionResult> Majitele(string? name, string? lastname, string? phone)
         {
@@ -129,7 +130,7 @@ namespace Sem_Veterina.Controllers
             viewModel.SelectedUzivatel = viewModel.Uzivatele.FirstOrDefault();
             return View("Uzivatele", viewModel);  // Vrátí seznam uživatelů do pohledu Uzivatele.cshtml
         }
-        // Akce pro stránku "Logování"
+        // Akce pro stránku "Historie"
         public async Task<IActionResult> Logovani(string? tableName, string? operation)
         {
             var viewModel = new LogovaniViewModel();
@@ -137,7 +138,6 @@ namespace Sem_Veterina.Controllers
             viewModel.SelectedLog = viewModel.Logovani.FirstOrDefault();
             return View("Logovani", viewModel);  // Vrátí seznam logů do pohledu Logovani.cshtml
         }
-        // Akce pro stránku "Historie"
         // Akce pro stránku "Systémný katalog"
 
     }
