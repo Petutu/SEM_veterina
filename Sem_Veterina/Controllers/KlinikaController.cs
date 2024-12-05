@@ -4,7 +4,7 @@ namespace Sem_Veterina.Controllers
 {
     using global::Sem_Veterina.CRUD;
     using Microsoft.AspNetCore.Mvc;
-  
+
     using System.Threading.Tasks;
 
     [Route("api/[controller]")]
@@ -17,8 +17,6 @@ namespace Sem_Veterina.Controllers
         {
             _klinikaService = klinikaService;
         }
-
-
 
         // READ - GET ALL
         [HttpGet]

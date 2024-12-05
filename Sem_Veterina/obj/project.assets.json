@@ -2874,27 +2874,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\satte\\.nuget\\packages\\": {}
+    "/Users/anastasiaanosova/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Sem_Veterina.csproj",
+      "projectUniqueName": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Sem_Veterina.csproj",
       "projectName": "Sem_Veterina",
-      "projectPath": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\Sem_Veterina.csproj",
-      "packagesPath": "C:\\Users\\satte\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\satte\\Documents\\GitHub\\SEM_veterina\\Sem_Veterina\\obj\\",
+      "projectPath": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Sem_Veterina.csproj",
+      "packagesPath": "/Users/anastasiaanosova/.nuget/packages/",
+      "outputPath": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\satte\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/anastasiaanosova/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2960,7 +2957,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -2969,7 +2966,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Balíček Oracle.ManagedDataAccess 23.6.0 se místo cílové architektury projektu net8.0 obnovil pomocí .NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1. Balíček nemusí být plně kompatibilní s vaším projektem.",
+      "message": "Package 'Oracle.ManagedDataAccess 23.6.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
       "libraryId": "Oracle.ManagedDataAccess",
       "targetGraphs": [
         "net8.0"

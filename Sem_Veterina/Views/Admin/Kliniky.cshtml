@@ -39,7 +39,7 @@
                 <tbody class="table-list-body">
                     @foreach (var klinika in Model.Kliniky)
                     {
-                        <tr class="table-list-body-row" data-id="@klinika.ID_KLINIKA" onclick="selectRow(this)">
+                        <tr class="table-list-body-row" data-id="@klinika.ID_KLINIKA">
                             <td class="table-list-body-column">@klinika.NÁZEV</td>
                             <td class="table-list-body-column">@klinika.ADRESA</td>
                             <td class="table-list-body-column">@klinika.TELEFONNÍ_ČÍSLO</td>
@@ -93,4 +93,4 @@
     </footer>
 </div>
 <script type="module" src="~/js/filterUtils.js"></script>
-<script type="module" src="~/js/klinikaDetails.js"></script>
+<script type="module" src="~/js/klinika.js"></script>
