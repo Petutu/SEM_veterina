@@ -275,6 +275,7 @@ button:focus, button:hover {
 
 .table-list-body-row:hover {
     background-color: var(--focus-and-hover-color);
+    cursor: pointer;
 }
 
 .table-list-body-column {

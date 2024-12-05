@@ -86,11 +86,120 @@
     </div>
     <footer class="footer-klinika">
         <ul class="crud-list">
-            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Vytvořit</button></li>
-            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Editovat</button></li>
-            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Odstranit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter create-button">Vytvořit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter edit-button">Editovat</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter delete-button">Odstranit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter save-button"
+                    style="display: none;">Uložit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter cancel-button"
+                    style="display: none;">Storno</button></li>
         </ul>
     </footer>
 </div>
 <script type="module" src="~/js/filterUtils.js"></script>
 <script type="module" src="~/js/klinika.js"></script>
+<script>
+    document.querySelector('.edit-button').addEventListener('click', () => {
+        // Aktivace polí pro úpravu
+        document.getElementById('detail-name').disabled = false;
+        document.getElementById('detail-address').disabled = false;
+        document.getElementById('detail-phone').disabled = false;
+        document.getElementById('detail-email').disabled = false;
+
+        // Zobrazení tlačítek "Uložit" a "Storno"
+        toggleSaveCancelButtons(true);
+    });
+
+    document.querySelector('.delete-button').addEventListener('click', async () => {
+        const selectedId = document.querySelector('.table-list-body-row.selected')?.dataset.id;
+
+        if (!selectedId) {
+            alert('Vyberte řádek, který chcete odstranit.');
+            return;
+        }
+
+        if (confirm('Opravdu chcete tento záznam odstranit?')) {
+            try {
+                const response = await fetch(`http://localhost:5240/api/Klinika/${selectedId}`, { method: 'DELETE' });
+                if (response.ok) {
+                    // Odstranění řádku z DOM
+                    document.querySelector(`.table-list-body-row[data-id="${selectedId}"]`).remove();
+                    alert('Záznam byl úspěšně odstraněn.');
+                } else {
+                    console.error('Chyba při mazání záznamu:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Chyba při volání API pro smazání:', error);
+            }
+        }
+    });
+
+    document.querySelector('.create-button').addEventListener('click', () => {
+        // Vyčištění polí
+        document.getElementById('detail-name').value = '';
+        document.getElementById('detail-address').value = '';
+        document.getElementById('detail-phone').value = '';
+        document.getElementById('detail-email').value = '';
+
+        // Aktivace polí
+        document.getElementById('detail-name').disabled = false;
+        document.getElementById('detail-address').disabled = false;
+        document.getElementById('detail-phone').disabled = false;
+        document.getElementById('detail-email').disabled = false;
+
+        // Zobrazení tlačítek "Uložit" a "Storno"
+        toggleSaveCancelButtons(true);
+    });
+
+    const toggleSaveCancelButtons = (show) => {
+        const saveButton = document.querySelector('.save-button');
+        const cancelButton = document.querySelector('.cancel-button');
+
+        if (show) {
+            saveButton.style.display = 'inline-block';
+            cancelButton.style.display = 'inline-block';
+        } else {
+            saveButton.style.display = 'none';
+            cancelButton.style.display = 'none';
+        }
+    };
+
+    // Skrytí tlačítek při načtení stránky
+    toggleSaveCancelButtons(false);
+
+    document.querySelector('.save-button').addEventListener('click', async () => {
+        const id = document.querySelector('.table-list-body-row.selected')?.dataset.id || null;
+        const data = {
+            název: document.getElementById('detail-name').value,
+            adresa: document.getElementById('detail-address').value,
+            telefonní_číslo: document.getElementById('detail-phone').value,
+            email: document.getElementById('detail-email').value
+        };
+
+        const method = id ? 'PUT' : 'POST';
+        const endpoint = id ? `http://localhost:5240/api/Klinika/${id}` : 'http://localhost:5240/api/Klinika';
+
+        try {
+            const response = await fetch(endpoint, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                alert(id ? 'Záznam byl úspěšně upraven.' : 'Záznam byl úspěšně vytvořen.');
+                toggleSaveCancelButtons(false);
+            } else {
+                console.error('Chyba při ukládání záznamu:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Chyba při volání API:', error);
+        }
+    });
+
+    document.querySelector('.cancel-button').addEventListener('click', () => {
+        // Reset formuláře a skrytí tlačítek
+        toggleSaveCancelButtons(false);
+    });
+
+</script>

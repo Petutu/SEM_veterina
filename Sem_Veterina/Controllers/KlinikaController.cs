@@ -36,5 +36,19 @@ namespace Sem_Veterina.Controllers
             return Ok(klinika);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteKlinika(int id)
+        {
+            try
+            {
+                await _klinikaService.DeleteKlinikaAsync(id);
+                return Ok(new { Message = "Klinika byla úspěšně odstraněna." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+        }
+
     }
 }
