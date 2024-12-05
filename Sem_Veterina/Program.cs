@@ -22,6 +22,7 @@ builder.Services.AddDbContext<OracleDbContext>(options =>
     options.UseOracle(connectionString));
 builder.Services.AddTransient<DbTestService>();
 builder.Services.AddTransient<KlinikaService>();
+// builder.Services.AddScoped<KlinikaService>();
 builder.Services.AddTransient<ZvireService>();
 builder.Services.AddTransient<MajitelService>();
 builder.Services.AddTransient<ZdravotniAkceService>(); // P�idejte tuto ��dku pro ZdravotniAkceService

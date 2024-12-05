@@ -4,7 +4,7 @@ namespace Sem_Veterina.Controllers
 {
     using global::Sem_Veterina.CRUD;
     using Microsoft.AspNetCore.Mvc;
-  
+
     using System.Threading.Tasks;
 
     [Route("api/[controller]")]
@@ -17,8 +17,6 @@ namespace Sem_Veterina.Controllers
         {
             _klinikaService = klinikaService;
         }
-
-
 
         // READ - GET ALL
         [HttpGet]
@@ -36,6 +34,20 @@ namespace Sem_Veterina.Controllers
             if (klinika == null)
                 return NotFound();
             return Ok(klinika);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteKlinika(int id)
+        {
+            try
+            {
+                await _klinikaService.DeleteKlinikaAsync(id);
+                return Ok(new { Message = "Klinika byla úspěšně odstraněna." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
         }
 
     }

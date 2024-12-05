@@ -80,12 +80,9 @@ button:focus, button:hover {
     position: absolute;
     left: 0;
     bottom: -8px;
-    /* vzdálenost čáry od textu */
     width: 100%;
     height: 2px;
-    /* tloušťka čáry */
     background-color: var(--focus-and-hover-color);
-    /* barva čáry */
     transform: scaleX(0);
     transition: transform 0.3s ease;
     transform-origin: left;
@@ -96,12 +93,16 @@ button:focus, button:hover {
     transform: scaleX(1);
 }
 
+.nav-list {
+    padding: 0;
+}
+
 .dropdown-menu {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #176BC6;
+    background-color: var(--second-color);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     padding: 0.5rem 0;
     border-radius: 5px;
@@ -113,14 +114,20 @@ button:focus, button:hover {
     text-decoration: none;
     padding: 0.5rem 1rem;
     display: block;
+    background-color: var(--second-color);
+    transition: background-color 0.3s ease;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: var(--primary-color);
     background-color: var(--focus-and-hover-color);
+    border-radius: 5px;
+    transition: color 0.3s ease;
     transition: background-color 0.3s ease;
 }
 
-.dropdown-item:hover,
-.dropdown-item:focus {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
+.nav-link {
+    padding-left: 0;
 }
 
 .nav-item:hover .dropdown-menu {
@@ -266,9 +273,18 @@ button:focus, button:hover {
     font-size: 22px;
 }
 
+.table-list-body-row:hover {
+    background-color: var(--focus-and-hover-color);
+    cursor: pointer;
+}
+
 .table-list-body-column {
     height: 34px;
     padding-left: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
 }
 
 /* .table-list-body td:not(:last-child) {

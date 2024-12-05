@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-list-admin-item"><a class="nav-list-admin-link" asp-area="" asp-controller="Admin"
                         asp-action="Pristroje">Přístroje</a></li>
-                <li class="nav-item dropdown">
+                <li class="nav-item nav-list-admin-item dropdown">
                     <a class="nav-link dropdown-toggle nav-list-admin-link" href="#" id="navbarDropdown"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Ostatní
@@ -46,14 +46,19 @@
                                 href="/Zdravotniakce">Vyšetření</a></li>
                         <li class="nav-list-item"><a class="nav-list-link dropdown-item" href="/">Lab.výsledky</a></li>
                         <li class="nav-list-item"><a class="nav-list-link dropdown-item" href="/">Zákroky</a></li>
-                        <li class="nav-list-item"><a class="nav-list-link dropdown-item" href="/Diagnozy">Diagnózy</a>
+                        <li class="nav-list-item"><a class="nav-list-link dropdown-item" asp-area=""
+                                asp-controller="Admin" asp-action="Diagnozy">Diagnózy</a>
                         </li>
-                        <li class="nav-list-item"><a class="nav-list-link dropdown-item" href="/Lecby">Lečby</a></li>
-                        <li class="nav-list-item"><a class="nav-list-link dropdown-item" href="/Leky">Léky</a></li>
+                        <li class="nav-list-item"><a class="nav-list-link dropdown-item" asp-area=""
+                                asp-controller="Admin" asp-action="Lecby">Lečby</a></li>
+                        <li class="nav-list-item"><a class="nav-list-link dropdown-item" asp-area=""
+                                asp-controller="Admin" asp-action="Leky">Léky</a></li>
                     </ul>
                 </li>
-                <li class="nav-list-admin-item"><a class="nav-list-admin-link" href="/Uzivatele">Uživatele</a></li>
-                <li class="nav-list-admin-item"><a class="nav-list-admin-link" href="/Historie">Historie</a></li>
+                <li class="nav-list-admin-item"><a class="nav-list-admin-link" asp-area="" asp-controller="Admin"
+                        asp-action="Uzivatele">Uživatele</a></li>
+                <li class="nav-list-admin-item"><a class="nav-list-admin-link" asp-area="" asp-controller="Admin"
+                        asp-action="Logovani">Historie</a></li>
                 <li class="nav-list-admin-item"><a class="nav-list-admin-link" href="/Katalog">Sys. Katalog</a></li>
             </ul>
         </nav>

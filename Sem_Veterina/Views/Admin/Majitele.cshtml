@@ -11,11 +11,12 @@
         <form class="filter" asp-action="Majitele" method="get">
             <div class="filter-item">
                 <label for="namefil">Jméno</label>
-                <input class="filter-input filter-input-address" type="text" name="name" placeholder="Martin" />
+                @* filter-input-address *@
+                <input class="filter-input" type="text" name="name" placeholder="Martin" />
             </div>
             <div class="filter-item">
                 <label for="lastnamefil">Příjmení</label>
-                <input class="filter-input filter-input-number" type="text" name="lastname" placeholder="Liješek" />
+                <input class="filter-input" type="text" name="lastname" placeholder="Liješek" />
             </div>
             <div class="filter-item">
                 <label for="phonefil">Tel. číslo</label>
@@ -81,7 +82,6 @@
                     <input class="right-panel-form-input filter-input" type="email" name="EMAIL"
                         placeholder="example@domain.com" />
                 </div>
-                @* <button type="button" class="crud-list-btn btn-filter" id="create-button">Vytvořit</button> *@
             </form>
         </div>
     </div>

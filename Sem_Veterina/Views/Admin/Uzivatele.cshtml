@@ -1,8 +1,8 @@
 @using Sem_Veterina.Controllers
 @using Sem_Veterina.Entity
-@model LekyViewModel
+@model UzivateleViewModel
 @{
-    ViewData["Title"] = "Správa lék";
+    ViewData["Title"] = "Správa uživatelů";
     Layout = "_AdminLayout";
 }
 
@@ -10,13 +10,13 @@
     <div class="filter-section">
         <form class="filter" asp-action="Uzivatele" method="get">
             <div class="filter-item">
-                <label for="name">Název</label>
+                <label for="username">Uzername</label>
                 @* filter-input-address *@
-                <input class="filter-input" type="text" name="name" placeholder="AnnaSvobodova" />
+                <input class="filter-input" type="text" name="username" placeholder="AnnaSvobodova" />
             </div>
             <div class="filter-item">
-                <label for="instructions">Pokyn</label>
-                <input class="filter-input" type="text" name="instructions" placeholder="Uživatel" />
+                <label for="role">Role</label>
+                <input class="filter-input" type="text" name="role" placeholder="Uživatel" />
             </div>
             <div class="filter-buttons">
                 <button class="btn-filter" type="submit">
@@ -33,21 +33,20 @@
             <table class="table-list">
                 <thead class="table-list-header">
                     <tr>
-                        <th class="table-list-column-name">Název</th>
-                        <th class="table-list-column-name">Dávkování</th>
-                        <th class="table-list-column-name">Pokuny</th>
-                        <th class="table-list-column-name">Účinky</th>
-                        <th class="table-list-column-name">Léčba</th>
+                        <th class="table-list-column-name">Uzername</th>
+                        <th class="table-list-column-name">Heslo</th>
+                        <th class="table-list-column-name">Role</th>
+                        @* <th class="table-list-column-name">Jméno</th>
+                        <th class="table-list-column-name">Příjmení</th> *@
                     </tr>
                 </thead>
                 <tbody class="table-list-body">
-                    @foreach (var lek in Model.Leky)
+                    @foreach (var uzivatel in Model.Uzivatele)
                     {
                         <tr class="table-list-body-row">
-                            <td class="table-list-body-column">@lek.NÁZEV</td>
-                            <td class="table-list-body-column">@lek.DÁVKOVÁNÍ</td>
-                            <td class="table-list-body-column">@lek.POKYNY</td>
-                            <td class="table-list-body-column">@lek.ÚČINKY</td>
+                            <td class="table-list-body-column">@uzivatel.USERNAME</td>
+                            <td class="table-list-body-column">@uzivatel.HESLO</td>
+                            <td class="table-list-body-column">@uzivatel.ROLE</td>
                             @* <td class="table-list-body-column">@Jméno</td> *@
                         </tr>
                     }
@@ -57,29 +56,29 @@
         <div class="right-panel" id="detailPanel">
             <form id="create-form" class="right-panel-form">
                 <div class="right-panel-form-item filter-item">
-                    <label for="name">Název</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="name"
+                    <label for="username">Uzername</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="username"
                         placeholder="AnnaSvobodova" required />
                 </div>
                 <div class="right-panel-form-item filter-item">
-                    <label for="dosage">Dávkování</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="dosage" placeholder=""
+                    <label for="password">Heslo</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="password" placeholder=""
                         required />
                 </div>
                 <div class="right-panel-form-item filter-item">
-                    <label for="instructions">Pokyn</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="instructions" placeholder=""
-                        required />
-                </div>
-                <div class="right-panel-form-item filter-item">
-                    <label for="effects">Účinky</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="effects"
+                    <label for="role">Role</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="role"
                         placeholder="Běžný uživatel" />
                 </div>
 
                 <div class="right-panel-form-item filter-item">
-                    <label for="therapy">Léčba</label>
-                    <input class="right-panel-form-input filter-input" type="email" name="therapy" placeholder="Anna" />
+                    <label for="name">Jméno</label>
+                    <input class="right-panel-form-input filter-input" type="email" name="name" placeholder="Anna" />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="surname">Příjmení</label>
+                    <input class="right-panel-form-input filter-input" type="email" name="surname"
+                        placeholder="Svobodova" />
                 </div>
             </form>
         </div>

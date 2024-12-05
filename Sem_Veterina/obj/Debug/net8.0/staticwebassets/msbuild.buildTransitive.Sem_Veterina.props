@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\buildMultiTargeting\Sem_Veterina.props" />
+  <Import Project="../buildMultiTargeting/Sem_Veterina.props" />
 </Project>

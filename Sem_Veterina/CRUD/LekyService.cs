@@ -68,7 +68,7 @@ public class LekyService
     public async Task<List<LEKY>> GetFilteredLekyAsync(string? name, string? instructions)
     {
         var sql = @"SELECT * FROM LEKY WHERE (:Name IS NULL OR NÁZEV LIKE '%' || :Name || '%') 
-                    AND (:Instructions IS NULL OR INSTRUKCE LIKE '%' || :Instructions || '%')";
+                    AND (:Instructions IS NULL OR POKYNY LIKE '%' || :Instructions || '%')";
 
         var parameters = new[]
         {
