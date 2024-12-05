@@ -46,6 +46,17 @@ namespace Sem_Veterina.CRUD
             return await _context.Kliniky.FromSqlRaw(sql, parameters).ToListAsync();
         }
 
+        // CREATE
+        public async Task AddKlinikaAsync(KLINIKY klinika)
+        {
+            var sql = "BEGIN PROC_CREATE_KLINIKA(:Name, :Address, :Phone, :Email); END;";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("Name", klinika.NÁZEV),
+                new OracleParameter("Address", klinika.ADRESA),
+                new OracleParameter("Phone", klinika.TELEFONNÍ_ČÍSLO),
+                new OracleParameter("Email", klinika.EMAIL));
+        }
+
         // DELETE
         public async Task DeleteKlinikaAsync(int klinikaId)
         {

@@ -37,7 +37,6 @@ button:focus, button:hover {
     height: 70px;
     color: var(--background-primary-color);
     background-color: var(--second-color);
-    /* border: 1px solid var(--primary-color); */
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
 }
@@ -45,9 +44,6 @@ button:focus, button:hover {
 .nav {
     padding-top: 8px;
     margin-left: 40px;
-    /* display: flex;
-    align-items: center;
-    justify-content: space-between; */
 }
 
 .nav-list-admin {

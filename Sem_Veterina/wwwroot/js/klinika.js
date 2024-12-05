@@ -35,14 +35,14 @@ const convertKeysToLowerCase = (data) => {
 
     const updateDetailPanel = (data) => {
         console.log(data.název);  // Opravený název
-        document.getElementById('detail-name').value = data.název || '';  // Nastavte jméno
+        document.getElementById('detail-name').value = data.název || ''; 
 
         console.log(data.adresa);  // Opravená adresa
-        document.getElementById('detail-address').value = data.adresa || '';  // Nastavte adresu
+        document.getElementById('detail-address').value = data.adresa || ''; 
 
         console.log(data.telefonní_číslo);  // Opravené telefonní číslo
-        document.getElementById('detail-phone').value = data.telefonní_číslo || '';  // Nastavte telefonní číslo
+        document.getElementById('detail-phone').value = data.telefonní_číslo || ''; 
 
         console.log(data.email);  // Opravený email
-        document.getElementById('detail-email').value = data.email || '';  // Nastavte email
+        document.getElementById('detail-email').value = data.email || ''; 
     };

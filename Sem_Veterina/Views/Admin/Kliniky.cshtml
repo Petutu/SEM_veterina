@@ -54,22 +54,22 @@
                 <div class="right-panel-form-item filter-item">
                     <label for="name">Název</label>
                     <input class="right-panel-form-input filter-input" type="text" name="name" id="detail-name"
-                        placeholder="VetCare" />
+                        placeholder="VetCare" disabled />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="address">Adresa</label>
                     <input class="right-panel-form-input filter-input" type="text" name="address" id="detail-address"
-                        placeholder="Studentska 345, Pardubice 53003" />
+                        placeholder="Studentska 345, Pardubice 53003" disabled />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="phone">Telefonní číslo</label>
                     <input class="right-panel-form-input filter-input" type="text" name="phone" id="detail-phone"
-                        placeholder="777 777 777" />
+                        placeholder="777 777 777" disabled />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="email">Email</label>
                     <input class="right-panel-form-input filter-input" type="text" name="email" id="detail-email"
-                        placeholder="vetcare@gmail.com" />
+                        placeholder="vetcare@gmail.com" disabled />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="">Počet personálů</label>
@@ -99,13 +99,44 @@
 <script type="module" src="~/js/filterUtils.js"></script>
 <script type="module" src="~/js/klinika.js"></script>
 <script>
-    document.querySelector('.edit-button').addEventListener('click', () => {
-        // Aktivace polí pro úpravu
+    function toggleSaveCancelButtons(show) {
+        console.log(show);
+        const saveButton = document.querySelector('.save-button');
+        const cancelButton = document.querySelector('.cancel-button');
+
+        if (show) {
+            saveButton.style.display = 'inline-block';
+            cancelButton.style.display = 'inline-block';
+        } else {
+            saveButton.style.display = 'none';
+            cancelButton.style.display = 'none';
+        }
+    }
+
+    function clearDetailFields() {
+        document.getElementById('detail-name').value = '';
+        document.getElementById('detail-address').value = '';
+        document.getElementById('detail-phone').value = '';
+        document.getElementById('detail-email').value = '';
+    }
+
+    function enableDetailFields() {
         document.getElementById('detail-name').disabled = false;
         document.getElementById('detail-address').disabled = false;
         document.getElementById('detail-phone').disabled = false;
         document.getElementById('detail-email').disabled = false;
+    }
+    // Skrytí tlačítek při načtení stránky
+    toggleSaveCancelButtons(false);
 
+    document.querySelector('.create-button').addEventListener('click', () => {
+        clearDetailFields();
+        enableDetailFields();
+        toggleSaveCancelButtons(true);
+    });
+
+    document.querySelector('.edit-button').addEventListener('click', () => {
+        enableDetailFields();
         // Zobrazení tlačítek "Uložit" a "Storno"
         toggleSaveCancelButtons(true);
     });
@@ -134,72 +165,111 @@
         }
     });
 
-    document.querySelector('.create-button').addEventListener('click', () => {
-        // Vyčištění polí
-        document.getElementById('detail-name').value = '';
-        document.getElementById('detail-address').value = '';
-        document.getElementById('detail-phone').value = '';
-        document.getElementById('detail-email').value = '';
-
-        // Aktivace polí
-        document.getElementById('detail-name').disabled = false;
-        document.getElementById('detail-address').disabled = false;
-        document.getElementById('detail-phone').disabled = false;
-        document.getElementById('detail-email').disabled = false;
-
-        // Zobrazení tlačítek "Uložit" a "Storno"
-        toggleSaveCancelButtons(true);
-    });
-
-    const toggleSaveCancelButtons = (show) => {
-        const saveButton = document.querySelector('.save-button');
-        const cancelButton = document.querySelector('.cancel-button');
-
-        if (show) {
-            saveButton.style.display = 'inline-block';
-            cancelButton.style.display = 'inline-block';
-        } else {
-            saveButton.style.display = 'none';
-            cancelButton.style.display = 'none';
-        }
-    };
-
-    // Skrytí tlačítek při načtení stránky
-    toggleSaveCancelButtons(false);
-
     document.querySelector('.save-button').addEventListener('click', async () => {
-        const id = document.querySelector('.table-list-body-row.selected')?.dataset.id || null;
+        const phoneInput = document.getElementById('detail-phone').value;
+        console.log('phoneInput :>> ', phoneInput);
+        const telefonniCislo = parseInt(phoneInput, 10);
+        console.log("telefonniCislo pokud Parsu:? " + telefonniCislo);
+        if (isNaN(telefonniCislo)) {
+            alert("Telefonní číslo musí být číslo!");
+            return; // Zastaví odesílání dat, pokud je neplatné
+        }
+
+    @* const data = {
+            NÁZEV: document.getElementById('detail-name').value,
+            ADRESA: document.getElementById('detail-address').value,
+            TELEFONNÍ_ČÍSLO: document.getElementById('detail-phone').value,,
+            EMAIL: document.getElementById('detail-email').value
+        }; *@
+
         const data = {
-            název: document.getElementById('detail-name').value,
-            adresa: document.getElementById('detail-address').value,
-            telefonní_číslo: document.getElementById('detail-phone').value,
-            email: document.getElementById('detail-email').value
+            NÁZEV: document.getElementById('detail-name').value,
+            ADRESA: document.getElementById('detail-address').value,
+            EMAIL: document.getElementById('detail-email').value
         };
 
-        const method = id ? 'PUT' : 'POST';
-        const endpoint = id ? `http://localhost:5240/api/Klinika/${id}` : 'http://localhost:5240/api/Klinika';
+        console.log("data před odesláním JSON.stringify(data): " + JSON.stringify(data));
+
+    @* const method = id ? 'PUT' : 'POST';
+        const endpoint = id ? `http://localhost:5240/api/Klinika/${id}` : 'http://localhost:5240/api/CreateKlinika'; *@
 
         try {
-            const response = await fetch(endpoint, {
-                method,
-                headers: { 'Content-Type': 'application/json' },
+            const response = await fetch("http://localhost:5240/api/Klinika/CreateKlinika", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             });
 
             if (response.ok) {
-                alert(id ? 'Záznam byl úspěšně upraven.' : 'Záznam byl úspěšně vytvořen.');
+                alert('Záznam byl úspěšně vytvořen.');
+                alert(result.Message);
                 toggleSaveCancelButtons(false);
             } else {
+                const errorData = await response.json();
+                console.error('Chyba při ukládání záznamu:', errorData);
+                alert(errorData.Error || 'Došlo k chybě při ukládání.');
                 console.error('Chyba při ukládání záznamu:', response.statusText);
             }
         } catch (error) {
             console.error('Chyba při volání API:', error);
+            alert("Nastala chyba při vytváření kliniky.");
         }
     });
 
     document.querySelector('.cancel-button').addEventListener('click', () => {
-        // Reset formuláře a skrytí tlačítek
+        clearDetailFields();
         toggleSaveCancelButtons(false);
     });
+
+    function addRowToTable(klinika) {
+        const tableBody = document.querySelector(".table-list-body");
+        const row = document.createElement("tr");
+        row.classList.add("table-list-body-row");
+
+        row.innerHTML = `
+        <td class="table-list-body-column">${klinika.Název}</td>
+        <td class="table-list-body-column">${klinika.Adresa}</td>
+        <td class="table-list-body-column">${klinika.TelefonníČíslo}</td>
+        <td class="table-list-body-column">${klinika.Email}</td>
+    `;
+
+        tableBody.appendChild(row);
+    }
+
+    @* document.querySelector(".crud-list-btn").addEventListener("click", async () => {
+        const název = document.getElementById("detail-name").value;
+        const adresa = document.getElementById("detail-address").value;
+        const telefonníČíslo = document.getElementById("detail-phone").value;
+        const email = document.getElementById("detail-email").value;
+
+        const data = {
+            Název: název,
+            Adresa: adresa,
+            TelefonníČíslo: telefonníČíslo,
+            Email: email
+        };
+
+        try {
+            const response = await fetch("/Klinika/CreateKlinika", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                alert(result.Message); // Úspěšná zpráva
+            } else {
+                const error = await response.json();
+                alert(error.Error); // Zobrazení chyby
+            }
+        } catch (err) {
+            console.error("Chyba při volání API:", err);
+            alert("Nastala chyba při vytváření kliniky.");
+        }
+    }); *@
+
 
 </script>

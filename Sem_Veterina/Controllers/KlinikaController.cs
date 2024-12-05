@@ -3,8 +3,8 @@
 namespace Sem_Veterina.Controllers
 {
     using global::Sem_Veterina.CRUD;
+    using global::Sem_Veterina.Entity;
     using Microsoft.AspNetCore.Mvc;
-
     using System.Threading.Tasks;
 
     [Route("api/[controller]")]
@@ -35,6 +35,50 @@ namespace Sem_Veterina.Controllers
                 return NotFound();
             return Ok(klinika);
         }
+
+        [HttpPost("CreateKlinika")]
+        public async Task<IActionResult> CreateKlinika([FromBody] KLINIKY klinika)
+        {
+            if (klinika == null)
+            {
+                return BadRequest("Nevalidní data.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors)
+                                              .Select(e => e.ErrorMessage)
+                                              .ToList();
+                return BadRequest(new { Error = "Neplatná data.", Details = errors });
+            }
+
+            // if (!ModelState.IsValid)
+            // {
+            //     return BadRequest(new { Error = "Neplatná data pro vytvoření kliniky." });
+            // }
+
+            try
+            {
+                // Vytvoříme instanci entity KLINIKY na základě ViewModelu
+                var novaKlinika = new KLINIKY
+                {
+                    NÁZEV = klinika.NÁZEV,
+                    ADRESA = klinika.ADRESA,
+                    TELEFONNÍ_ČÍSLO = klinika.TELEFONNÍ_ČÍSLO,
+                    EMAIL = klinika.EMAIL
+                };
+
+                // Voláme službu, která provede zápis do databáze
+                await _klinikaService.AddKlinikaAsync(novaKlinika);
+
+                return Ok(new { Message = "Klinika byla úspěšně vytvořena." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+        }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteKlinika(int id)
