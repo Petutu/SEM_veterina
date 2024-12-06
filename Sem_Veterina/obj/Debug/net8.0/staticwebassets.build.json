@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IfKdLYsXGf5oJi9tRKCJp0BKBJe9X6tskw+W5Ct1Zwc=",
+  "Hash": "RfQ+h0tITbKOYyNbmwuyj7wXq6KHF6nqIxhBEOnhWBA=",
   "Source": "Sem_Veterina",
   "BasePath": "_content/Sem_Veterina",
   "Mode": "Default",
@@ -243,6 +243,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/imgs/vetCare.png"
+    },
+    {
+      "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/admin-majitel.js",
+      "SourceId": "Sem_Veterina",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/",
+      "BasePath": "_content/Sem_Veterina",
+      "RelativePath": "js/admin-majitel.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/admin-majitel.js"
     },
     {
       "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/filterUtils.js",

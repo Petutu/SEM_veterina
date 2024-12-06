@@ -8,18 +8,18 @@
 
 <div class="admin-container">
     <div class="filter-section">
-        <form class="filter" asp-action="Majitele" method="get">
+        <form class="filter" asp-controller="Admin" asp-action="Majitele" method="get">
             <div class="filter-item">
-                <label for="namefil">Jméno</label>
+                <label for="name">Jméno</label>
                 @* filter-input-address *@
                 <input class="filter-input" type="text" name="name" placeholder="Martin" />
             </div>
             <div class="filter-item">
-                <label for="lastnamefil">Příjmení</label>
+                <label for="lastname">Příjmení</label>
                 <input class="filter-input" type="text" name="lastname" placeholder="Liješek" />
             </div>
             <div class="filter-item">
-                <label for="phonefil">Tel. číslo</label>
+                <label for="phone">Tel. číslo</label>
                 <input class="filter-input filter-input-number" type="text" name="phone" placeholder="777 777 777" />
             </div>
             <div class="filter-buttons">
@@ -40,102 +40,117 @@
                         <th class="table-list-column-name">Jméno</th>
                         <th class="table-list-column-name">Příjmení</th>
                         <th class="table-list-column-name">Tel.číslo</th>
-                        @* <th class="table-list-column-name">Zvíře ID</th>
-                        <th class="table-list-column-name">Zvíře Jméno</th> *@
+                        @* <th class="table-list-column-name">Zvíře Jméno</th>  *@
+                        @* <th class="table-list-column-name">Druh</th>  *@
                     </tr>
                 </thead>
                 <tbody class="table-list-body">
                     @foreach (var majitel in Model.Majitele)
                     {
-                        <tr class="table-list-body-row" data-jmeno="@majitel.JMÉNO" data-prijmeni="@majitel.PŘÍJMENÍ"
-                            data-telefon="@majitel.TELEFONNÍ_ČÍSLO" onclick="fillDetailPanel(this)">
+                        <tr class="table-list-body-row" data-id="@majitel.ID_MAJITEL">
                             <td class="table-list-body-column">@majitel.JMÉNO</td>
                             <td class="table-list-body-column">@majitel.PŘÍJMENÍ</td>
                             <td class="table-list-body-column">@majitel.TELEFONNÍ_ČÍSLO</td>
-                            @* <td class="table-list-body-column">@majitel.ZVÍŘATA.First().ID_ZVÍŘE</td>
-                        <td class="table-list-body-column">@majitel.ZVÍŘATA.First().JMÉNO</td> *@
+                            @* <td class="table-list-body-column">@majitel.ZVÍŘATA.First().JMÉNO</td>
+                        <td class="table-list-body-column">@majitel.ZVÍŘATA.First().Druh</td> *@
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
         <div class="right-panel" id="detailPanel">
-            <form id="create-form" class="right-panel-form">
+            <form class="right-panel-form">
                 <div class="right-panel-form-item filter-item">
                     <label for="name">Jméno</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="JMÉNO" placeholder="Martin"
-                        required />
+                    <input class="right-panel-form-input filter-input" type="text" name="name" id="detail-name"
+                        placeholder="Martin" disabled />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="lastname">Příjmení</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="PŘÍJMENÍ" placeholder="Liješek"
-                        required />
+                    <input class="right-panel-form-input filter-input" type="text" name="lastname" id="detail-lastname"
+                        placeholder="Liješek" disabled />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="phone">Telefonní číslo</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="TELEFONNÍ_ČÍSLO"
-                        placeholder="777 777 777" />
+                    <input class="right-panel-form-input filter-input" type="text" name="phone" id="detail-phone"
+                        placeholder="777 777 777" disabled />
                 </div>
-
                 <div class="right-panel-form-item filter-item">
                     <label for="email">Email</label>
-                    <input class="right-panel-form-input filter-input" type="email" name="EMAIL"
-                        placeholder="example@domain.com" />
+                    <input class="right-panel-form-input filter-input" type="text" name="email" id="detail-email"
+                        placeholder="vetcare@gmail.com" disabled />
                 </div>
+                @* <div class="right-panel-form-item filter-item">
+                    <label for="animalname">Email</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="animalname"
+                        id="detail-animalname" placeholder="Alisie" disabled />
+                </div> *@
             </form>
         </div>
     </div>
     <footer class="footer-klinika">
         <ul class="crud-list">
-            <!-- Tlačítko pro vytvoření -->
-            <li class="crud-list-item">
-                <button type="submit" class="crud-list-btn btn-filter" formaction="/Majitel/Create">Vytvořit</button>
-            </li>
-            <!-- Tlačítko pro úpravu -->
-            <li class="crud-list-item">
-                <button type="submit" class="crud-list-btn btn-filter" formaction="/Majitel/Edit">Editovat</button>
-            </li>
-            <!-- Tlačítko pro smazání -->
-            <li class="crud-list-item">
-                <button type="submit" class="crud-list-btn btn-filter" formaction="/Majitel/Delete"
-                    onclick="return confirm('Opravdu chcete smazat tento záznam?');">Odstranit</button>
-            </li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter create-button">Vytvořit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter edit-button">Editovat</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter delete-button">Odstranit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter save-button"
+                    style="display: none;">Uložit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter cancel-button"
+                    style="display: none;">Storno</button></li>
         </ul>
     </footer>
 </div>
 <script type="module" src="~/js/filterUtils.js"></script>
-@* todo : pridat oveření vstupu z inputu *@
-
+<script type="module" src="~/js/admin-majitel.js"></script>
 <script>
-    // Funkce pro vyplnění pravého panelu
-    function fillDetailPanel(row) {
-        // Načtení dat z atributů vybraného řádku
-        const jmeno = row.getAttribute("data-jmeno");
-        const prijmeni = row.getAttribute("data-prijmeni");
-        const telefon = row.getAttribute("data-telefon");
+    function toggleSaveCancelButtons(show) {
+        console.log(show);
+        const saveButton = document.querySelector('.save-button');
+        const cancelButton = document.querySelector('.cancel-button');
 
-        // Přiřazení dat do odpovídajících polí v pravém panelu
-        document.querySelector('.right-panel-form input[name="JMÉNO"]').value = jmeno;
-        document.querySelector('.right-panel-form input[name="lastname"]').value = prijmeni;
-        document.querySelector('.right-panel-form input[name="phone"]').value = telefon;
+        if (show) {
+            saveButton.style.display = 'inline-block';
+            cancelButton.style.display = 'inline-block';
+        } else {
+            saveButton.style.display = 'none';
+            cancelButton.style.display = 'none';
+        }
     }
 
-    // Resetovací funkce
-    function resetFormAndSubmit() {
-        document.querySelector('.filter').reset();
-        document.querySelector('.filter').submit();
+    function clearDetailFields() {
+        document.getElementById('detail-name').value = '';
+        document.getElementById('detail-address').value = '';
+        document.getElementById('detail-phone').value = '';
+        document.getElementById('detail-email').value = '';
     }
+
+    function enableDetailFields() {
+        document.getElementById('detail-name').disabled = false;
+        document.getElementById('detail-address').disabled = false;
+        document.getElementById('detail-phone').disabled = false;
+        document.getElementById('detail-email').disabled = false;
+    }
+    // Skrytí tlačítek při načtení stránky
+    toggleSaveCancelButtons(false);
+
+    document.querySelector('.create-button').addEventListener('click', () => {
+        clearDetailFields();
+        enableDetailFields();
+        toggleSaveCancelButtons(true);
+    });
+
+    document.querySelector('.edit-button').addEventListener('click', () => {
+        enableDetailFields();
+        toggleSaveCancelButtons(true);
+    });
+
+    document.querySelector('.cancel-button').addEventListener('click', () => {
+        clearDetailFields();
+        toggleSaveCancelButtons(false);
+    });
 </script>
 
-
-<style>
-    .table-list-body-row:hover {
-        background-color: #f0f0f0;
-        cursor: pointer;
-    }
-</style>
-
-<script>
+@* <script>
     document.getElementById('create-button').addEventListener('click', function () {
         const form = document.getElementById('create-form');
         const formData = new FormData(form);
@@ -176,7 +191,7 @@
                 alert('Chyba při vytváření majitele: ' + error.message);
             });
     });
-</script>
+</script> *@
 
 @* --Vytvoření pohledu 
 CREATE OR REPLACE VIEW V_ZDRAVOTNI_AKCI  AS

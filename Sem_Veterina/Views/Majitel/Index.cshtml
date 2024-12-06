@@ -5,8 +5,94 @@
     ViewData["Title"] = "Majitel Panel";
     Layout = "_MajitelLayout.cshtml";
 }
-<main>
-    <div>
-
+<div class="main-admin">
+    <div class="section section-left">
+        <div class="">
+            <p class="text">Moje údaje:</p>
+        </div>
+        <div class="section-fields">
+            <label for="Username">Uzername</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="Username" disabled>
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="name">Jméno</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="name" disabled>
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="surname">Příjmení</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="surname" disabled>
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="phone">Telefonní číslo</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="phone" disabled>
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="address">Adresa</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="address" disabled>
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="email">Email</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="email" disabled>
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
+        <div class="section-fields">
+            <label for="klinika-address">Kliniky</label>
+            <div class="input-fields">
+                <input class="filter-input input-field" type="text" id="klinika-address" disabled>
+                <button class="btn-filter" type="submit"><img src="~/imgs/edit.svg" alt="Editování pole"></button>
+            </div>
+        </div>
     </div>
-</main>
+    <div class="section section-right">
+        <p class="text">Můj mazlíček:</p>
+        <div class="section-admin-databaze">
+            <div class="section-fields">
+                <label for="name">Jméno</label>
+                <div class="input-fields">
+                    <input class="filter-input input-field" type="text" id="name" disabled>
+                </div>
+            </div>
+            <div class="section-fields">
+                <label for="kind">Druh</label>
+                <div class="input-fields">
+                    <input class="filter-input input-field" type="text" id="kind" disabled>
+                </div>
+            </div>
+            <div class="section-fields">
+                <label for="age">Věk</label>
+                <div class="input-fields">
+                    <input class="filter-input input-field" type="text" id="age" disabled>
+                </div>
+            </div>
+            <div class="section-fields">
+                <label for="health">Zdravotní stav</label>
+                <div class="input-fields">
+                    <input class="filter-input input-field" type="text" id="health" disabled>
+                </div>
+            </div>
+            <div class="section-fields">
+                <label for="weight">Váha</label>
+                <div class="input-fields">
+                    <input class="filter-input input-field" type="text" id="weight" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

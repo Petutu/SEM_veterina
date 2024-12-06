@@ -35,14 +35,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body">
                 <p class="modal-titel">Vytvořte si účet pro přístup</p>
-                @* @if (!ViewData.ModelState.IsValid)
-                {
-                    foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-                    {
-                        <div class="text-danger">@error.ErrorMessage</div>
-                    }
-                } *@
-
                 <form asp-action="Register" asp-controller="Login" class="form-modal" id="registerForm">
                     <div>
                         <label for="register-username" class="form-label">Uživatelské jméno</label>

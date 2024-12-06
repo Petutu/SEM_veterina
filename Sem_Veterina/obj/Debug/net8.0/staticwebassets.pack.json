@@ -45,6 +45,10 @@
       "PackagePath": "staticwebassets/imgs/vetCare.png"
     },
     {
+      "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/admin-majitel.js",
+      "PackagePath": "staticwebassets/js/admin-majitel.js"
+    },
+    {
       "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/filterUtils.js",
       "PackagePath": "staticwebassets/js/filterUtils.js"
     },

@@ -5,7 +5,7 @@ namespace Sem_Veterina.Controllers
     using global::Sem_Veterina.CRUD;
     using global::Sem_Veterina.Entity;
     using Microsoft.AspNetCore.Mvc;
-    
+
     using System.Threading.Tasks;
 
     [Route("api/[controller]")]
@@ -19,14 +19,29 @@ namespace Sem_Veterina.Controllers
             _majitelService = majitelService;
         }
 
-        // Zobrazení seznamu majitelů (hlavní stránka)
-        public async Task<IActionResult> Majitele()
+        public IActionResult Index()
         {
-            var majitele = await _majitelService.GetAllMajiteleAsync();
-            return View(majitele);
+            return View();
         }
 
+        // Zobrazení seznamu majitelů (hlavní stránka)
+        // public async Task<IActionResult> Majitele()
+        // {
+        //     var majitele = await _majitelService.GetAllMajiteleAsync();
+        //     return View(majitele);
+        // }
+
         // Vytvoření nového majitele (při odeslání dat z pravého panelu)
+
+        // READ - GET BY ID
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetKlinikaById(int id)
+        {
+            var majitel = await _majitelService.GetMajitelByIdAsync(id);
+            if (majitel == null)
+                return NotFound();
+            return Ok(majitel);
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] MAJITELE majitel)
@@ -59,7 +74,7 @@ namespace Sem_Veterina.Controllers
             if (ModelState.IsValid)
             {
                 await _majitelService.UpdateMajitelAsync(majitel);
-                return RedirectToAction(nameof(Majitele));
+                //return RedirectToAction(nameof(Majitele));
             }
             return View("Majitele", await _majitelService.GetAllMajiteleAsync());
         }
@@ -69,7 +84,8 @@ namespace Sem_Veterina.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await _majitelService.DeleteMajitelAsync(id);
-            return RedirectToAction(nameof(Majitele));
+            //return RedirectToAction(nameof(Majitele));
+            return View();
         }
     }
 }
