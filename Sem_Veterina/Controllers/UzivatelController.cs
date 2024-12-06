@@ -24,22 +24,23 @@ namespace Sem_Veterina.Controllers
             return View(uzivatele);
         }
 
-        // GET: /UZIVATEL/Details/5
-        public async Task<IActionResult> Details(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUzerById(int id)
         {
             var uzivatel = await _uzivatelService.GetUzivatelByIdAsync(id);
             if (uzivatel == null)
             {
                 return NotFound();
             }
-            return View(uzivatel);
+            return Ok(uzivatel);
+            //return View(uzivatel);
         }
 
-        // GET: /UZIVATEL/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        // // GET: /UZIVATEL/Create
+        // public IActionResult Create()
+        // {
+        //     return View();
+        // }
 
         // POST: /UZIVATEL/Create
         [HttpPost]
