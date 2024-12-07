@@ -6,7 +6,7 @@ namespace Sem_Veterina.Controllers
     using System.Threading.Tasks;
     using System.Collections.Generic;
 
- 
+
     using global::Sem_Veterina.CRUD;
     using global::Sem_Veterina.Entity;
 
@@ -39,11 +39,11 @@ namespace Sem_Veterina.Controllers
                 return View(personal);
             }
 
-            // GET: /PERSONAL/Create
-            public IActionResult Create()
-            {
-                return View();
-            }
+            // // GET: /PERSONAL/Create
+            // public IActionResult Create()
+            // {
+            //     return View();
+            // }
 
             // POST: /PERSONAL/Create
             [HttpPost]

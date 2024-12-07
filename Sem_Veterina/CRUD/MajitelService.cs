@@ -38,26 +38,26 @@ namespace Sem_Veterina.CRUD
         }
 
         // READ - GET BY ID
-        public async Task<MAJITELE> GetMajitelByIdAsync(int id)
+        public async Task<MajitelDetailView> GetMajitelByIdAsync(int id)
         {
-            var sql = "SELECT * FROM MAJITELI WHERE ID_MAJITEL = :Id";
+            var sql = "SELECT * FROM V_MAJITEL_DETAILS WHERE ID_MAJITEL = :Id";
             var param = new OracleParameter("Id", id);
-            return await _context.Majitele.FromSqlRaw(sql, param).FirstOrDefaultAsync();
+            return await _context.MajitelDetailView.FromSqlRaw(sql, param).FirstOrDefaultAsync();
         }
 
         // FILTERED READ
-        public async Task<List<MAJITELE>> GetFilteredMajiteleAsync(string? name, string? lastname, string? phone)
+        public async Task<List<MajitelDetailView>> GetFilteredMajiteleAsync(string? name, string? lastname, string? phone)
         {
-            var query = _context.Majitele.AsQueryable();
-
-            if (!string.IsNullOrEmpty(name))
-                query = query.Where(m => m.JMÉNO.Contains(name));
-            if (!string.IsNullOrEmpty(lastname))
-                query = query.Where(m => m.PŘÍJMENÍ.Contains(lastname));
-            if (!string.IsNullOrEmpty(phone))
-                query = query.Where(m => m.TELEFONNÍ_ČÍSLO.ToString().Contains(phone));
-
-            return await query.ToListAsync();
+            var sql = "SELECT * FROM V_MAJITEL_DETAILS WHERE (:Name IS NULL OR JMÉNO_MAJITELE LIKE '%' || :Name || '%') " +
+                      "AND (:Surname IS NULL OR PŘÍJMENÍ_MAJITELE LIKE '%' || :Surname || '%')" +
+                      "AND (:Phone IS NULL OR TELEFONNÍ_ČÍSLO LIKE '%' || :Phone || '%')";
+            var parameters = new[]
+  {
+                new OracleParameter("Name", name ?? (object)DBNull.Value),
+                new OracleParameter("Surname", lastname ?? (object)DBNull.Value),
+                new OracleParameter("Phone", phone ?? (object)DBNull.Value)
+            };
+            return await _context.MajitelDetailView.FromSqlRaw(sql, parameters).ToListAsync();
         }
 
         // UPDATE

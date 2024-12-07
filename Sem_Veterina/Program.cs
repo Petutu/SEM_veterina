@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Sem_Veterina;
@@ -36,6 +35,7 @@ builder.Services.AddTransient<DiagnozaService>();
 
 // P�id�n� MVC a dal��ch slu�eb
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 

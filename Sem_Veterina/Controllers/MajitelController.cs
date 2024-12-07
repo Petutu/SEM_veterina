@@ -24,18 +24,9 @@ namespace Sem_Veterina.Controllers
             return View();
         }
 
-        // Zobrazení seznamu majitelů (hlavní stránka)
-        // public async Task<IActionResult> Majitele()
-        // {
-        //     var majitele = await _majitelService.GetAllMajiteleAsync();
-        //     return View(majitele);
-        // }
-
-        // Vytvoření nového majitele (při odeslání dat z pravého panelu)
-
         // READ - GET BY ID
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetKlinikaById(int id)
+        public async Task<IActionResult> GetMajitelById(int id)
         {
             var majitel = await _majitelService.GetMajitelByIdAsync(id);
             if (majitel == null)

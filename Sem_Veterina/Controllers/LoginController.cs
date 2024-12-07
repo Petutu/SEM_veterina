@@ -119,21 +119,14 @@ namespace Sem_Veterina.Controllers
             // HttpContext.Session.SetString("UserId", uzivatel.ID_UZIVATEL.ToString());
             // HttpContext.Session.SetString("Role", uzivatel.ID_ROLE.ToString());
 
-            // Přesměrování podle role
-            // return uzivatel.ID_ROLE switch
+            // if (uzivatel.ID_ROLE == 1) // Admin role
             // {
-            //     1 => RedirectToAction("Index", "Admin"),
-            //     _ => RedirectToAction("Index", "Home"),
-            // };
-
-            if (uzivatel.ID_ROLE == 1) // Admin role
-            {
-                return RedirectToAction("Index", "Admin");
-            }
-            else if (uzivatel.ID_ROLE == 2) // Majitel - běžný uživatel
-            {
-                return RedirectToAction("Index", "Majitel");
-            }
+            //     return RedirectToAction("Index", "Admin");
+            // }
+            // else if (uzivatel.ID_ROLE == 2) // Majitel - běžný uživatel
+            // {
+            //     return RedirectToAction("Index", "Majitel");
+            // }
             //else if (uzivatel.ID_ROLE == 3) // Vedouce 
             // {
             //     return RedirectToAction("Vedouce", "Index");
@@ -143,9 +136,23 @@ namespace Sem_Veterina.Controllers
             //     return RedirectToAction("Index", "Home"); // Výchozí přesměrování
             // }
 
+            switch (uzivatel.ID_ROLE)
+            {
+                case 1: // Admin
+                    return RedirectToAction("Index", "Admin");
+                case 2: // Běžný uživatel
+                    return RedirectToAction("Index", "Majitel");
+                // case 3: //Vedouci
+                //     return RedirectToAction("Index", "Vedouci");
+                // case 4: //Podřízený
+                //     return RedirectToAction("Index", "Personal");
+                default:
+                    return RedirectToAction("Index", "Home");
+            }
 
-            // Přesměrování na domovskou stránku nebo dashboard
-            return RedirectToAction("Index", "Home");
+
+            // // Přesměrování na domovskou stránku nebo dashboard
+            // return RedirectToAction("Index", "Home");
         }
     }
 }

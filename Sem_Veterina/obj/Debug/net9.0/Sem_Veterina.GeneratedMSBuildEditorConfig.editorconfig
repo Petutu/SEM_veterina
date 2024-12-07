@@ -1,0 +1,119 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Sem_Veterina
+build_property.RootNamespace = Sem_Veterina
+build_property.ProjectDir = /Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Admin/Diagnozy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RGlhZ25venkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = SW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Admin/Kliniky.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S2xpbmlreS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Admin/Lecby.cshtml]
+build_metadata.AdditionalFiles.TargetPath = TGVjYnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Admin/Leky.cshtml]
+build_metadata.AdditionalFiles.TargetPath = TGVreS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Admin/Logovani.cshtml]
+build_metadata.AdditionalFiles.TargetPath = TG9nb3ZhbmkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Admin/Majitele.cshtml]
+build_metadata.AdditionalFiles.TargetPath = TWFqaXRlbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Admin/Personal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGVyc29uYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Admin/Pristroje.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJpc3Ryb2plLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Admin/Uzivatele.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VXppdmF0ZWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Admin/Zvirata.cshtml]
+build_metadata.AdditionalFiles.TargetPath = WnZpcmF0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = SW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = SW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Majitel/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = SW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Majitel/_MajitelLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X01haml0ZWxMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X0FkbWluTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Shared/_LoginLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X0xvZ2luTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Vedouci/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = SW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Vedouci/_VedouciLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X1ZlZG91Y2lMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-25iltzlqj2

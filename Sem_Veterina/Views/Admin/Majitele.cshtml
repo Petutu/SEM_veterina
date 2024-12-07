@@ -40,19 +40,21 @@
                         <th class="table-list-column-name">Jméno</th>
                         <th class="table-list-column-name">Příjmení</th>
                         <th class="table-list-column-name">Tel.číslo</th>
-                        @* <th class="table-list-column-name">Zvíře Jméno</th>  *@
-                        @* <th class="table-list-column-name">Druh</th>  *@
+                        <th class="table-list-column-name">Username</th>
+                        <th class="table-list-column-name">Zvíře</th>
+                        <th class="table-list-column-name">Druh</th>
                     </tr>
                 </thead>
                 <tbody class="table-list-body">
                     @foreach (var majitel in Model.Majitele)
                     {
                         <tr class="table-list-body-row" data-id="@majitel.ID_MAJITEL">
-                            <td class="table-list-body-column">@majitel.JMÉNO</td>
-                            <td class="table-list-body-column">@majitel.PŘÍJMENÍ</td>
+                            <td class="table-list-body-column">@majitel.JMÉNO_MAJITELE</td>
+                            <td class="table-list-body-column">@majitel.PŘÍJMENÍ_MAJITELE</td>
                             <td class="table-list-body-column">@majitel.TELEFONNÍ_ČÍSLO</td>
-                            @* <td class="table-list-body-column">@majitel.ZVÍŘATA.First().JMÉNO</td>
-                        <td class="table-list-body-column">@majitel.ZVÍŘATA.First().Druh</td> *@
+                            <td class="table-list-body-column">@(@majitel.USERNAME ?? "Není zadané")</td>
+                            <td class="table-list-body-column">@majitel.JMÉNO_ZVÍŘETE</td>
+                            <td class="table-list-body-column">@majitel.DRUH_ZVÍŘETE</td>
                         </tr>
                     }
                 </tbody>
@@ -60,6 +62,11 @@
         </div>
         <div class="right-panel" id="detailPanel">
             <form class="right-panel-form">
+                <div class="right-panel-form-item filter-item">
+                    <label for="username">Username</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="username" id="detail-username"
+                        placeholder="Martin" disabled />
+                </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="name">Jméno</label>
                     <input class="right-panel-form-input filter-input" type="text" name="name" id="detail-name"
@@ -80,11 +87,36 @@
                     <input class="right-panel-form-input filter-input" type="text" name="email" id="detail-email"
                         placeholder="vetcare@gmail.com" disabled />
                 </div>
-                @* <div class="right-panel-form-item filter-item">
-                    <label for="animalname">Email</label>
+                <div class="right-panel-form-item filter-item">
+                    <label for="address">Adresa</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="address" id="detail-address"
+                        placeholder="vetcare@gmail.com" disabled />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="klinikname">Klinika</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="klinikname"
+                        id="detail-klinikname" placeholder="vetcare@gmail.com" disabled />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="addressklinik">Address</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="addressklinik"
+                        id="detail-addressklinik" placeholder="vetcare@gmail.com" disabled />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="animalname">Zvíře</label>
                     <input class="right-panel-form-input filter-input" type="text" name="animalname"
                         id="detail-animalname" placeholder="Alisie" disabled />
-                </div> *@
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="kind">Druh</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="kind" id="detail-kind"
+                        placeholder="Kočka" disabled />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="health">Zdravotní stav</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="health" id="detail-health"
+                        placeholder="Zdraví" disabled />
+                </div>
             </form>
         </div>
     </div>
@@ -193,9 +225,6 @@
     });
 </script> *@
 
-@* --Vytvoření pohledu 
-CREATE OR REPLACE VIEW V_ZDRAVOTNI_AKCI  AS
-SELECT ID_Akce, Datum, ID_presonál, ID_Klinika, Popis_Akce, ID_Přístroj, ID_Zvíře, Jméno, ID_Majitel, Výsledek
-FROM ZDRAVOTNI_AKCI 
-NATURAL JOIN ZVIRATA
-ORDER BY Datum; *@
+
+@* dotnet ef migrations add AddMajitelDetailView
+dotnet ef database update *@

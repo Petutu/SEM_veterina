@@ -34,15 +34,21 @@ const convertKeysToLowerCase = (data) => {
     });
 
     const updateDetailPanel = (data) => {
-        console.log(data.název);  // Opravený název
-        document.getElementById('detail-name').value = data.název || ''; 
-
-        console.log(data.adresa);  // Opravená adresa
-        document.getElementById('detail-address').value = data.adresa || ''; 
-
-        console.log(data.telefonní_číslo);  // Opravené telefonní číslo
-        document.getElementById('detail-phone').value = data.telefonní_číslo || ''; 
-
-        console.log(data.email);  // Opravený email
-        document.getElementById('detail-email').value = data.email || ''; 
+        document.getElementById('detail-username').value = data.username || 'Není zadané'; 
+        document.getElementById('detail-name').value = data.jméno_majitele || ''; 
+        document.getElementById('detail-lastname').value = data.příjmení_majitele
+ || ''; 
+        document.getElementById('detail-phone').value = data.telefonní_číslo
+ || ''; 
+        document.getElementById('detail-email').value = data.email_majitele || ''; 
+        document.getElementById('detail-address').value = data.adresa_majitele || ''; 
+        document.getElementById('detail-klinikname').value = data.název_kliniky || ''; 
+        document.getElementById('detail-addressklinik').value = data.
+adresa_kliniky || ''; 
+        document.getElementById('detail-animalname').value = data.jméno_zvířete
+ || ''; 
+        document.getElementById('detail-kind').value = data.druh_zvířete
+ || ''; 
+        document.getElementById('detail-health').value = data.zdravotní_stav
+ || ''; 
     };

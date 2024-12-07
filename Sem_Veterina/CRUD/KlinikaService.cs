@@ -46,7 +46,6 @@ namespace Sem_Veterina.CRUD
             return await _context.Kliniky.FromSqlRaw(sql, parameters).ToListAsync();
         }
 
-        // CREATE
         public async Task AddKlinikaAsync(KLINIKY klinika)
         {
             var sql = "BEGIN PROC_CREATE_KLINIKA(:Name, :Address, :Phone, :Email); END;";

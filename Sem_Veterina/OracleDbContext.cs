@@ -24,14 +24,16 @@ namespace Sem_Veterina
         public DbSet<ROLE> Role { get; set; }
         public DbSet<UZIVATEL> Uzivatele { get; set; }
         public DbSet<LOGOVANI> Logovani { get; set; }
+        public DbSet<MajitelDetailView> MajitelDetailView { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            /*     modelBuilder.Entity<DIAGNOZY>()
-             .HasOne(d => d.LÉČBY)
-             .WithOne(l => l.)
-             .HasPrincipalKey<DIAGNOZY>(d => d.ID_DIAGNÓZA)
-             .HasForeignKey<LECBY>(l => l.ID_LÉČBA); // Odkazuje na sloupec, který již v databázi existuje*/
+            // Konfigurace pro mapování pohledu
+            modelBuilder.Entity<MajitelDetailView>(entity =>
+            {
+                entity.HasNoKey();  // Říká, že tato entita nemá primární klíč, protože je to pouze pohled
+                entity.ToView("V_MAJITEL_DETAILS");  // Určuje název pohledu v databázi
+            });
 
             modelBuilder.Entity<UZIVATEL>().HasOne(u => u.ROLE).WithMany(r => r.UZIVATELE).HasForeignKey(u => u.ID_ROLE);
 
@@ -166,7 +168,7 @@ namespace Sem_Veterina
         .ToTable("KLINIKY");
             modelBuilder.Entity<ZVIRATA>()
         .ToTable("ZVIRATA");
-            modelBuilder.Entity<MAJITELE>().ToTable("MAJITELI"); //Podle databáze..
+            modelBuilder.Entity<MAJITELE>().ToTable("MAJITELI");
 
             modelBuilder.Entity<LEKY>()
         .ToTable("LEKY");
