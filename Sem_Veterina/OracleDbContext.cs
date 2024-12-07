@@ -25,6 +25,7 @@ namespace Sem_Veterina
         public DbSet<UZIVATEL> Uzivatele { get; set; }
         public DbSet<LOGOVANI> Logovani { get; set; }
         public DbSet<MajitelDetailView> MajitelDetailView { get; set; }
+        public DbSet<ZvireDetailView> ZvireDetailView { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +34,12 @@ namespace Sem_Veterina
             {
                 entity.HasNoKey();  // Říká, že tato entita nemá primární klíč, protože je to pouze pohled
                 entity.ToView("V_MAJITEL_DETAILS");  // Určuje název pohledu v databázi
+            });
+
+            modelBuilder.Entity<ZvireDetailView>(entity =>
+            {
+                entity.HasNoKey();
+                entity.ToView("V_ZVIRE_DETAILS");
             });
 
             modelBuilder.Entity<UZIVATEL>().HasOne(u => u.ROLE).WithMany(r => r.UZIVATELE).HasForeignKey(u => u.ID_ROLE);

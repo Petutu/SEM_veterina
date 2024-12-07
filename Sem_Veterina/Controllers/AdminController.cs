@@ -72,12 +72,11 @@ namespace Sem_Veterina.Controllers
         // Akce pro stránku "Malí pacienty"
         public async Task<IActionResult> Zvirata(string? name, string? species)
         {
-            Debug.WriteLine("AdminController -> Zvirata volán");
             var viewModel = new ZvirataViewModel();
             viewModel.Zvirata = await _zvireService.GetFilteredZvirataAsync(name, species);
             viewModel.SelectedZvire = viewModel.Zvirata.FirstOrDefault();
-            Debug.WriteLine($"Zvirata count: {viewModel.Zvirata?.Count}");
-            Debug.WriteLine($"First Zvire name: {viewModel.Zvirata?.FirstOrDefault()?.JMÉNO}");
+            // Debug.WriteLine($"Zvirata count: {viewModel.Zvirata?.Count}");
+            // Debug.WriteLine($"First Zvire name: {viewModel.Zvirata?.FirstOrDefault()?.JMÉNO_ZVÍŘETE}");
             //return View("~/Views/Admin/Zvirata.cshtml", viewModel);
             return View("Zvirata", viewModel);  // Vrátí seznam zvířat do pohledu Zvirata.cshtml
         }

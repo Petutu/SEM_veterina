@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RfQ+h0tITbKOYyNbmwuyj7wXq6KHF6nqIxhBEOnhWBA=",
+  "Hash": "+RPYOqjzNRANCnTYT7stmTyG9rn11mlRc6eERuugIyk=",
   "Source": "Sem_Veterina",
   "BasePath": "_content/Sem_Veterina",
   "Mode": "Default",
@@ -262,6 +262,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/admin-majitel.js"
+    },
+    {
+      "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/admin-zvíře.js",
+      "SourceId": "Sem_Veterina",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/",
+      "BasePath": "_content/Sem_Veterina",
+      "RelativePath": "js/admin-zvíře.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/admin-zvíře.js"
     },
     {
       "Identity": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/filterUtils.js",

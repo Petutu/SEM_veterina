@@ -150,17 +150,32 @@
     }
 
     function clearDetailFields() {
+        document.getElementById('detail-username').value = '';
         document.getElementById('detail-name').value = '';
-        document.getElementById('detail-address').value = '';
+        document.getElementById('detail-lastname').value = '';
         document.getElementById('detail-phone').value = '';
         document.getElementById('detail-email').value = '';
+        document.getElementById('detail-address').value = '';
+        document.getElementById('detail-klinikname').value = '';
+        document.getElementById('detail-addressklinik').value = '';
+        document.getElementById('detail-animalname').value = '';
+        document.getElementById('detail-kind').value = '';
+        document.getElementById('detail-health').value = '';
+
     }
 
     function enableDetailFields() {
+        document.getElementById('detail-username').disabled = false;
         document.getElementById('detail-name').disabled = false;
-        document.getElementById('detail-address').disabled = false;
+        document.getElementById('detail-lastname').disabled = false;
         document.getElementById('detail-phone').disabled = false;
         document.getElementById('detail-email').disabled = false;
+        document.getElementById('detail-address').disabled = false;
+        document.getElementById('detail-klinikname').disabled = false;
+        document.getElementById('detail-addressklinik').disabled = false;
+        document.getElementById('detail-animalname').disabled = false;
+        document.getElementById('detail-kind').disabled = false;
+        document.getElementById('detail-health').disabled = false;
     }
     // Skrytí tlačítek při načtení stránky
     toggleSaveCancelButtons(false);

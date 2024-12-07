@@ -15,6 +15,35 @@ namespace Sem_Veterina.CRUD
             _context = context;
         }
 
+        // READ - GET ALL
+        public async Task<List<ZVIRATA>> GetAllZvirataAsync()
+        {
+            var sql = "SELECT * FROM ZVIRATA";
+            return await _context.Zvirata.FromSqlRaw(sql).ToListAsync();
+        }
+
+        // READ - GET BY ID
+        public async Task<ZvireDetailView> GetZvireByIdAsync(int id)
+        {
+            var sql = "SELECT * FROM V_ZVIRE_DETAILS WHERE ID_ZVÍŘE = :Id";
+            var param = new OracleParameter("Id", id);
+            return await _context.ZvireDetailView.FromSqlRaw(sql, param).FirstOrDefaultAsync();
+        }
+
+        public async Task<List<ZvireDetailView>> GetFilteredZvirataAsync(string? name, string? species)
+        {
+            var sql = "SELECT * FROM V_ZVIRE_DETAILS WHERE (:Name IS NULL OR JMÉNO_ZVÍŘETE LIKE '%' || :Name || '%') " +
+                      "AND (:Species IS NULL OR DRUH LIKE '%' || :Species || '%')";
+
+            var parameters = new[]
+            {
+                new OracleParameter("Name", name ?? (object)DBNull.Value),
+                new OracleParameter("Species", species ?? (object)DBNull.Value)
+            };
+
+            return await _context.ZvireDetailView.FromSqlRaw(sql, parameters).ToListAsync();
+        }
+
         // CREATE
         public async Task AddZvireAsync(ZVIRATA zvire)
         {
@@ -28,35 +57,19 @@ namespace Sem_Veterina.CRUD
                 new OracleParameter("VAHA", zvire.VÁHA));
         }
 
-        // READ - GET ALL
-        public async Task<List<ZVIRATA>> GetAllZvirataAsync()
-        {
-            var sql = "SELECT * FROM ZVIRATA";
-            return await _context.Zvirata.FromSqlRaw(sql).ToListAsync();
-        }
-
-        // READ - GET BY ID
-        public async Task<ZVIRATA> GetZvireByIdAsync(int id)
-        {
-            var sql = "SELECT * FROM ZVIRATA WHERE ID_ZVÍŘE = :Id";
-            var param = new OracleParameter("Id", id);
-            return await _context.Zvirata.FromSqlRaw(sql, param).FirstOrDefaultAsync();
-        }
-
         // UPDATE
         public async Task UpdateZvireAsync(ZVIRATA zvire)
         {
-            
-                var sql = "BEGIN EDIT_ZVIRE(:ID_ZVIRE, :JMENO, :DRUH, :VEK, :ZDRAVOTNI_STAV, :ID_MAJITEL, :VAHA); END;";
-                await _context.Database.ExecuteSqlRawAsync(sql,
-                    new OracleParameter("ID_ZVIRE", zvire.ID_ZVÍŘE),
-                    new OracleParameter("JMENO", zvire.JMÉNO),
-                    new OracleParameter("DRUH", zvire.DRUH),
-                    new OracleParameter("VEK", zvire.VĚK),
-                    new OracleParameter("ZDRAVOTNI_STAV", zvire.ZDRAVOTNÍ_STAV),
-                    new OracleParameter("ID_MAJITEL", zvire.ID_MAJITEL),
-                    new OracleParameter("VAHA", zvire.VÁHA));
-            
+
+            var sql = "BEGIN EDIT_ZVIRE(:ID_ZVIRE, :JMENO, :DRUH, :VEK, :ZDRAVOTNI_STAV, :ID_MAJITEL, :VAHA); END;";
+            await _context.Database.ExecuteSqlRawAsync(sql,
+                new OracleParameter("ID_ZVIRE", zvire.ID_ZVÍŘE),
+                new OracleParameter("JMENO", zvire.JMÉNO),
+                new OracleParameter("DRUH", zvire.DRUH),
+                new OracleParameter("VEK", zvire.VĚK),
+                new OracleParameter("ZDRAVOTNI_STAV", zvire.ZDRAVOTNÍ_STAV),
+                new OracleParameter("ID_MAJITEL", zvire.ID_MAJITEL),
+                new OracleParameter("VAHA", zvire.VÁHA));
 
         }
 
@@ -68,19 +81,5 @@ namespace Sem_Veterina.CRUD
                 new OracleParameter("ID_ZVIRE", id));
         }
 
-
-        public async Task<List<ZVIRATA>> GetFilteredZvirataAsync(string? name, string? species)
-        {
-            var sql = "SELECT * FROM ZVIRATA WHERE (:Name IS NULL OR JMÉNO LIKE '%' || :Name || '%') " +
-                      "AND (:Species IS NULL OR DRUH LIKE '%' || :Species || '%')";
-
-            var parameters = new[]
-            {
-                new OracleParameter("Name", name ?? (object)DBNull.Value),
-                new OracleParameter("Species", species ?? (object)DBNull.Value)
-            };
-
-            return await _context.Zvirata.FromSqlRaw(sql, parameters).ToListAsync();
-        }
     }
 }

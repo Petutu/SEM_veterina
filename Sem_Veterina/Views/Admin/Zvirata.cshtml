@@ -34,84 +34,159 @@
                         <th class="table-list-column-name">Druh</th>
                         <th class="table-list-column-name">Věk</th>
                         <th class="table-list-column-name">Zdravotní stav</th>
-                        @* <th class="table-list-column-name">Majitel</th> *@
                         <th class="table-list-column-name">Váha</th>
+                        <th class="table-list-column-name">Majitel</th>
+                        <th class="table-list-column-name">Diagnóza</th>
                     </tr>
                 </thead>
                 <tbody class="table-list-body">
                     @foreach (var zvire in Model.Zvirata)
                     {
-                        <tr class="table-list-body-row">
-                            <td class="table-list-body-column">@zvire.JMÉNO</td>
+                        <tr class="table-list-body-row" data-id="@zvire.ID_ZVÍŘE">
+                            <td class="table-list-body-column">@zvire.JMÉNO_ZVÍŘETE</td>
                             <td class="table-list-body-column">@zvire.DRUH</td>
                             <td class="table-list-body-column">@zvire.VĚK</td>
                             <td class="table-list-body-column">@zvire.ZDRAVOTNÍ_STAV</td>
-                            @* <td class="table-list-body-column">@zvire.MAJITELE.JMÉNO</td> *@
                             <td class="table-list-body-column">@zvire.VÁHA</td>
+                            <td class="table-list-body-column">@zvire.JMÉNO_MAJITELE @zvire.PŘÍJMENÍ_MAJITELE</td>
+                            <td class="table-list-body-column">@(zvire.NÁZEV_DIAGNÓZY ?? "Nemá")</td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
         <div class="right-panel" id="detailPanel">
-            <form class="right-panel-form" method="post" action="/Zvire/Edit">
+            <form class="right-panel-form">
                 <div class="right-panel-form-item filter-item">
                     <label for="name">Jméno</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="name" placeholder="Savier" />
+                    <input class="right-panel-form-input filter-input" type="text" name="name" placeholder="Savier"
+                        id="detail-name" disabled />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="species">Druh</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="species"
-                        placeholder="Papoušek" />
+                    <input class="right-panel-form-input filter-input" type="text" name="species" id="detail-species"
+                        disabled placeholder="Papoušek" />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="age">Věk</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="age" placeholder="9" />
+                    <input class="right-panel-form-input filter-input" type="text" name="age" placeholder="9"
+                        id="detail-age" disabled />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="health">Zdravotní stav</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="health" placeholder="Zdravé" />
-                </div>
-                <div class="right-panel-form-item filter-item">
-                    <label for="owner">Majitel</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="owner" placeholder="owner" />
+                    <input class="right-panel-form-input filter-input" type="text" name="health" placeholder="Zdravé"
+                        id="detail-health" disabled />
                 </div>
                 <div class="right-panel-form-item filter-item">
                     <label for="weight">Váha</label>
-                    <input class="right-panel-form-input filter-input" type="text" name="weight" placeholder="3,5" />
+                    <input class="right-panel-form-input filter-input" type="text" name="weight" placeholder="3,5"
+                        id="detail-weight" disabled />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="ownername">Jméno majitele</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="ownername" placeholder="owner"
+                        id="detail-ownername" disabled />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="ownersurname">Příjmení majitele</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="ownersurname"
+                        placeholder="ownersurname" id="detail-ownersurname" disabled />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="phone">Telefonní číslo</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="phone" id="detail-phone"
+                        placeholder="777 777 777" disabled />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="address">Adresa</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="address" id="detail-address"
+                        placeholder="vetcare@gmail.com" disabled />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="diagnosis">Název diagnózy</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="diagnosis"
+                        id="detail-diagnosis" placeholder="vetcare@gmail.com" disabled />
+                </div>
+                <div class="right-panel-form-item filter-item">
+                    <label for="therapy">Popís lečby</label>
+                    <input class="right-panel-form-input filter-input" type="text" name="therapy"
+                        placeholder="vetcare@gmail.com" disabled />
                 </div>
             </form>
         </div>
     </div>
     <footer class="footer-klinika">
         <ul class="crud-list">
-            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Vytvořit</button></li>
-            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Editovat</button></li>
-            <li class="crud-list-item"><button class="crud-list-btn btn-filter">Odstranit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter create-button">Vytvořit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter edit-button">Editovat</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter delete-button">Odstranit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter save-button"
+                    style="display: none;">Uložit</button></li>
+            <li class="crud-list-item"><button class="crud-list-btn btn-filter cancel-button"
+                    style="display: none;">Storno</button></li>
         </ul>
     </footer>
 </div>
 <script type="module" src="~/js/filterUtils.js"></script>
-@* todo : pridat oveření vstupu z inputu *@
+<script type="module" src="~/js/admin-zvíře.js"></script>
+<script>
+    function toggleSaveCancelButtons(show) {
+        console.log(show);
+        const saveButton = document.querySelector('.save-button');
+        const cancelButton = document.querySelector('.cancel-button');
 
-@* @if (Model?.Zvirata == null || !Model.Zvirata.Any())
-{
-    <tr>
-    <td colspan="6">Žádná data k zobrazení.</td>
-</tr>
-}
-else
-{
-    @foreach (var zvire in Model.Zvirata)
-    {
-        <tr class="table-list-body-row">
-    <td class="table-list-body-column">@zvire.JMÉNO</td>
-    <td class="table-list-body-column">@zvire.DRUH</td>
-    <td class="table-list-body-column">@zvire.VĚK</td>
-    <td class="table-list-body-column">@zvire.ZDRAVOTNÍ_STAV</td>
-    <td class="table-list-body-column">@zvire.MAJITELE?.JMÉNO ?? "Neznámý majitel"</td>
-    <td class="table-list-body-column">@zvire.VÁHA</td>
-</tr>
+        if (show) {
+            saveButton.style.display = 'inline-block';
+            cancelButton.style.display = 'inline-block';
+        } else {
+            saveButton.style.display = 'none';
+            cancelButton.style.display = 'none';
+        }
     }
-} *@
-`
+
+    function clearDetailFields() {
+        document.getElementById('detail-name').value = '';
+        document.getElementById('detail-species').value = '';
+        document.getElementById('detail-age').value = '';
+        document.getElementById('detail-health').value = '';
+        document.getElementById('detail-weight').value = '';
+        document.getElementById('detail-ownername').value = '';
+        document.getElementById('detail-ownersurname').value = '';
+        document.getElementById('detail-phone').value = '';
+        document.getElementById('detail-address').value = '';
+        document.getElementById('detail-diagnosis').value = '';
+        document.getElementById('detail-therapy').value = '';
+    }
+
+    function enableDetailFields() {
+        document.getElementById('detail-name').disabled = false;
+        document.getElementById('detail-species').disabled = false;
+        document.getElementById('detail-age').disabled = false;
+        document.getElementById('detail-health').disabled = false;
+        document.getElementById('detail-weight').disabled = false;
+        document.getElementById('detail-ownername').disabled = false;
+        document.getElementById('detail-ownersurname').disabled = false;
+        document.getElementById('detail-phone').disabled = false;
+        document.getElementById('detail-address').disabled = false;
+        document.getElementById('detail-diagnosis').disabled = false;
+        document.getElementById('detail-therapy').disabled = false;
+    }
+    // Skrytí tlačítek při načtení stránky
+    toggleSaveCancelButtons(false);
+
+    document.querySelector('.create-button').addEventListener('click', () => {
+        clearDetailFields();
+        enableDetailFields();
+        toggleSaveCancelButtons(true);
+    });
+
+    document.querySelector('.edit-button').addEventListener('click', () => {
+        enableDetailFields();
+        toggleSaveCancelButtons(true);
+    });
+
+    document.querySelector('.cancel-button').addEventListener('click', () => {
+        clearDetailFields();
+        toggleSaveCancelButtons(false);
+    });
+</script>

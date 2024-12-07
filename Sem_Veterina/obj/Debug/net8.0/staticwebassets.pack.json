@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets/js/admin-majitel.js"
     },
     {
+      "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/admin-zvíře.js",
+      "PackagePath": "staticwebassets/js/admin-zvíře.js"
+    },
+    {
       "Id": "/Users/anastasiaanosova/Desktop/Databázové systémy II/SEM_veterina/Sem_Veterina/wwwroot/js/filterUtils.js",
       "PackagePath": "staticwebassets/js/filterUtils.js"
     },

@@ -3,7 +3,7 @@ namespace Sem_Veterina.Models
 {
     public class ZvirataViewModel
     {
-        public List<ZVIRATA> Zvirata { get; set; }
-        public ZVIRATA SelectedZvire { get; set; }
+        public List<ZvireDetailView> Zvirata { get; set; }
+        public ZvireDetailView SelectedZvire { get; set; }
     }
 }

@@ -36,12 +36,13 @@ namespace Sem_Veterina.Controllers
             return Ok(klinika);
         }
 
+
         [HttpPost("CreateKlinika")]
         public async Task<IActionResult> CreateKlinika([FromBody] KLINIKY klinika)
         {
             if (klinika == null)
             {
-                return BadRequest("Nevalidní data.");
+                return BadRequest(new { Error = "Neplatná data pro vytvoření kliniky." });
             }
 
             if (!ModelState.IsValid)
@@ -51,11 +52,6 @@ namespace Sem_Veterina.Controllers
                                               .ToList();
                 return BadRequest(new { Error = "Neplatná data.", Details = errors });
             }
-
-            // if (!ModelState.IsValid)
-            // {
-            //     return BadRequest(new { Error = "Neplatná data pro vytvoření kliniky." });
-            // }
 
             try
             {

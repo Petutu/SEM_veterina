@@ -1,44 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+
 using System.Collections.Generic;
 
 using Sem_Veterina.Models;
 using Sem_Veterina.Entity;
-using Sem_Veterina.CRUD;  // Import modelu ZVIRATA
+using Sem_Veterina.CRUD;
 
 namespace Sem_Veterina.Controllers
 {
-    public class ZVIRATAController : Controller
+    using System.Threading.Tasks;
+
+    [Route("api/[controller]")]
+    [ApiController]
+
+    public class ZvirataController : Controller
     {
         private readonly ZvireService _zvireService;
 
-        public ZVIRATAController(ZvireService zvireService)
+        public ZvirataController(ZvireService zvireService)
         {
             _zvireService = zvireService;
         }
 
-        // GET: /ZVIRATA/Index
         public async Task<IActionResult> Index()
         {
-            List<ZVIRATA> zvirata = await _zvireService.GetAllZvirataAsync();
-            return View(zvirata);
+            // List<ZVIRATA> zvirata = await _zvireService.GetAllZvirataAsync();
+            // return View(zvirata);
+            return View();
         }
 
-        // GET: /ZVIRATA/Details/5
-        public async Task<IActionResult> Details(int id)
+        // READ - GET BY ID
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetZvireById(int id)
         {
             var zvire = await _zvireService.GetZvireByIdAsync(id);
             if (zvire == null)
-            {
                 return NotFound();
-            }
-            return View(zvire);
-        }
-
-        // GET: /ZVIRATA/Create
-        public IActionResult Create()
-        {
-            return View();
+            return Ok(zvire);
+            //return View(zvire);
         }
 
         // POST: /ZVIRATA/Create
